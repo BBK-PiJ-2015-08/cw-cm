@@ -42,6 +42,6 @@ public class MeetingImpl implements Meeting {
      */
     @Override
     public Set<Contact> getContacts() {
-        
+
     }
 }
