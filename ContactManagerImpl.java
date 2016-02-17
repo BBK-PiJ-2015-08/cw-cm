@@ -143,7 +143,7 @@ public class ContactManagerImpl implements ContactManager {
      * @throws NullPointerException     if the notes are null
      */
     @Override
-    public PastMeeting addMeetingNotes(int id, String text) {
+    public void addMeetingNotes(int id, String text) {
 
     }
 
@@ -157,22 +157,7 @@ public class ContactManagerImpl implements ContactManager {
      * @throws NullPointerException     if the name or the notes are null
      */
     @Override
-    public int addNewContact(String name, String notes) {
-
-    }
-
-    /**
-     * Returns a list with the contacts whose name contains that string.
-     * <p>
-     * If the string is the empty string, this methods returns the set
-     * that contains all current contacts.
-     *
-     * @param name the string to search for
-     * @return a list with the contacts whose name contains that string.
-     * @throws NullPointerException if the parameter is null
-     */
-    @Override
-    public Set<Contact> getContacts(String name) {
+    public void addNewContact(String name, String notes) {
 
     }
 
@@ -187,6 +172,20 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
+
+    }
+    /**
+     * Returns a list with the contacts whose name contains that string.
+     * <p>
+     * If the string is the empty string, this methods returns the set
+     * that contains all current contacts.
+     *
+     * @param name the string to search for
+     * @return a list with the contacts whose name contains that string.
+     * @throws NullPointerException if the parameter is null
+     */
+    @Override
+    public Set<Contact> getContacts(String name) {
 
     }
 
