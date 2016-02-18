@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ContactManagerImpl implements ContactManager {
-
+    //Create constructors
     /**
      * Add a new meeting to be held in the future.
      * <p>
@@ -19,7 +19,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-
+        // @return the ID for the meeting
     }
 
     /**
@@ -34,7 +34,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
-
+        //@return the meeting with the requested ID, or null if it there is none.
     }
 
     /**
@@ -47,7 +47,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
-
+        //@return the meeting with the requested ID, or null if it there is none.
     }
 
     /**
@@ -58,7 +58,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Meeting getMeeting(int id) {
-
+        //@return the meeting with the requested ID, or null if it there is none.
     }
 
     /**
@@ -75,7 +75,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
-
+        //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
     /**
@@ -92,7 +92,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
-
+        //@return the list of meetings
     }
 
     /**
@@ -109,7 +109,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-
+        //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
     /**
@@ -118,14 +118,12 @@ public class ContactManagerImpl implements ContactManager {
      * @param contacts a list of participants
      * @param date     the date on which the meeting took place
      * @param text     messages to be added about the meeting.
-     * @throws IllegalArgumentException if the list of contacts is
-     *                                  <p>
-     *                                  empty, or any of the contacts does not exist
+     * @throws IllegalArgumentException if the list of contacts is empty, or any of the contacts does not exist
      * @throws NullPointerException     if any of the arguments is null
      */
     @Override
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
-
+        //no return value
     }
 
     /**
@@ -144,7 +142,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public void addMeetingNotes(int id, String text) {
-
+        //no return value
     }
 
     /**
@@ -157,8 +155,8 @@ public class ContactManagerImpl implements ContactManager {
      * @throws NullPointerException     if the name or the notes are null
      */
     @Override
-    public void addNewContact(String name, String notes) {
-
+    public int addNewContact(String name, String notes) {
+        //return the ID for the new contact
     }
 
     /**
@@ -172,7 +170,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
-
+        //@return a list containing the contacts that correspond to the IDs
     }
     /**
      * Returns a list with the contacts whose name contains that string.
@@ -186,7 +184,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(String name) {
-
+        //@return a list with the contacts whose name contains that string.
     }
 
     /**
