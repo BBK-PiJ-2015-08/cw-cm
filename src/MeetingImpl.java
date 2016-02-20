@@ -25,7 +25,6 @@ public class MeetingImpl implements Meeting {
             this.contacts = contacts;
         }
     }
-    //Create constructors
 
     /**
      * Returns the id of the meeting.
