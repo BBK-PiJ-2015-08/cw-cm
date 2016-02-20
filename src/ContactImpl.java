@@ -27,6 +27,11 @@ public class ContactImpl implements Contact {
         else if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
         }
+        else {
+            this.id = id;
+            this.name = name;
+            this.notes = notes;
+        }
     }
 
 
