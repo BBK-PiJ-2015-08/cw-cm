@@ -12,16 +12,16 @@ package src;
  */
 
 public class ContactImpl implements Contact {
-    private int contactID;
-    private String contactName;
-    private String contactNotes;
+    private int id;
+    private String name;
+    private String notes;
 
     /**If the ID provided is zero or negative, a IllegalArgumentException
      * must be thrown. If any of the references / pointers passed as parameters to the
      * constructor is null, a NullPointerException must be thrown.
      * */
     public ContactImpl(int id, String name, String notes) {
-
+        
     }
 
 
