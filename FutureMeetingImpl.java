@@ -6,5 +6,5 @@
  * thrown.
  */
 public class FutureMeetingImpl implements FutureMeeting {
-
+// Create constructors
 }

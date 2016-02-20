@@ -10,6 +10,7 @@ import java.util.Set;
  * is null, a NullPointerException must be thrown
  */
 public class MeetingImpl implements Meeting {
+    //Create constructors
 
     /**
      * Returns the id of the meeting.

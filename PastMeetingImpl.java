@@ -6,7 +6,7 @@
  * parameters is null, a NullPointerException must be thrown.
  */
 public class PastMeetingImpl implements PastMeeting {
-
+//create constructors
     /**
      * Returns the notes from the meeting.
      * <p>
