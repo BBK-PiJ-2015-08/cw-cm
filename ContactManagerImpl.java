@@ -17,10 +17,15 @@ public class ContactManagerImpl implements ContactManager {
      *                     in the past, or if any contact is unknown / non-existent.
      * @throws NullPointerException     if the set of contacts or the date are null
      */
+
+
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         // @return the ID for the meeting
     }
+
+
+
 
     /**
      * Returns the PAST meeting with the requested ID, or null if it there is none.
@@ -37,6 +42,9 @@ public class ContactManagerImpl implements ContactManager {
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
+
+
+
     /**
      * Returns the FUTURE meeting with the requested ID, or null if there is none.
      *
@@ -50,6 +58,9 @@ public class ContactManagerImpl implements ContactManager {
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
+
+
+
     /**
      * Returns the meeting with the requested ID, or null if it there is none.
      *
@@ -60,6 +71,9 @@ public class ContactManagerImpl implements ContactManager {
     public Meeting getMeeting(int id) {
         //@return the meeting with the requested ID, or null if it there is none.
     }
+
+
+
 
     /**
      * Returns the list of future meetings scheduled with this contact.
@@ -78,6 +92,9 @@ public class ContactManagerImpl implements ContactManager {
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
+
+
+
     /**
      * Returns the list of meetings that are scheduled for, or that took
      * place on, the specified date
@@ -94,6 +111,9 @@ public class ContactManagerImpl implements ContactManager {
     public List<Meeting> getMeetingListOn(Calendar date) {
         //@return the list of meetings
     }
+
+
+
 
     /**
      * Returns the list of past meetings in which this contact has participated.
@@ -112,6 +132,9 @@ public class ContactManagerImpl implements ContactManager {
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
+
+
+
     /**
      * Create a new record for a meeting that took place in the past.
      *
@@ -125,6 +148,9 @@ public class ContactManagerImpl implements ContactManager {
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
         //no return value
     }
+
+
+
 
     /**
      * Add notes to a meeting.
@@ -145,6 +171,9 @@ public class ContactManagerImpl implements ContactManager {
         //no return value
     }
 
+
+
+
     /**
      * Create a new contact with the specified name and notes.
      *
@@ -158,6 +187,9 @@ public class ContactManagerImpl implements ContactManager {
     public int addNewContact(String name, String notes) {
         //return the ID for the new contact
     }
+
+
+
 
     /**
      * Returns a list containing the contacts that correspond to the IDs.
@@ -173,6 +205,10 @@ public class ContactManagerImpl implements ContactManager {
     public Set<Contact> getContacts(int... ids) {
         //@return a list containing the contacts that correspond to the IDs
     }
+
+
+
+
     /**
      * Returns a list with the contacts whose name contains that string:
      * <p>
@@ -189,6 +225,9 @@ public class ContactManagerImpl implements ContactManager {
         //@return a list with the contacts whose name contains that string.
     }
 
+
+
+    
     /**
      * Save all data to disk.
      * <p>

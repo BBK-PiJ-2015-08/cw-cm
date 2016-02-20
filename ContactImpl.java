@@ -19,7 +19,7 @@ public class ContactImpl implements Contact {
     }
 
 
-    
+
     /**
      * Returns the ID of the contact.
      *
