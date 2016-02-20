@@ -8,9 +8,17 @@ import java.util.*;
  * parameters is null, a NullPointerException must be thrown.
  */
 public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
-//create constructors
 
+    private String notes;
 
+    public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
+        super(id, date, contacts);
+        if (notes == null) {
+            throw new NullPointerException("Please make sure to enter notes that are not null");
+        } else {
+            this.notes = notes;
+        }
+    }
 
     /**
      * Returns the notes from the meeting.
@@ -21,6 +29,6 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
      */
     @Override
     public String getNotes() {
-        return null;
+        //return null;
     }
 }
