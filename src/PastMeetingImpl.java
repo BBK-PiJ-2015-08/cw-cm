@@ -7,7 +7,7 @@ package src;
  * the notes for the meeting. If any of the references / pointers passed as
  * parameters is null, a NullPointerException must be thrown.
  */
-public class PastMeetingImpl implements PastMeeting {
+public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 //create constructors
 
 

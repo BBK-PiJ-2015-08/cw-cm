@@ -6,6 +6,6 @@ package src;
  * references/pointers passed as parameters is null, a NullPointerException must be
  * thrown.
  */
-public class FutureMeetingImpl implements FutureMeeting {
+public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting {
 // Create constructors
 }
