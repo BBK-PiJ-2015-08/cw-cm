@@ -14,8 +14,8 @@ public class ContactManagerImpl implements ContactManager {
      * @param date     the date on which the meeting will take place
      * @return the ID for the meeting
      * @throws IllegalArgumentException if the meeting is set for a time
-     *                                  in the past, of if any contact is unknown / non-existent.
-     * @throws NullPointerException     if the meeting or the date are null
+     *                     in the past, or if any contact is unknown / non-existent.
+     * @throws NullPointerException     if the set of contacts or the date are null
      */
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
@@ -164,7 +164,8 @@ public class ContactManagerImpl implements ContactManager {
      * Note that this method can be used to retrieve just one contact by passing only one ID.
      *
      * @param ids an arbitrary number of contact IDs
-     * @return a list containing the contacts that correspond to the IDs.
+     * @return a list containing the contacts that correspond to the IDs. - a set of
+     * contacts: Set<Contact>
      * @throws IllegalArgumentException if no IDs are provided or if
      *                                  any of the provided IDs does not correspond to a real contact
      */
@@ -173,13 +174,14 @@ public class ContactManagerImpl implements ContactManager {
         //@return a list containing the contacts that correspond to the IDs
     }
     /**
-     * Returns a list with the contacts whose name contains that string.
+     * Returns a list with the contacts whose name contains that string:
      * <p>
      * If the string is the empty string, this methods returns the set
      * that contains all current contacts.
      *
      * @param name the string to search for
-     * @return a list with the contacts whose name contains that string.
+     * @return a list with the contacts whose name contains that string. - a set of
+     * contacts: Set<Contact>
      * @throws NullPointerException if the parameter is null
      */
     @Override
