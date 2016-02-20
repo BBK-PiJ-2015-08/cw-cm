@@ -11,6 +11,20 @@ import java.util.*;
  */
 
 public class MeetingImpl implements Meeting {
+    public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Meeting ID must be greater than 0");
+        }
+        //Come back to this// else if (contacts) {}
+        else if (date == null) {
+            throw new NullPointerException("Please ensure date is not null");
+        }
+        else {
+            this.id = id;
+            this.date = date;
+            this.contacts = contacts;
+        }
+    }
     //Create constructors
 
     /**
