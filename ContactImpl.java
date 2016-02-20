@@ -17,6 +17,9 @@ public class ContactImpl implements Contact {
     public ContactImpl(int id, String name) {
 
     }
+
+
+    
     /**
      * Returns the ID of the contact.
      *
@@ -27,6 +30,9 @@ public class ContactImpl implements Contact {
 
     }
 
+
+
+
     /**
      * Returns the name of the contact.
      *
@@ -36,6 +42,9 @@ public class ContactImpl implements Contact {
     public String getName() {
 
     }
+
+
+
 
     /**
      * Returns our notes about the contact, if any.
@@ -49,6 +58,9 @@ public class ContactImpl implements Contact {
     public String getNotes() {
 
     }
+
+
+
 
     /**
      * Add notes about the contact.
