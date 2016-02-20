@@ -12,7 +12,10 @@ package src;
  */
 
 public class ContactImpl implements Contact {
-
+    private int contactID;
+    private String contactName;
+    private String contactNotes;
+    
     public ContactImpl(int id, String name, String notes) {
 
     }
@@ -21,6 +24,7 @@ public class ContactImpl implements Contact {
 
     }
 
+    protected
 
 
     /**
