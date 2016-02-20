@@ -14,7 +14,7 @@ public class MeetingImpl implements Meeting {
     private int id;
     private Calendar date;
     private Set<Contact> contacts;
-    
+
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");

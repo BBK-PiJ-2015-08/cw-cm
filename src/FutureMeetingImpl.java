@@ -1,4 +1,5 @@
 package src;
+import java.util.*;
 /**
  * The class implementing this interface must have only one constructor with three
  * parameters: an ID (int), a date, and a set of contacts that must be non-empty
@@ -7,5 +8,7 @@ package src;
  * thrown.
  */
 public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting {
-// Create constructors
+    public FutureMeetingImpl(int id, Calendar date, Set<Contact> contacts) {
+        super(id, date, contacts);
+    }
 }
