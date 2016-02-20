@@ -19,7 +19,9 @@ public class MeetingImpl implements Meeting {
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");
         }
-        //Come back to this// else if (contacts) {}
+        else if (contacts.isEmpty()) {
+            throw new IllegalArgumentException("Please make sure the set of contacts is not empty");
+        }
         else if (date == null) {
             throw new NullPointerException("Please ensure date is not null");
         }
