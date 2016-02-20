@@ -21,7 +21,12 @@ public class ContactImpl implements Contact {
      * constructor is null, a NullPointerException must be thrown.
      * */
     public ContactImpl(int id, String name, String notes) {
-        
+        if (id <= 0) {
+            throw new IllegalArgumentException("Contact ID must be greater than 0");
+        }
+        else if (name == null || notes == null) {
+            throw new NullPointerException("Please make sure neither name or notes are null");
+        }
     }
 
 
