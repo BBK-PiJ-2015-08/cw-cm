@@ -1,6 +1,7 @@
+package src;
+
 import java.util.Calendar;
 import java.util.Set;
-
 /**
  * The class implementing this interface must be abstract. It must have only one
  * constructor with three parameters: an ID (int), a date, and a set of contacts that
@@ -9,6 +10,7 @@ import java.util.Set;
  * was non-positive or zero. If any of the references/pointers passed as parameters
  * is null, a NullPointerException must be thrown
  */
+
 public class MeetingImpl implements Meeting {
     //Create constructors
 

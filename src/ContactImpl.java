@@ -1,3 +1,5 @@
+package src;
+
 /**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String. The first one
@@ -8,6 +10,7 @@
  * must be thrown. If any of the references / pointers passed as parameters to the
  * constructor is null, a NullPointerException must be thrown.
  */
+
 public class ContactImpl implements Contact {
 
     public ContactImpl(int id, String name, String notes) {

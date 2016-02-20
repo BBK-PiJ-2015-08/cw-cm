@@ -1,3 +1,4 @@
+package src;
 /**
  * The class implementing this interface must have only one constructor with three
  * parameters: an ID (int), a date, and a set of contacts that must be non-empty
