@@ -6,6 +6,9 @@ import java.util.Set;
 
 public class ContactManagerImpl implements ContactManager {
     //Create constructors
+
+
+
     /**
      * Add a new meeting to be held in the future.
      * <p>
