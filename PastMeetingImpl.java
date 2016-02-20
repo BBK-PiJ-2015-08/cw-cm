@@ -7,6 +7,9 @@
  */
 public class PastMeetingImpl implements PastMeeting {
 //create constructors
+
+
+
     /**
      * Returns the notes from the meeting.
      * <p>

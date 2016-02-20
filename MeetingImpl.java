@@ -37,7 +37,7 @@ public class MeetingImpl implements Meeting {
 
 
 
-    
+
     /**
      * Return the details of people that attended the meeting.
      * <p>
