@@ -91,7 +91,7 @@ public class ContactImpl implements Contact {
      */
     @Override
     public String getNotes() {
-
+        return notes;
     }
 
 
