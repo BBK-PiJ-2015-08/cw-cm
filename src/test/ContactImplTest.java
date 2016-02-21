@@ -7,6 +7,8 @@ package test;
  * 3. getNotes
  * 4. addNotes
  */
+import src.ContactImpl;
+import src.Contact;
 
 import org.junit.*;
 import static org.junit.Assert.*;
