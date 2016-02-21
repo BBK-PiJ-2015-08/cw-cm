@@ -30,7 +30,10 @@ public class ContactImplTest {
         testContact = null;
     }
 
-    //@Test
+    @Test
+    public void testGetId() {
+        assertEquals(testID,testContact.getId());
+    }
 
     //@Test
 
