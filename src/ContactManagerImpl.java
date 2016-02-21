@@ -231,7 +231,7 @@ public class ContactManagerImpl implements ContactManager {
 
 
 
-    
+
     /**
      * Save all data to disk.
      * <p>

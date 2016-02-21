@@ -13,4 +13,22 @@ import static org.junit.Assert.*;
 
 public class ContactImplTest {
 
+    
+    @Before
+    public void setUp() {
+
+    }
+
+    @After
+    public void tearDown() {
+
+    }
+
+    //@Test
+
+    //@Test
+
+    //@Test
+
+    //@Test
 }
