@@ -75,7 +75,7 @@ public class ContactImpl implements Contact {
      */
     @Override
     public String getName() {
-
+        return name;
     }
 
 
