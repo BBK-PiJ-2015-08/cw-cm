@@ -31,7 +31,7 @@ public class ContactImplTest {
     }
 
     @Test
-    public void testGetId() {
+    public void getIdTest() {
         assertEquals(testID,testContact.getId());
     }
 
