@@ -24,8 +24,6 @@ public class ContactManagerImpl implements ContactManager {
      *                     in the past, or if any contact is unknown / non-existent.
      * @throws NullPointerException     if the set of contacts or the date are null
      */
-
-
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         // @return the ID for the meeting
@@ -174,7 +172,7 @@ public class ContactManagerImpl implements ContactManager {
      * @throws NullPointerException     if the notes are null
      */
     @Override
-    public void addMeetingNotes(int id, String text) {
+    public PastMeeting addMeetingNotes(int id, String text) {
         //no return value
     }
 
@@ -197,25 +195,6 @@ public class ContactManagerImpl implements ContactManager {
 
 
 
-
-    /**
-     * Returns a Set containing the contacts that correspond to the IDs.
-     * Note that this method can be used to retrieve just one contact by passing only one ID.
-     *
-     * @param ids an arbitrary number of contact IDs
-     * @return a list containing the contacts that correspond to the IDs. - a set of
-     * contacts: Set<Contact>
-     * @throws IllegalArgumentException if no IDs are provided or if
-     *                                  any of the provided IDs does not correspond to a real contact
-     */
-    @Override
-    public Set<Contact> getContacts(int... ids) {
-        //@return a list containing the contacts that correspond to the IDs
-    }
-
-
-
-
     /**
      * Returns a Set with the contacts whose name contains that string:
      * <p>
@@ -235,6 +214,24 @@ public class ContactManagerImpl implements ContactManager {
 
 
 
+    /**
+     * Returns a Set containing the contacts that correspond to the IDs.
+     * Note that this method can be used to retrieve just one contact by passing only one ID.
+     *
+     * @param ids an arbitrary number of contact IDs
+     * @return a list containing the contacts that correspond to the IDs. - a set of
+     * contacts: Set<Contact>
+     * @throws IllegalArgumentException if no IDs are provided or if
+     *                                  any of the provided IDs does not correspond to a real contact
+     */
+    @Override
+    public Set<Contact> getContacts(int... ids) {
+        //@return a list containing the contacts that correspond to the IDs
+    }
+
+
+
+    
     /**
      * Save all data to disk.
      * <p>
