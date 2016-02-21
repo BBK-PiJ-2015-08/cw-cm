@@ -62,7 +62,7 @@ public class ContactImpl implements Contact {
      */
     @Override
     public int getId() {
-
+        return id;
     }
 
 
