@@ -45,5 +45,23 @@ public class ContactImplTest {
         assertEquals(testNotes,testContact.getNotes());
     }
 
-    //@Test
+    @Test
+    public void testAddNotesIfNoNotesAndAddedNotesAreEmpty() {
+
+    }
+
+    @Test
+    public void testAddNotesIfNoNotesAndThereAreAddedNotes() {
+
+    }
+
+    @Test
+    public void testAddNotesIfNotesExistAndAddedNotesAreEmpty() {
+
+    }
+
+    @Test
+    public void testAddNotesIfNotesExistAndThereAreAddedNotes() {
+        
+    }
 }
