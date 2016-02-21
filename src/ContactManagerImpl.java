@@ -1,13 +1,14 @@
 package src;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class ContactManagerImpl implements ContactManager {
+    private Set<Contact> contacts;
+    private List<Meeting> meetings;
+
     //Create fields
     //Create constructors
-
+//Unless instructed otherwise, all classes must have only one constructor with no parameters.
 
 
     /**
@@ -198,7 +199,7 @@ public class ContactManagerImpl implements ContactManager {
 
 
     /**
-     * Returns a list containing the contacts that correspond to the IDs.
+     * Returns a Set containing the contacts that correspond to the IDs.
      * Note that this method can be used to retrieve just one contact by passing only one ID.
      *
      * @param ids an arbitrary number of contact IDs
@@ -216,7 +217,7 @@ public class ContactManagerImpl implements ContactManager {
 
 
     /**
-     * Returns a list with the contacts whose name contains that string:
+     * Returns a Set with the contacts whose name contains that string:
      * <p>
      * If the string is the empty string, this methods returns the set
      * that contains all current contacts.
