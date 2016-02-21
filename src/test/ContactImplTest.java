@@ -15,16 +15,16 @@ import static org.junit.Assert.*;
 
 public class ContactImplTest {
     private Contact testContact;
-    private int testID;
+    private int testId;
     private String testName;
     private String testNotes;
 
     @Before
     public void setUp() {
-        testID = 1001;
+        testId = 1001;
         testName = "Mr Robot";
         testNotes = "Who knows";
-        testContact = new ContactImpl(testID, testName, testNotes);
+        testContact = new ContactImpl(testId, testName, testNotes);
     }
 
     @After
@@ -33,8 +33,8 @@ public class ContactImplTest {
     }
 
     @Test
-    public void getIdTest() {
-        assertEquals(testID,testContact.getId());
+    public void testGetId() {
+        assertEquals(testId,testContact.getId());
     }
 
     //@Test
