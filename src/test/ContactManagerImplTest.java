@@ -23,11 +23,11 @@ public class ContactManagerImplTest {
     //fields
 
     @Before
-    public void buildUp() {
+    public void setUp() {
 
     }
     @After
-    public void cleanUp() {
+    public void tearDown() {
 
     }
     @Test
