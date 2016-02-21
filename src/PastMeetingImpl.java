@@ -9,14 +9,14 @@ import java.util.*;
  */
 public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 
-    private String notes;
+    private String text;
 
-    public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
+    public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String text) {
         super(id, date, contacts);
         if (notes == null) {
             throw new NullPointerException("Please make sure to enter notes that are not null");
         } else {
-            this.notes = notes;
+            this.text = text;
         }
     }
 
