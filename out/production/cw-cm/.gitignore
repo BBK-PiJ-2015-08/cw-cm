@@ -36,3 +36,21 @@ out/production/cw-cm/.idea/uiDesigner.xml
 out/production/cw-cm/.idea/vcs.xml
 
 out/production/cw-cm/.idea/workspace.xml
+
+src/test/junit-4.12.jar
+
+src/test/hamcrest-core-1.3.jar
+
+src/test/junit4.10/build.xml
+
+src/test/junit4.10/BUILDING
+
+*.html
+
+*.htm
+
+*.gif
+
+*.sh
+
+src/test/junit-4.10.jar

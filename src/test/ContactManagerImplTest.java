@@ -1,4 +1,4 @@
-package test;
+package cw-cm.test;
 
 /**
  * Plan for order of test creation:

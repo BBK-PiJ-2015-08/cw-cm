@@ -1,4 +1,4 @@
-package src;
+package cw-cm;
 
 /**
  * The implementation of this interface must have two constructors. The most general

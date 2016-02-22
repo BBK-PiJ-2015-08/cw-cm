@@ -1,4 +1,4 @@
-package src;
+package cw-cm;
 /**
  * A meeting to be held in the future
  */

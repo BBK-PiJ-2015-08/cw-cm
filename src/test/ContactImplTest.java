@@ -1,4 +1,4 @@
-package test;
+package cw-cm.test;
 
 /**
  * Plan:
@@ -13,7 +13,9 @@ package test;
  */
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
+//import
 
 public class ContactImplTest {
     private Contact testContact;
@@ -48,7 +50,7 @@ public class ContactImplTest {
     public void testGetNotes() {
         assertEquals(testNotes,testContact.getNotes());
     }
-
+/**
     @Test
     public void testAddNotesIfNoNotesAndAddedNotesAreEmpty() {
 
@@ -68,4 +70,5 @@ public class ContactImplTest {
     public void testAddNotesIfNotesExistAndThereAreAddedNotes() {
         
     }
+    */
 }

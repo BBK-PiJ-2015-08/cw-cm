@@ -1,5 +1,4 @@
-package src;
-
+package cw-cm;
 import java.util.*;
 /**
  * The class implementing this interface must be abstract. It must have only one
@@ -13,7 +12,8 @@ import java.util.*;
 /**
  * @author Jade Dickinson jdicki04
  */
-public class MeetingImpl implements Meeting {
+
+public abstract class MeetingImpl implements Meeting {
     private int id;
     private Calendar date;
     private Set<Contact> contacts;
