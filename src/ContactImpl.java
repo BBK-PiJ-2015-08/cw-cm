@@ -11,6 +11,9 @@ package src;
  * constructor is null, a NullPointerException must be thrown.
  */
 
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class ContactImpl implements Contact {
     private int id;
     private String name;

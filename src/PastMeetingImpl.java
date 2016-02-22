@@ -8,6 +8,10 @@ import java.util.*;
  * the notes for the meeting. If any of the references / pointers passed as
  * parameters is null, a NullPointerException must be thrown.
  */
+
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 
     private String text;

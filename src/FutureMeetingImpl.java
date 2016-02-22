@@ -8,6 +8,10 @@ import java.util.*;
  * references/pointers passed as parameters is null, a NullPointerException must be
  * thrown.
  */
+
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting {
     public FutureMeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         super(id, date, contacts);

@@ -10,6 +10,9 @@ import java.util.*;
  * is null, a NullPointerException must be thrown
  */
 
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class MeetingImpl implements Meeting {
     private int id;
     private Calendar date;

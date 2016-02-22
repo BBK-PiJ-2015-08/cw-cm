@@ -13,6 +13,9 @@ package test;
  * 13 methods to test in total
  */
 
+/**
+ * @author Jade Dickinson jdicki04
+ */
 import java.util.*;
 
 import org.junit.*;

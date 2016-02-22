@@ -8,6 +8,10 @@ package test;
  * 4. addNotes
  */
 
+/**
+ * @author Jade Dickinson jdicki04
+ */
+
 import org.junit.*;
 import static org.junit.Assert.*;
 

@@ -2,6 +2,9 @@ package src;
 
 import java.util.*;
 
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class ContactManagerImpl implements ContactManager {
     private Set<Contact> contacts;
     private List<Meeting> meetings;
