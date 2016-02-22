@@ -48,7 +48,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
-        return ;
+        return null;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -65,7 +65,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
-        return 0;
+        return null;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -80,7 +80,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Meeting getMeeting(int id) {
-        return 0;
+        return null;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -101,7 +101,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
-        return 0;
+        return null;
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
@@ -122,7 +122,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
-        return 0;
+        return null;
         //@return the list of meetings
     }
 
@@ -143,7 +143,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-        return 0;
+        return null;
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
@@ -183,8 +183,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting addMeetingNotes(int id, String text) {
-        return 0;
-        //no return value
+        return null;
     }
 
 
@@ -220,7 +219,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(String name) {
-        return 0;
+        return null;
         //@return a list with the contacts whose name contains that string.
     }
 
@@ -239,7 +238,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
-        return 0;
+        return null;
         //@return a list containing the contacts that correspond to the IDs
     }
 
