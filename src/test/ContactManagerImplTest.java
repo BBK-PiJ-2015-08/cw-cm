@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class ContactManagerImplTest {
 
     //fields
-
+/**
     @Before
     public void setUp() {
 
@@ -31,5 +31,5 @@ public class ContactManagerImplTest {
 
     }
     @Test
-
+*/
 }
