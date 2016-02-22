@@ -9,8 +9,13 @@
 /**
  * @author Jade Dickinson jdicki04
  */
+package test;
 
-import org.junit.*;
+import code.Contact;
+import code.ContactImpl;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 

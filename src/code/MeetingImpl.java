@@ -1,3 +1,5 @@
+package code;
+
 import java.util.*;
 /**
  * The class implementing this interface must be abstract. It must have only one
@@ -19,7 +21,7 @@ public abstract class MeetingImpl implements Meeting {
 
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         if (id <= 0) {
-            throw new IllegalArgumentException("Meeting ID must be greater than 0");
+            throw new IllegalArgumentException("code.Meeting ID must be greater than 0");
         }
         else if (contacts.isEmpty()) {
             throw new IllegalArgumentException("Please make sure the set of contacts is not empty");
@@ -73,7 +75,7 @@ public abstract class MeetingImpl implements Meeting {
      */
     /**
     @Override
-    public Set<Contact> getContacts() {
+    public Set<code.Contact> getContacts() {
 
     }
     */

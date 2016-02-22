@@ -1,3 +1,4 @@
+package test;
 /**
  * @author Jade Dickinson jdicki04
  */
@@ -5,10 +6,10 @@ import org.junit.*;
 
 public class MeetingImplTest {
     /**
-    private Meeting testMeeting;
+    private code.Meeting testMeeting;
     private int testMeetingId;
     private Calendar testDate;
-    private Set<Contact> testContacts;
+    private Set<code.Contact> testContacts;
 
     @Before
     public void setUp() {

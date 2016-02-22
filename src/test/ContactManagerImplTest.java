@@ -14,6 +14,7 @@
 /**
  * @author Jade Dickinson jdicki04
  */
+package test;
 import java.util.*;
 
 import org.junit.*;

@@ -1,6 +1,4 @@
-import org.junit.Before;
-import org.junit.Test;
-
+package test;
 /**
  * @author Jade Dickinson jdicki04
  */

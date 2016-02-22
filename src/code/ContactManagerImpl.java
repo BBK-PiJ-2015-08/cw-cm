@@ -1,3 +1,5 @@
+package code;
+
 import java.util.*;
 
 /**
@@ -27,7 +29,8 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-        // @return the ID for the meeting
+        return 0;
+        //@return the ID for the meeting
     }
 
 
@@ -45,6 +48,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
+        return ;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -61,6 +65,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
+        return 0;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -75,6 +80,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Meeting getMeeting(int id) {
+        return 0;
         //@return the meeting with the requested ID, or null if it there is none.
     }
 
@@ -95,6 +101,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
+        return 0;
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
@@ -115,6 +122,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
+        return 0;
         //@return the list of meetings
     }
 
@@ -135,6 +143,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
+        return 0;
         //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
@@ -174,6 +183,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting addMeetingNotes(int id, String text) {
+        return 0;
         //no return value
     }
 
@@ -191,6 +201,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public int addNewContact(String name, String notes) {
+        return 0;
         //return the ID for the new contact
     }
 
@@ -204,11 +215,12 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param name the string to search for
      * @return a list with the contacts whose name contains that string. - a set of
-     * contacts: Set<Contact>
+     * contacts: Set<code.Contact>
      * @throws NullPointerException if the parameter is null
      */
     @Override
     public Set<Contact> getContacts(String name) {
+        return 0;
         //@return a list with the contacts whose name contains that string.
     }
 
@@ -221,12 +233,13 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param ids an arbitrary number of contact IDs
      * @return a list containing the contacts that correspond to the IDs. - a set of
-     * contacts: Set<Contact>
+     * contacts: Set<code.Contact>
      * @throws IllegalArgumentException if no IDs are provided or if
      *                                  any of the provided IDs does not correspond to a real contact
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
+        return 0;
         //@return a list containing the contacts that correspond to the IDs
     }
 

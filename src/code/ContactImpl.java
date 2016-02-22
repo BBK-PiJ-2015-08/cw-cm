@@ -1,7 +1,7 @@
-/**
+package code; /**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String. The first one
- * corresponds to the ID provided by the ContactManager, the next one corresponds
+ * corresponds to the ID provided by the code.ContactManager, the next one corresponds
  * to the name, and the last one corresponds to the initial set of notes about the
  * contact. Another, more restricted constructor must have two parameters only:
  * ID and name. If the ID provided is zero or negative, a IllegalArgumentException
@@ -23,7 +23,7 @@ public class ContactImpl implements Contact {
      * */
     public ContactImpl(int id, String name, String notes) {
         if (id <= 0) {
-            throw new IllegalArgumentException("Contact ID must be greater than 0");
+            throw new IllegalArgumentException("code.Contact ID must be greater than 0");
         }
         else if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
@@ -43,7 +43,7 @@ public class ContactImpl implements Contact {
      * */
     public ContactImpl(int id, String name) {
         if (id <= 0) {
-            throw new IllegalArgumentException("Contact ID must be greater than 0");
+            throw new IllegalArgumentException("code.Contact ID must be greater than 0");
         }
         else if (name == null) {
             throw new NullPointerException("Please make sure that name is not null");
