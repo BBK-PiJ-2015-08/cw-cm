@@ -1,4 +1,3 @@
-package cw-cm;
 import java.util.*;
 /**
  * The class implementing this interface must be abstract. It must have only one
@@ -40,11 +39,12 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the id of the meeting.
      */
+    /**
     @Override
     public int getId() {
 
     }
-
+     */
 
 
 
@@ -53,11 +53,12 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the date of the meeting.
      */
+    /**
     @Override
     public Calendar getDate() {
 
     }
-
+    */
 
 
 
@@ -70,8 +71,10 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the details of people that attended the meeting.
      */
+    /**
     @Override
     public Set<Contact> getContacts() {
 
     }
+    */
 }

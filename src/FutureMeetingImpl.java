@@ -1,5 +1,3 @@
-package cw-cm;
-
 import java.util.*;
 /**
  * The class implementing this interface must have only one constructor with three

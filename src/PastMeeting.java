@@ -1,5 +1,3 @@
-package cw-cm;
-
 /**
  * A meeting that was held in the past.
  *

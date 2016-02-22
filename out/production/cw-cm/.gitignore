@@ -54,3 +54,5 @@ src/test/junit4.10/BUILDING
 *.sh
 
 src/test/junit-4.10.jar
+
+.idea/findbugs-idea.xml

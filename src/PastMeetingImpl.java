@@ -1,5 +1,3 @@
-package cw-cm;
-
 import java.util.*;
 /**
  * The class implementing this interface must have only one constructor with four
@@ -18,7 +16,7 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 
     public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String text) {
         super(id, date, contacts);
-        if (notes == null) {
+        if (text == null) {
             throw new NullPointerException("Please make sure to enter notes that are not null");
         } else {
             this.text = text;

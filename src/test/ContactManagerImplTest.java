@@ -1,5 +1,3 @@
-package cw-cm.test;
-
 /**
  * Plan for order of test creation:
  * 1. Create a new contact: (AddNewContact)
@@ -33,6 +31,7 @@ public class ContactManagerImplTest {
     public void tearDown() {
 
     }
+    /**
     @Test
-
+*/
 }

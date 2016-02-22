@@ -1,5 +1,3 @@
-package cw-cm;
-
 import java.util.*;
 
 /**
@@ -241,6 +239,7 @@ public class ContactManagerImpl implements ContactManager {
      * This method must be executed when the program is
      * closed and when/if the user requests it.
      */
+    //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
 

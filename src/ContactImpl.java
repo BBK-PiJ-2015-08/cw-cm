@@ -1,5 +1,3 @@
-package cw-cm;
-
 /**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String. The first one

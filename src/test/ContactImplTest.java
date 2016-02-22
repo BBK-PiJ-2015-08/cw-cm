@@ -1,5 +1,3 @@
-package cw-cm.test;
-
 /**
  * Plan:
  * 1. getId
@@ -15,7 +13,6 @@ package cw-cm.test;
 import org.junit.*;
 
 import static org.junit.Assert.*;
-//import
 
 public class ContactImplTest {
     private Contact testContact;
