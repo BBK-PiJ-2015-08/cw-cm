@@ -28,6 +28,9 @@ public class ContactImpl implements Contact {
         else if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
         }
+        else if (name.equals("")) {
+            throw new IllegalArgumentException("Name must not be empty");
+        }
         else {
             this.id = id;
             this.name = name;
@@ -47,6 +50,9 @@ public class ContactImpl implements Contact {
         }
         else if (name == null) {
             throw new NullPointerException("Please make sure that name is not null");
+        }
+        else if (name.equals("")) {
+            throw new IllegalArgumentException("Name must not be empty");
         }
         else {
             this.id = id;
@@ -110,7 +116,8 @@ public class ContactImpl implements Contact {
     //What if there's not already notes and note is a valid string
     @Override
     public void addNotes(String note) {
-        //if
-        this.notes = note;
+        if (notes == null) {
+            this.notes = note;
+        }
     }
 }
