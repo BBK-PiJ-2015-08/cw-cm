@@ -106,7 +106,7 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Returns the list of meetings that are scheduled for, or that took
      * place on, the specified date
-     * 
+     *
      * If there are none, the returned list will be empty. Otherwise,
      * the list will be chronologically sorted and will not contain any
      * duplicates.
@@ -125,20 +125,20 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * Returns the list of past meetings in which this contact has participated.
-     * <p>
+     *
      * If there are none, the returned list will be empty. Otherwise,
      * the list will be chronologically sorted and will not contain any
      * duplicates.
      *
      * @param contact one of the users contacts
      * @return the list of future meeting(s) scheduled with this contact (maybe empty).
+     * 
      * @throws IllegalArgumentException if the contact does not exist
      * @throws NullPointerException     if the contact is null
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
         return null;
-        //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
 
