@@ -110,7 +110,9 @@ public class ContactImplTest {
     //What if there's not already notes and note is a valid string
     @Test
     public void testAddNotesValidToNoNotes() {
-        testContact.addNotes(String noteAddition);
+        testContact = new ContactImpl(testId, testName);
+        testContact.addNotes(noteAddition);
+        assertEquals(noteAddition,testContact.getNotes());
     }
 
     /**
