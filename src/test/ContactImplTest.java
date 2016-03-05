@@ -1,12 +1,4 @@
 /**
- * Plan:
- * 1. getId
- * 2. getName
- * 3. getNotes
- * 4. addNotes
- */
-
-/**
  * @author Jade Dickinson jdicki04
  */
 package test;

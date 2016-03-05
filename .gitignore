@@ -58,3 +58,5 @@ src/test/junit-4.10.jar
 .idea/findbugs-idea.xml
 
 *.class
+
+.idea/workspace.xml___jb_bak___

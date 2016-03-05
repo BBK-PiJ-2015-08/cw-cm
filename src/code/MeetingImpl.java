@@ -8,6 +8,8 @@ import java.util.*;
  * A IllegalArgumentException must also be thrown in the case the ID provided
  * was non-positive or zero. If any of the references/pointers passed as parameters
  * is null, a NullPointerException must be thrown
+ *
+ * Meetings have unique IDs, scheduled date and a list of participating contacts
  */
 
 /**

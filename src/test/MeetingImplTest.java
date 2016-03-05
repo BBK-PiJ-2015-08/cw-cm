@@ -14,6 +14,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MeetingImplTest {
+
     /**
     private code.Meeting testMeeting;
     private int testMeetingId;
