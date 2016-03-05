@@ -116,8 +116,14 @@ public class ContactImpl implements Contact {
     //What if there's not already notes and note is a valid string
     @Override
     public void addNotes(String note) {
-        if (notes == null) {
-            this.notes = note;
+        if (note != null && !note.equals("")) {
+            if (notes == null) {
+                this.notes = note;
+            }
+            //The condition in the line below is unnecessary; here now for clarity but should be removed.
+            else if (notes != null) {
+                this.notes += note;
+            }
         }
     }
 }
