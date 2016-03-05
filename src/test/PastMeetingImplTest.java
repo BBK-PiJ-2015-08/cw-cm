@@ -37,7 +37,7 @@ public class PastMeetingImplTest {
 
     @Test
     public void testGetNotes() {
-
+        assertEquals(testNotes, testMeeting.getNotes());
     }
 
     @Test
