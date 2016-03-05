@@ -29,7 +29,6 @@ public class FutureMeetingImplTest {
     public void setUp() {
         contact1 = new ContactImpl(5, "Rick", "Scientist");
         contact2 = new ContactImpl(6, "Morty", "His grandpa Rick sent him");
-        // December 26th 2016
         testDate = new GregorianCalendar(2016, 11, 25);
         testMeetingId = 42;
         invited = new HashSet<>();

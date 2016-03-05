@@ -30,7 +30,6 @@ public class PastMeetingImplTest {
     public void setUp() {
         contact1 = new ContactImpl(3, "Danger Mouse", "Secret agent");
         contact2 = new ContactImpl(4, "Ernest Penfold", "Kung moggy expert");
-        // January 1st 2016
         testDate = new GregorianCalendar(2016, 0, 1);
         testMeetingId = 111;
         attended = new HashSet<>();

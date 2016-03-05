@@ -27,7 +27,6 @@ public class MeetingImplTest {
     public void setUp() {
         contact1 = new ContactImpl(1, "Yogi Bear", "Smarter than your average");
         contact2 = new ContactImpl(2, "Boo Boo Bear", "Mr Ranger isn't going to like this");
-        //April 18th 2015 (months start from 0)
         testDate = new GregorianCalendar(2015, 03, 18);
         testMeetingId = 999;
         invited = new HashSet<>();
