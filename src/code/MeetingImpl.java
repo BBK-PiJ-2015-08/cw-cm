@@ -59,7 +59,7 @@ public /**abstract*/ class MeetingImpl implements Meeting {
 
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
 
