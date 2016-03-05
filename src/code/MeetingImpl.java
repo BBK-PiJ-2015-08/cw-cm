@@ -54,14 +54,10 @@ public /**abstract*/ class MeetingImpl implements Meeting {
     /**
      * @return the id of the meeting.
      */
-
     @Override
     public int getId() {
         return id;
     }
-
-
-
 
     /**
      * @return the date of the meeting.
@@ -70,8 +66,6 @@ public /**abstract*/ class MeetingImpl implements Meeting {
     public Calendar getDate() {
         return date;
     }
-
-
 
     /**
      * The list contains a minimum of one contact (if there were
