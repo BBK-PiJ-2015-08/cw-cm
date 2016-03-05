@@ -23,7 +23,7 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param contacts a list of contacts that will participate in the meeting
      * @param date     the date on which the meeting will take place
-     *                 
+     *
      * @return the ID for the meeting
      * @throws IllegalArgumentException if the meeting is set for a time
      *                     in the past, or if any contact is unknown / non-existent.
@@ -40,18 +40,16 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * Returns the PAST meeting with the requested ID, or null if it there is none.
-     * <p>
+     *
      * The meeting must have happened at a past date.
      *
      * @param id the ID for the meeting
      * @return the meeting with the requested ID, or null if it there is none.
-     * @throws IllegalStateException if there is a meeting with that ID happening
-     *                               in the future
+     * @throws IllegalStateException if there is a meeting with that ID happening in the future
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
         return null;
-        //@return the meeting with the requested ID, or null if it there is none.
     }
 
 
