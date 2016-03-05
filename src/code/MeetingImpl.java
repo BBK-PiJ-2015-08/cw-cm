@@ -41,12 +41,12 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the id of the meeting.
      */
-    /**
+
     @Override
     public int getId() {
-
+        return 0;
     }
-     */
+
 
 
 
@@ -55,12 +55,10 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the date of the meeting.
      */
-    /**
     @Override
     public Calendar getDate() {
-
+        return null;
     }
-    */
 
 
 
@@ -73,10 +71,8 @@ public abstract class MeetingImpl implements Meeting {
      *
      * @return the details of people that attended the meeting.
      */
-    /**
     @Override
     public Set<code.Contact> getContacts() {
-
+        return null;
     }
-    */
 }

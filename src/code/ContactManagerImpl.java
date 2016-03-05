@@ -11,7 +11,8 @@ public class ContactManagerImpl implements ContactManager {
 
     //Create fields
     //Create constructors
-//Unless instructed otherwise, all classes must have only one constructor with no parameters.
+    //Unless instructed otherwise, all classes must have only one constructor
+    // with no parameters.
 
 
     /**

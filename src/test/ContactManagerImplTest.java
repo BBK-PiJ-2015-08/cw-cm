@@ -17,7 +17,12 @@
 package test;
 import java.util.*;
 
-import org.junit.*;
+import code.ContactManager;
+import code.ContactManagerImpl;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class ContactManagerImplTest {

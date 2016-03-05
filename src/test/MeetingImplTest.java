@@ -1,8 +1,15 @@
-package test;
 /**
  * @author Jade Dickinson jdicki04
  */
-import org.junit.*;
+package test;
+
+import code.Meeting;
+import code.MeetingImpl;
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class MeetingImplTest {
     /**
