@@ -14,7 +14,6 @@ package test;
 import code.Contact;
 import code.ContactImpl;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -51,6 +50,13 @@ public class ContactImplTest {
     @Test(expected = NullPointerException.class)
     public void testGetNameWhenNull() {
         testContact = new ContactImpl(testId, null, testNotes);
+        assertNull(testContact.getName());
+    }
+
+    //What if an empty string is passed in as the contact's name?
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetNameWhenEmpty() {
+        testContact = new ContactImpl(testId, "", testNotes);
         assertNull(testContact.getName());
     }
 
