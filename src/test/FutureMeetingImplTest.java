@@ -38,5 +38,18 @@ public class FutureMeetingImplTest {
         testMeeting = new FutureMeetingImpl(testMeetingId, testDate, invited);
 
     }
+    @Test
+    public void testGetId() {
+        assertEquals(testMeetingId, testMeeting.getId());
+    }
 
+    @Test
+    public void testGetDate() {
+        assertEquals(testDate, testMeeting.getDate());
+    }
+
+    @Test
+    public void testGetContacts() {
+        assertEquals(invited, testMeeting.getContacts());
+    }
 }
