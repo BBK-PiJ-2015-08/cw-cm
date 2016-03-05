@@ -38,9 +38,9 @@ public abstract class MeetingImpl implements Meeting {
             throw new NullPointerException("Please ensure date is not null");
         }
         else {
-            /**Any individual contact's name or notes are null (What about no notes) */)
+            /**Any individual contact's name or notes are null (What about no notes) */
             for (Contact contact : contacts) {
-                if (contact.getName().equals(null) || contact.getNotes().equals(null)) {
+                if (contact.getName() == null || contact.getNotes() == null) {
                     throw new NullPointerException("Make sure none of the contacts have names or notes that are null");
                 }
             }
