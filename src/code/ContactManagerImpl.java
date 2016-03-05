@@ -86,9 +86,8 @@ public class ContactManagerImpl implements ContactManager {
 
 
     /**
-     * If there are none, the returned list will be empty. Otherwise,
-     * the list will be chronologically sorted and will not contain any
-     * duplicates.
+     * If there are none, the returned list will be empty. Otherwise, the list will be chronologically sorted and will
+     * not contain any duplicates.
      *
      * @param contact one of the users contacts
      * @return the list of future meeting(s) scheduled with this contact (maybe empty).
