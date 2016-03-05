@@ -15,11 +15,20 @@
  * @author Jade Dickinson jdicki04
  */
 package test;
-import java.util.*;
 
+import code.Contact;
+import code.ContactImpl;
 import code.ContactManager;
 import code.ContactManagerImpl;
-import org.junit.After;
+import code.FutureMeeting;
+import code.FutureMeetingImpl;
+import code.Meeting;
+import code.MeetingImpl;
+import code.PastMeeting;
+import code.PastMeetingImpl;
+
+import java.util.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,11 +42,7 @@ public class ContactManagerImplTest {
     public void setUp() {
 
     }
-    @After
-    public void tearDown() {
-
-    }
     /**
-    @Test
-*/
+     * @Test
+     */
 }
