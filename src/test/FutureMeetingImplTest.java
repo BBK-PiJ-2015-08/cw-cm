@@ -5,6 +5,8 @@ package test;
 
 import code.Contact;
 import code.ContactImpl;
+import code.Meeting;
+import code.MeetingImpl;
 import code.FutureMeeting;
 import code.FutureMeetingImpl;
 import org.junit.Before;
@@ -16,23 +18,25 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class FutureMeetingImplTest {
-    private int testId;
+    private int testMeetingId;
     private Calendar testDate;
-    private Set<Contact> testContacts;
-    private FutureMeeting testFutureMeeting;
+    private Set<Contact> invited;
+    private Contact contact1;
+    private Contact contact2;
+    private FutureMeeting testMeeting;
 
     @Before
     public void setUp() {
-        /**
-        testId = ;
-        testDate = ;
-        testContacts = ;
-        */
-        testFutureMeeting = new FutureMeetingImpl(testId, testDate, testContacts);
+        contact1 = new ContactImpl(5, "Rick", "Scientist");
+        contact2 = new ContactImpl(6, "Morty", "His grandpa Rick sent him");
+        // December 26th 2016
+        testDate = new GregorianCalendar(2016, 11, 25);
+        testMeetingId = 42;
+        invited = new HashSet<>();
+        invited.add(contact1);
+        invited.add(contact2);
+        testMeeting = new FutureMeetingImpl(testMeetingId, testDate, invited);
+
     }
 
-    @Test
-    public void testFutureMeetingImpl() {
-
-    }
 }
