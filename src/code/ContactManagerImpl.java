@@ -223,8 +223,7 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param ids an arbitrary number of contact IDs
      * @return a list containing the contacts that correspond to the IDs. - a set of contacts: Set<Contact>
-     * @throws IllegalArgumentException if no IDs are provided or if
-     *                                  any of the provided IDs does not correspond to a real contact
+     * @throws IllegalArgumentException if no IDs are provided or if any of the provided IDs does not correspond to a real contact
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
@@ -236,9 +235,7 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * Save all data to disk.
-     * <p>
-     * This method must be executed when the program is
-     * closed and when/if the user requests it.
+     * This method must be executed when the program is closed and when/if the user requests it.
      */
     //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
