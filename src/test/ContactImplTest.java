@@ -24,12 +24,16 @@ public class ContactImplTest {
     private String testNotes;
     private Contact testContact;
 
+    private String noteAddition;
+
     @Before
     public void setUp() {
         testId = 1001;
         testName = "Mr Robot";
         testNotes = "Who knows";
         testContact = new ContactImpl(testId, testName, testNotes);
+
+        noteAddition = "Mr Robot is (spoilers)";
     }
 
     @Test
@@ -102,13 +106,14 @@ public class ContactImplTest {
         assertEquals(testNotes,testContact.getNotes());
     }
 
-    /**
+
     //What if there's not already notes and note is a valid string
     @Test
     public void testAddNotesValidToNoNotes() {
-
+        testContact.addNotes(String noteAddition);
     }
 
+    /**
     //What if there's already notes and note is a valid string
     @Test
     public void testAddNotesValidToExistingNotes() {
