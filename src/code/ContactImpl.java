@@ -120,8 +120,7 @@ public class ContactImpl implements Contact {
             if (notes == null) {
                 this.notes = note;
             }
-            //The condition in the line below is unnecessary; here now for clarity but should be removed.
-            else if (notes != null) {
+            else {
                 this.notes += note;
             }
         }
