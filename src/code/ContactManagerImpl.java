@@ -14,7 +14,7 @@ public class ContactManagerImpl implements ContactManager {
     private Set<Contact> contacts;
     private List<Meeting> meetings;
 
-    private String FILENAME = "contacts.txt";
+    private static final String FILENAME = "contacts.txt";
 
     //Create fields
 
