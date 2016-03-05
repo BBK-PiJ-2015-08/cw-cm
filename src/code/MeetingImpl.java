@@ -21,7 +21,7 @@ public abstract class MeetingImpl implements Meeting {
 
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         if (id <= 0) {
-            throw new IllegalArgumentException("code.Meeting ID must be greater than 0");
+            throw new IllegalArgumentException("Meeting ID must be greater than 0");
         }
         else if (contacts.isEmpty()) {
             throw new IllegalArgumentException("Please make sure the set of contacts is not empty");

@@ -33,6 +33,6 @@ public class FutureMeetingImplTest {
 
     @Test
     public void testFutureMeetingImpl() {
-        
+
     }
 }
