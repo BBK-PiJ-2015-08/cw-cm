@@ -84,19 +84,19 @@ public class ContactImplTest {
 
     //What if there's already notes and note = "" (the empty string)
     @Test
-    public void testAddNotesIfNotesExistAndAddedNotesAreEmpty() {
+    public void testAddNotesEmptyToExistingNotes() {
 
     }
 
     //What if there's not already notes and note is a valid string
     @Test
-    public void testAddNotes//IfNoNotesAndThereAreAddedNotes() {
+    public void testAddNotesValidToNoNotes() {
 
     }
 
     //What if there's already notes and note is a valid string
     @Test
-    public void testAddNotesIfNotesExistAndThereAreAddedNotes() {
+    public void testAddNotesValidToExistingNotes() {
 
     }
     */
