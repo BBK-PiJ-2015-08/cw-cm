@@ -20,10 +20,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ContactImplTest {
-    private Contact testContact;
     private int testId;
     private String testName;
     private String testNotes;
+    private Contact testContact;
 
     @Before
     public void setUp() {
@@ -31,11 +31,6 @@ public class ContactImplTest {
         testName = "Mr Robot";
         testNotes = "Who knows";
         testContact = new ContactImpl(testId, testName, testNotes);
-    }
-
-    @After
-    public void tearDown() {
-        testContact = null;
     }
 
     @Test
@@ -46,6 +41,12 @@ public class ContactImplTest {
     @Test
     public void testGetName() {
         assertEquals(testName,testContact.getName());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testNameNull() {
+        testContact = new ContactImpl(testId, null, testNotes);
+        assertNull(testContact.getName());
     }
 
     @Test
@@ -70,7 +71,7 @@ public class ContactImplTest {
 
     @Test
     public void testAddNotesIfNotesExistAndThereAreAddedNotes() {
-        
+
     }
     */
 }
