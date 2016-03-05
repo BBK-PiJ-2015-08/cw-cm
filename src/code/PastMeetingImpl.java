@@ -29,21 +29,11 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
     }
 
     /**
-     * Returns the notes from the meeting.
-     * If there are no notes, the empty string is returned.
-     *
-     * @return the notes from the meeting.
+     * @return the notes from the meeting. If there are no notes, the empty string is returned.
      */
     @Override
     public String getNotes() {
         return notes;
     }
-
-    /**
-     * Methods extended from MeetingImpl:
-     * public int getId() {return the id of the meeting}
-     * public Calendar getDate() {return the date of the meeting}
-     * public Set<Contact> getContacts(){return the details of the people that attended the meeting}
-     */
 
 }

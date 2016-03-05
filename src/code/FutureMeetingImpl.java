@@ -17,10 +17,4 @@ public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting {
         super(id, date, contacts);
     }
 
-    /**
-     * Methods extended from MeetingImpl:
-     * public int getId() {return the id of the meeting}
-     * public Calendar getDate() {return the date of the meeting}
-     * public Set<Contact> getContacts(){return the details of the people that attended the meeting}
-     */
 }

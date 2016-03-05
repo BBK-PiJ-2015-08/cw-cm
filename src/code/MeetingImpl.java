@@ -52,8 +52,6 @@ public /**abstract*/ class MeetingImpl implements Meeting {
     }
 
     /**
-     * Returns the id of the meeting.
-     *
      * @return the id of the meeting.
      */
 
@@ -66,8 +64,6 @@ public /**abstract*/ class MeetingImpl implements Meeting {
 
 
     /**
-     * Return the date of the meeting.
-     *
      * @return the date of the meeting.
      */
     @Override
@@ -78,8 +74,6 @@ public /**abstract*/ class MeetingImpl implements Meeting {
 
 
     /**
-     * Return the details of people that attended the meeting.
-     * <p>
      * The list contains a minimum of one contact (if there were
      * just two people: the user and the contact) and may contain an
      * arbitrary number of them.

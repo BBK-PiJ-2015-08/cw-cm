@@ -21,7 +21,7 @@ public class ContactImpl implements Contact {
     /**If the ID provided is zero or negative, a IllegalArgumentException
      * must be thrown. If any of the references / pointers passed as parameters to the
      * constructor is null, a NullPointerException must be thrown.
-     * */
+     */
     public ContactImpl(int id, String name, String notes) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
@@ -41,10 +41,11 @@ public class ContactImpl implements Contact {
 
 
 
-    /**If the ID provided is zero or negative, a IllegalArgumentException
+    /**
+     * If the ID provided is zero or negative, a IllegalArgumentException
      * must be thrown. If any of the references / pointers passed as parameters to the
      * constructor is null, a NullPointerException must be thrown.
-     * */
+     */
     public ContactImpl(int id, String name) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
@@ -64,8 +65,6 @@ public class ContactImpl implements Contact {
 
 
     /**
-     * Returns the ID of the contact.
-     *
      * @return the ID of the contact.
      */
     @Override
@@ -77,8 +76,6 @@ public class ContactImpl implements Contact {
 
 
     /**
-     * Returns the name of the contact.
-     *
      * @return the name of the contact.
      */
     @Override
@@ -90,12 +87,7 @@ public class ContactImpl implements Contact {
 
 
     /**
-     * Returns our notes about the contact, if any.
-     * <p>
-     * If we have not written anything about the contact, the empty
-     * string is returned.
-     *
-     * @return a string with notes about the contact, maybe empty.
+     * @return a string with notes about the contact, maybe empty if we have not written anything about the contact.
      */
     @Override
     public String getNotes() {
@@ -106,8 +98,6 @@ public class ContactImpl implements Contact {
 
 
     /**
-     * Add notes about the contact.
-     *
      * @param note the notes to be added
      */
     //What if there's not already notes and note = null
