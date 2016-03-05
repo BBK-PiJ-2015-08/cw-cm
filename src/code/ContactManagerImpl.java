@@ -80,7 +80,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public Meeting getMeeting(int id) {
         return null;
-        //@return the meeting with the requested ID, or null if it there is none.
     }
 
 
