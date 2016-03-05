@@ -95,13 +95,14 @@ public class ContactImplTest {
     }
 */
 
-    /**
     //What if there's already notes and note = "" (the empty string)
     @Test
     public void testAddNotesEmptyToExistingNotes() {
-
+        testContact.addNotes("");
+        assertEquals(testNotes,testContact.getNotes());
     }
 
+    /**
     //What if there's not already notes and note is a valid string
     @Test
     public void testAddNotesValidToNoNotes() {
