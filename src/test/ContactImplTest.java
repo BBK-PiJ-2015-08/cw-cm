@@ -55,7 +55,10 @@ public class ContactImplTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testNotesNull
+    public void testGetNotesWhenNull() {
+        testContact = new ContactImpl(testId, testName, null);
+        assertNull(testContact.getNotes());
+    }
 /**
     @Test
     public void testAddNotesIfNoNotesAndAddedNotesAreEmpty() {
