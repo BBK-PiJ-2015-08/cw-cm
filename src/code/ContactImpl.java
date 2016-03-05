@@ -103,6 +103,11 @@ public class ContactImpl implements Contact {
      *
      * @param note the notes to be added
      */
+    //What if there's not already notes and note = null
+    //What if there are already notes and note = null
+    //What if there's not already notes and note = "" (the empty string)
+    //What if there's already notes and note = "" (the empty string)
+    //What if there's not already notes and note is a valid string
     @Override
     public void addNotes(String note) {
 

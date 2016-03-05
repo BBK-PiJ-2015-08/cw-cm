@@ -64,22 +64,37 @@ public class ContactImplTest {
         testContact = new ContactImpl(testId, testName, null);
         assertNull(testContact.getNotes());
     }
-/**
+
+    //What if there's not already notes and note = null
     @Test
-    public void testAddNotesIfNoNotesAndAddedNotesAreEmpty() {
+    public void testAddNotesNullToNoNotes() {
+        testContact = new ContactImpl(testId, testName);
+        testContact.addNotes(null);
+    }
+/*
+    //What if there are already notes and note = null
+    @Test
+    public void testAddNotesNullToExistingNotes() {}
+
+    //What if there's not already notes and note = "" (the empty string)
+    @Test
+    public void testAddNotesEmptyToNoNotes() {
 
     }
 
-    @Test
-    public void testAddNotesIfNoNotesAndThereAreAddedNotes() {
-
-    }
-
+    //What if there's already notes and note = "" (the empty string)
     @Test
     public void testAddNotesIfNotesExistAndAddedNotesAreEmpty() {
 
     }
 
+    //What if there's not already notes and note is a valid string
+    @Test
+    public void testAddNotes//IfNoNotesAndThereAreAddedNotes() {
+
+    }
+
+    //What if there's already notes and note is a valid string
     @Test
     public void testAddNotesIfNotesExistAndThereAreAddedNotes() {
 
