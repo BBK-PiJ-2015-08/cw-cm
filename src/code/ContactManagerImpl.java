@@ -162,10 +162,10 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * Add notes to a meeting.
-     * <p>
+     *
      * This method is used when a future meeting takes place, and is
      * then converted to a past meeting (with notes) and returned.
-     * <p>
+     *
      * It can be also used to add notes to a past meeting at a later date.
      *
      * @param id   the ID of the meeting
@@ -194,7 +194,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addNewContact(String name, String notes) {
         return 0;
-        //return the ID for the new contact
     }
 
 
