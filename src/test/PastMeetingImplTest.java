@@ -32,12 +32,18 @@ public class PastMeetingImplTest {
         attended.add(contact1);
         attended.add(contact2);
         testNotes = "Discussing top secret matters";
-        testMeeting = new PastMeetingImpl(testMeetingId, testDate, attended, testNotes);
+        testMeeting = new PastMeetingImpl(testMeetingId, testDate, attended, "");
     }
 
     @Test
     public void testGetNotes() {
+        testMeeting = new PastMeetingImpl(testMeetingId, testDate, attended, testNotes);
         assertEquals(testNotes, testMeeting.getNotes());
+    }
+
+    @Test
+    public void testGetNotesWhenNoNotes() {
+        assertEquals("", testMeeting.getNotes());
     }
 
     @Test
