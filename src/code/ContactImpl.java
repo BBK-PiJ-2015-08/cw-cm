@@ -23,7 +23,7 @@ public class ContactImpl implements Contact {
      * */
     public ContactImpl(int id, String name, String notes) {
         if (id <= 0) {
-            throw new IllegalArgumentException("code.Contact ID must be greater than 0");
+            throw new IllegalArgumentException("Contact ID must be greater than 0");
         }
         else if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
@@ -43,7 +43,7 @@ public class ContactImpl implements Contact {
      * */
     public ContactImpl(int id, String name) {
         if (id <= 0) {
-            throw new IllegalArgumentException("code.Contact ID must be greater than 0");
+            throw new IllegalArgumentException("Contact ID must be greater than 0");
         }
         else if (name == null) {
             throw new NullPointerException("Please make sure that name is not null");
