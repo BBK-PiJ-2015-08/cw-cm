@@ -32,7 +32,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         return 0;
-        //@return the ID for the meeting
     }
 
 
