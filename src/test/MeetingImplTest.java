@@ -43,7 +43,7 @@ public class MeetingImplTest {
 
     @Test
     public void testGetDate() {
-
+        assertEquals(testDate1, testMeeting.getDate());
     }
 
     @Test
