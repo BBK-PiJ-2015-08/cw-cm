@@ -37,9 +37,6 @@ public class ContactImpl implements Contact {
         }
     }
 
-
-
-
     public ContactImpl(int id, String name) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
@@ -57,7 +54,6 @@ public class ContactImpl implements Contact {
         }
     }
 
-
     /**
      * @return the ID of the contact.
      */
@@ -65,9 +61,6 @@ public class ContactImpl implements Contact {
     public int getId() {
         return id;
     }
-
-
-
 
     /**
      * @return the name of the contact.
@@ -77,9 +70,6 @@ public class ContactImpl implements Contact {
         return name;
     }
 
-
-
-
     /**
      * @return a string with notes about the contact, maybe empty if we have not written anything about the contact.
      */
@@ -87,9 +77,6 @@ public class ContactImpl implements Contact {
     public String getNotes() {
         return notes;
     }
-
-
-
 
     /**
      * @param note the notes to be added
