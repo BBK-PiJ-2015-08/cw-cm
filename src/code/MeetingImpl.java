@@ -16,7 +16,7 @@ import java.util.*;
  * @author Jade Dickinson jdicki04
  */
 
-public abstract class MeetingImpl implements Meeting {
+public /**abstract*/ class MeetingImpl implements Meeting {
     private int id;
     private Calendar date;
     private Set<Contact> contacts;
