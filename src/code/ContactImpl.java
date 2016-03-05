@@ -110,6 +110,7 @@ public class ContactImpl implements Contact {
     //What if there's not already notes and note is a valid string
     @Override
     public void addNotes(String note) {
-
+        //if
+        this.notes = note;
     }
 }

@@ -70,6 +70,7 @@ public class ContactImplTest {
     public void testAddNotesNullToNoNotes() {
         testContact = new ContactImpl(testId, testName);
         testContact.addNotes(null);
+        assertNull(testContact.getNotes());
     }
 /*
     //What if there are already notes and note = null
