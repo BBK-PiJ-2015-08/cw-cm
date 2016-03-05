@@ -48,6 +48,6 @@ public class MeetingImplTest {
 
     @Test
     public void testGetContacts() {
-
+        assertEquals(invited, testMeeting.getContacts());
     }
 }
