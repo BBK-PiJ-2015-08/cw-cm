@@ -222,15 +222,13 @@ public class ContactManagerImpl implements ContactManager {
      * Note that this method can be used to retrieve just one contact by passing only one ID.
      *
      * @param ids an arbitrary number of contact IDs
-     * @return a list containing the contacts that correspond to the IDs. - a set of
-     * contacts: Set<Contact>
+     * @return a list containing the contacts that correspond to the IDs. - a set of contacts: Set<Contact>
      * @throws IllegalArgumentException if no IDs are provided or if
      *                                  any of the provided IDs does not correspond to a real contact
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
         return null;
-        //@return a list containing the contacts that correspond to the IDs
     }
 
 
