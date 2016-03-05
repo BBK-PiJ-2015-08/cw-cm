@@ -1,4 +1,5 @@
-package code; /**
+package code;
+/**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String. The first one
  * corresponds to the ID provided by the code.ContactManager, the next one corresponds
