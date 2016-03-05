@@ -85,13 +85,16 @@ public class ContactImplTest {
         testContact.addNotes(null);
         assertEquals(testNotes,testContact.getNotes());
     }
-/**
+
     //What if there's not already notes and note = "" (the empty string)
     @Test
     public void testAddNotesEmptyToNoNotes() {
-
+        testContact = new ContactImpl(testId, testName);
+        testContact.addNotes("");
+        assertNull(testContact.getNotes());
     }
 
+    /**
     //What if there's already notes and note = "" (the empty string)
     @Test
     public void testAddNotesEmptyToExistingNotes() {
