@@ -126,9 +126,8 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Returns the list of past meetings in which this contact has participated.
      *
-     * If there are none, the returned list will be empty. Otherwise,
-     * the list will be chronologically sorted and will not contain any
-     * duplicates.
+     * If there are none, the returned list will be empty. Otherwise, the list will be chronologically sorted and will
+     * not contain any duplicates.
      *
      * @param contact one of the users contacts
      * @return the list of future meeting(s) scheduled with this contact (maybe empty).
@@ -163,8 +162,8 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Add notes to a meeting.
      *
-     * This method is used when a future meeting takes place, and is
-     * then converted to a past meeting (with notes) and returned.
+     * This method is used when a future meeting takes place, and is then converted to a past meeting (with notes)
+     * and returned.
      *
      * It can be also used to add notes to a past meeting at a later date.
      *
@@ -215,8 +214,6 @@ public class ContactManagerImpl implements ContactManager {
     }
 
 
-
-
     /**
      * Returns a Set containing the contacts that correspond to the IDs.
      * Note that this method can be used to retrieve just one contact by passing only one ID.
@@ -229,8 +226,6 @@ public class ContactManagerImpl implements ContactManager {
     public Set<Contact> getContacts(int... ids) {
         return null;
     }
-
-
 
 
     /**
