@@ -2,7 +2,7 @@ package code;
 /**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String. The first one
- * corresponds to the ID provided by the code.ContactManager, the next one corresponds
+ * corresponds to the ID provided by the ContactManager, the next one corresponds
  * to the name, and the last one corresponds to the initial set of notes about the
  * contact. Another, more restricted constructor must have two parameters only:
  * ID and name. If the ID provided is zero or negative, a IllegalArgumentException

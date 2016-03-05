@@ -215,7 +215,7 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param name the string to search for
      * @return a list with the contacts whose name contains that string. - a set of
-     * contacts: Set<code.Contact>
+     * contacts: Set<Contact>
      * @throws NullPointerException if the parameter is null
      */
     @Override
@@ -233,7 +233,7 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param ids an arbitrary number of contact IDs
      * @return a list containing the contacts that correspond to the IDs. - a set of
-     * contacts: Set<code.Contact>
+     * contacts: Set<Contact>
      * @throws IllegalArgumentException if no IDs are provided or if
      *                                  any of the provided IDs does not correspond to a real contact
      */
