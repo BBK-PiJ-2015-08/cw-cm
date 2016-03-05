@@ -88,6 +88,6 @@ public /**abstract*/ class MeetingImpl implements Meeting {
      */
     @Override
     public Set<Contact> getContacts() {
-        return null;
+        return contacts;
     }
 }
