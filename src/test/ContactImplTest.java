@@ -115,11 +115,11 @@ public class ContactImplTest {
         assertEquals(noteAddition,testContact.getNotes());
     }
 
-    /**
     //What if there's already notes and note is a valid string
     @Test
     public void testAddNotesValidToExistingNotes() {
-
+        testContact.addNotes(noteAddition);
+        assertEquals(testNotes+noteAddition,testContact.getNotes());
     }
-    */
+
 }
