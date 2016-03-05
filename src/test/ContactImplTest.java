@@ -38,6 +38,11 @@ public class ContactImplTest {
         assertEquals(testId,testContact.getId());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetIdWhenZero() {
+        testContact = new ContactImpl(0, testName, testNotes);
+    }
+
     @Test
     public void testGetName() {
         assertEquals(testName,testContact.getName());
