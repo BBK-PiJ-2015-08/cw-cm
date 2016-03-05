@@ -86,8 +86,6 @@ public class ContactManagerImpl implements ContactManager {
 
 
     /**
-     * Returns the list of future meetings scheduled with this contact.
-     * <p>
      * If there are none, the returned list will be empty. Otherwise,
      * the list will be chronologically sorted and will not contain any
      * duplicates.
@@ -100,7 +98,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
         return null;
-        //@return the list of future meeting(s) scheduled with this contact (maybe empty).
     }
 
 
