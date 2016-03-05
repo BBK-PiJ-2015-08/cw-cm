@@ -38,7 +38,7 @@ public class MeetingImplTest {
 
     @Test
     public void testGetId() {
-
+        assertEquals(testMeetingId, testMeeting.getId());
     }
 
     @Test
