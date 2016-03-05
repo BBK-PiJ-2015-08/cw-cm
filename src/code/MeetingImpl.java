@@ -25,7 +25,7 @@ public abstract class MeetingImpl implements Meeting {
         /**
          * What null references/pointers could be passed in as parameters?
          * Not int id (default value 0)/Not Calendar date (a new GregorianCalendar has date and time set to now)
-         * Not the actual Set
+         * Not the actual Set. Actually, perhaps it could.
          * Possibly a contact's name
          * Possibly a contact's notes
          */
