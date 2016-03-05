@@ -3,7 +3,12 @@
  */
 package test;
 
-import code.*;
+import code.Meeting;
+import code.MeetingImpl;
+import code.Contact;
+import code.ContactImpl;
+import code.PastMeeting;
+import code.PastMeetingImpl;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
