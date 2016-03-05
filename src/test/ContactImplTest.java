@@ -24,7 +24,6 @@ public class ContactImplTest {
         testName = "Mr Robot";
         testNotes = "Who knows";
         testContact = new ContactImpl(testId, testName, testNotes);
-
         noteAddition = "Mr Robot is (spoilers)";
     }
 
@@ -49,7 +48,6 @@ public class ContactImplTest {
         assertNull(testContact.getName());
     }
 
-    //What if an empty string is passed in as the contact's name?
     @Test(expected = IllegalArgumentException.class)
     public void testGetNameWhenEmpty() {
         testContact = new ContactImpl(testId, "", testNotes);
@@ -75,7 +73,6 @@ public class ContactImplTest {
         assertNull(testContact.getNotes());
     }
 */
-    //What if there are already notes and note = null
     @Test
     public void testAddNotesNullToExistingNotes() {
         testContact.addNotes(null);
@@ -91,7 +88,6 @@ public class ContactImplTest {
     }
 */
 
-    //What if there's already notes and note = "" (the empty string)
     @Test
     public void testAddNotesEmptyToExistingNotes() {
         testContact.addNotes("");
@@ -99,7 +95,6 @@ public class ContactImplTest {
     }
 
 
-    //What if there's not already notes and note is a valid string
     @Test
     public void testAddNotesValidToNoNotes() {
         testContact = new ContactImpl(testId, testName);
@@ -107,7 +102,6 @@ public class ContactImplTest {
         assertEquals(noteAddition,testContact.getNotes());
     }
 
-    //What if there's already notes and note is a valid string
     @Test
     public void testAddNotesValidToExistingNotes() {
         testContact.addNotes(noteAddition);

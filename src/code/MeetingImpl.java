@@ -11,11 +11,9 @@ import java.util.*;
  *
  * Meetings have unique IDs, scheduled date and a list of participating contacts
  */
-
 /**
  * @author Jade Dickinson jdicki04
  */
-
 public /**abstract*/ class MeetingImpl implements Meeting {
     private int id;
     private Calendar date;
