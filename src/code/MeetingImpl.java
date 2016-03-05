@@ -22,11 +22,10 @@ public abstract class MeetingImpl implements Meeting {
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         /**
          * What null references/pointers could be passed in as parameters?
-         * Not int id (default value 0)
-         * Not Calendar date (a new GregorianCalendar has date and time set to now)
+         * Not int id (default value 0)/Not Calendar date (a new GregorianCalendar has date and time set to now)
          * Not the actual Set
-         * Possibly a ContactImpl's name
-         * Possibly a ContactImpl's notes
+         * Possibly a contact's name
+         * Possibly a contact's notes
          */
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");
