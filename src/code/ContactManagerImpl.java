@@ -14,6 +14,8 @@ public class ContactManagerImpl implements ContactManager {
     private Set<Contact> contacts;
     private List<Meeting> meetings;
 
+    private String FILENAME = "contacts.txt";
+
     //Create fields
 
     //Create constructor. One constructor with no parameters. Create body of it.
