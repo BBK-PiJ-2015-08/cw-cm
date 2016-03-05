@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class MeetingImplTest {
     private int testMeetingId;
-    private Calendar testDate1;
+    private Calendar testDate;
     private Set<Contact> invited;
     private Contact contact1;
     private Contact contact2;
@@ -28,12 +28,12 @@ public class MeetingImplTest {
         contact1 = new ContactImpl(1, "Yogi Bear", "Smarter than your average");
         contact2 = new ContactImpl(2, "Boo Boo Bear", "Mr Ranger isn't going to like this");
         //April 18th 2015 (months start from 0)
-        testDate1 = new GregorianCalendar(2015, 03, 18);
+        testDate = new GregorianCalendar(2015, 03, 18);
         testMeetingId = 999;
         invited = new HashSet<>();
         invited.add(contact1);
         invited.add(contact2);
-        testMeeting = new MeetingImpl(testMeetingId, testDate1, invited);
+        testMeeting = new MeetingImpl(testMeetingId, testDate, invited);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class MeetingImplTest {
 
     @Test
     public void testGetDate() {
-        assertEquals(testDate1, testMeeting.getDate());
+        assertEquals(testDate, testMeeting.getDate());
     }
 
     @Test
