@@ -132,7 +132,7 @@ public class ContactManagerImpl implements ContactManager {
      *
      * @param contact one of the users contacts
      * @return the list of future meeting(s) scheduled with this contact (maybe empty).
-     * 
+     *
      * @throws IllegalArgumentException if the contact does not exist
      * @throws NullPointerException     if the contact is null
      */
@@ -155,7 +155,6 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
-        //no return value
     }
 
 
