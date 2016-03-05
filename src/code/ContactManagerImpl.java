@@ -18,12 +18,12 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * Add a new meeting to be held in the future.
-     * <p>
      * An ID is returned when the meeting is put into the system. This
      * ID must be positive and non-zero.
      *
      * @param contacts a list of contacts that will participate in the meeting
      * @param date     the date on which the meeting will take place
+     *                 
      * @return the ID for the meeting
      * @throws IllegalArgumentException if the meeting is set for a time
      *                     in the past, or if any contact is unknown / non-existent.

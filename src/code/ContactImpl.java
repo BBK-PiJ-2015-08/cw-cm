@@ -39,7 +39,7 @@ public class ContactImpl implements Contact {
 
 
 
-    
+
     public ContactImpl(int id, String name) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
