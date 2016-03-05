@@ -39,4 +39,19 @@ public class PastMeetingImplTest {
     public void testGetNotes() {
 
     }
+
+    @Test
+    public void testGetId() {
+        assertEquals(testMeetingId, testMeeting.getId());
+    }
+
+    @Test
+    public void testGetDate() {
+        assertEquals(testDate, testMeeting.getDate());
+    }
+
+    @Test
+    public void testGetContacts() {
+        assertEquals(attended, testMeeting.getContacts());
+    }
 }
