@@ -32,17 +32,7 @@ public class FutureMeetingImplTest {
     }
 
     @Test
-    public void testGetId() {
-
-    }
-
-    @Test
-    public void testGetDate() {
-
-    }
-
-    @Test
-    public void testGetContacts() {
-
+    public void testFutureMeetingImpl() {
+        
     }
 }
