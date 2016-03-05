@@ -43,5 +43,5 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
      * public Calendar getDate() {return the date of the meeting}
      * public Set<Contact> getContacts(){return the details of the people that attended the meeting}
      */
-    
+
 }
