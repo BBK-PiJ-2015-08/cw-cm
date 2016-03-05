@@ -20,6 +20,11 @@ public abstract class MeetingImpl implements Meeting {
     private Set<Contact> contacts;
 
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
+        /**
+         * What null references/pointers could be passed in as parameters?
+         * Not int id (default value 0)
+         *
+         */
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");
         }

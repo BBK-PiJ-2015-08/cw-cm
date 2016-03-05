@@ -5,6 +5,8 @@ package test;
 
 import code.Meeting;
 import code.MeetingImpl;
+import code.Contact;
+import code.ContactImpl;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
@@ -29,4 +31,19 @@ public class MeetingImplTest {
 
     }
     */
+
+    @Test
+    public void testGetId() {
+
+    }
+
+    @Test
+    public void testGetDate() {
+
+    }
+
+    @Test
+    public void testGetContacts() {
+
+    }
 }
