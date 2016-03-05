@@ -10,9 +10,10 @@ public class ContactManagerImpl implements ContactManager {
     private List<Meeting> meetings;
 
     //Create fields
-    //Create constructors
-    //Unless instructed otherwise, all classes must have only one constructor
-    // with no parameters.
+
+    //Create constructor. One constructor with no parameters. Create body of it.
+    public ContactManagerImpl() {
+    }
 
 
     /**
