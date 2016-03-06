@@ -114,7 +114,6 @@ public class ContactManagerImplTest {
 
     }
     /**
-
     @Test
     public void testGetPastMeetingNormal() {
 
@@ -130,7 +129,12 @@ public class ContactManagerImplTest {
 
      }
 
+     @Test
+     public void testGetPastMeetingInvalidId() {
 
+     }
+
+     //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
 
 
     @Test
@@ -147,16 +151,29 @@ public class ContactManagerImplTest {
      public void testGetFutureMeetingMeetingInPast() {
 
      }
-
+     
      @Test
      public void testGetFutureMeetingInvalidId() {
 
      }
-     
+     Returns the meeting with the requested ID, or null if it there is none.
+      *
+      * @param id the ID for the meeting
+     * @return the meeting with the requested ID, or null if it there is none.
     @Test
-    public void testGetMeeting() {
+    public void testGetMeetingNormal() {
 
     }
+
+     @Test
+     public void testGetMeetingDoesntExist() {
+
+     }
+
+     @Test
+     public void testGetMeeting() {
+
+     }
 
     @Test
     public void testGetFutureMeetingList() {
