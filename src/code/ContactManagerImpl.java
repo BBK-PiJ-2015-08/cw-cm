@@ -317,6 +317,13 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
+        /**
+         * Check that at least one ID is provided; if not, throw an IllegalArgumentException
+         * Check that every contactID exists; if any don't, throw an IllegalArgumentException
+         * Else, create an empty set
+         * Going through the contactIDs provided in order, add the contact corresponding to each contactID to the Set.
+         * Return the set.
+         */
         return null;
     }
 
