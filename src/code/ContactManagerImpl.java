@@ -18,7 +18,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
 
-    //Create constructor. One constructor with no parameters. Create body of it.
     public ContactManagerImpl() {
         File file = new File(FILENAME);
         currentDate = Calendar.getInstance();
@@ -30,7 +29,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                             new FileInputStream(FILENAME)));) {
                 allMeetings = (List<Meeting>) decoding.readObject();
                 allContacts = (Set<Contact>) decoding.readObject();
-                //meetingId = (int) decoding.
+                meetingId = (int) decoding.readObject();
+                contactId = (int) decoding.readObject();
             } catch (IOException | ClassNotFoundException ex) {
                 System.err.println("Error: " + ex);
             }
