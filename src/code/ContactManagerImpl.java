@@ -200,6 +200,13 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
+        /**
+         * Check the date IS in the past. If it isn't; throw an IllegalArgumentException
+         * Check the Set of contacts is not empty; if it is throw an IllegalArgumentException
+         * Check that each the ID for each contact exists; if any don't straight away throw an IllegalArgumentException
+         * Check that none of the arguments are null; if any are straight away throw a NullPointerException
+         * Create a new PastMeeting with the given values.
+         */
     }
 
 
