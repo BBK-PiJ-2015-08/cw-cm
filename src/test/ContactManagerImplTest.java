@@ -79,11 +79,13 @@ public class ContactManagerImplTest {
         additionalContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
         additionalContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
+        allMeetings = new ArrayList<>();
+
     }
 
     @Test
     public void testAddFutureMeeting() {
-        testMeeting = new FutureMeetingImpl(testMeetingId, futureDate, /**Set of contacts */)
+        cm.addFutureMeeting(allContacts, futureDate);
     }
     /**
     @Test
