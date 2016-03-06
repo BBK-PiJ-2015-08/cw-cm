@@ -282,8 +282,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     /**
      * Returns a Set with the contacts whose name contains that string:
      *
-     * If the string is the empty string, this methods returns the set
-     * that contains all current contacts.
+     * If the string is the empty string, this methods returns the set that contains all current contacts.
+     *
+     * "In the case that a name (or any substring) is provided "that is not present in the set of contacts held" by the
+     * ContactManager, then it returns "the contacts whose name contains that string", i.e. the empty set."
      *
      * @param name the string to search for
      * @return a list with the contacts whose name contains that string. - a set of contacts: Set<Contact>
@@ -292,6 +294,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Set<Contact> getContacts(String name) {
+        /**
+         * Check the provided name is not null; if it is throw a NullPointerException
+         * Create an empty set.
+         * If the string is "", assign the set containing all current contacts to the empty set.
+         * If not, look through each contact in turn and check if their name contains the provided string. If it does,
+         * add it to the Set.
+         * Return the set
+         */
         return null;
     }
 
@@ -302,7 +312,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      *
      * @param ids an arbitrary number of contact IDs
      * @return a list containing the contacts that correspond to the IDs. - a set of contacts: Set<Contact>
-     * @throws IllegalArgumentException if no IDs are provided or if any of the provided IDs does not correspond to a real contact
+     * @throws IllegalArgumentException if no IDs are provided or if any of the provided IDs does not correspond to a
+     * real contact
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
