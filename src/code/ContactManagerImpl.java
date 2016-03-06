@@ -10,8 +10,8 @@ import java.beans.XMLDecoder;
  * @author Jade Dickinson jdicki04
  */
 public class ContactManagerImpl implements ContactManager, Serializable {
-    private Set<Contact> contacts;
-    private List<Meeting> meetings;
+    //private Set<Contact> contacts;
+    //private List<Meeting> meetings;
 
     private static final String FILENAME = "contacts.txt";
     private int meetingID;
@@ -24,6 +24,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
 
     //Create constructor. One constructor with no parameters. Create body of it.
     public ContactManagerImpl() {
+
     }
 
 
