@@ -47,7 +47,69 @@ public class ContactManagerImplTest {
     public void setUp() {
 
     }
-    /**
-     * @Test
-     */
+
+    @Test
+    public void testAddFutureMeeting() {
+
+    }
+
+    @Test
+    public void testGetPastMeeting() {
+
+    }
+
+    @Test
+    public void testGetFutureMeeting() {
+
+    }
+
+    @Test
+    public void testGetMeeting() {
+
+    }
+
+    @Test
+    public void testGetFutureMeetingList() {
+
+    }
+
+    @Test
+    public void testGetMeetingListOn() {
+
+    }
+
+    @Test
+    public void testGetPastMeetingListFor() {
+
+    }
+
+    @Test
+    public void testAddNewPastMeeting() {
+
+    }
+
+    @Test
+    public void testAddMeetingNotes() {
+
+    }
+
+    @Test
+    public void testAddNewContact() {
+
+    }
+
+    @Test
+    public void testGetContacts() {
+
+    }
+
+    @Test
+    public void testGetContacts1() {
+
+    }
+
+    @Test
+    public void testFlush() {
+
+    }
 }
