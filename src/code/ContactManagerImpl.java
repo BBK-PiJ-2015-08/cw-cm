@@ -1,16 +1,18 @@
 package code;
 
 import java.util.*;
-import java.io.*;
+import java.io.Serializable;
 
 import java.beans.XMLEncoder;
 import java.beans.XMLDecoder;
+import java.io.FileOutputStream;
+
 
 
 /**
  * @author Jade Dickinson jdicki04
  */
-public class ContactManagerImpl implements ContactManager {
+public class ContactManagerImpl implements ContactManager, Serializable {
     private Set<Contact> contacts;
     private List<Meeting> meetings;
 

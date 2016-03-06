@@ -1,4 +1,6 @@
 package code;
+
+import java.io.Serializable;
 /**
  * The implementation of this interface must have two constructors. The most general
  * constructor must have three parameters: int, String, String.
@@ -15,7 +17,7 @@ package code;
 /**
  * @author Jade Dickinson jdicki04
  */
-public class ContactImpl implements Contact {
+public class ContactImpl implements Contact, Serializable {
     private int id;
     private String name;
     private String notes;

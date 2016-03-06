@@ -1,6 +1,7 @@
 package code;
 
 import java.util.*;
+import java.io.Serializable;
 /**
  * The class implementing this interface must have only one constructor with three
  * parameters: an ID (int), a date, and a set of contacts that must be non-empty
@@ -11,7 +12,7 @@ import java.util.*;
 /**
  * @author Jade Dickinson jdicki04
  */
-public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting {
+public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting, Serializable {
     public FutureMeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         super(id, date, contacts);
     }
