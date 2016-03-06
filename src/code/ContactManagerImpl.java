@@ -77,10 +77,30 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * values for Set<Contact> contacts and date.
          * Return a copy of the current value of meetingID.
          */
-
-        return 0;
+        if (contacts == null || date == null) {
+            throw new NullPointerException("Make sure neither date not set of contacts provided are null");
+        } else if (date.before(currentDate)) {
+            throw new IllegalArgumentException("Date can't be in the past");
+        } else {
+            for (Contact contact : contacts) {
+                if (contact.getId() > contactId) {
+                    throw new IllegalArgumentException("All contacts must exist already");
+                }
+            }
+            meetingId++;
+            Meeting meeting = new FutureMeetingImpl(meetingId, date, contacts);
+            return meeting.getId();
+        }
     }
 
+    /**
+     *
+     for (Contact contact : contacts) {
+     if (contact.getName() == null || contact.getNotes() == null) {
+     throw new NullPointerException("Make sure none of the contacts have names or notes that are null");
+     }
+     }
+     */
 
 
 
