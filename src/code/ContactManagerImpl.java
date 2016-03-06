@@ -14,6 +14,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     private List<Meeting> meetings;
 
     private static final String FILENAME = "contacts.txt";
+    private int meetingID;
+    private int contactID;
 
     /**
      * Create fields
@@ -50,6 +52,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * values for Set<Contact> contacts and date.
          * Return a copy of the current value of meetingID.
          */
+
         return 0;
     }
 
@@ -70,6 +73,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
         Check the ID exists; if it doesn't return null
          Check the meeting happened in the past; if it is yet to happen throw an IllegalStateException
+         ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
          Return a PastMeeting
          Aim for only one return
          */
@@ -92,6 +96,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
          Check the ID exists; if it doesn't return null
          Check the meeting is scheduled in the future; if it has already happened throw an IllegalArgumentException
+         If the meeting is scheduled in the future but is a PastMeeting throw an IllegalArgumentException
          Return a FutureMeeting
          Aim for only one return
          */
@@ -136,6 +141,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Create an empty list which will hold any future meetings
          * Check if there are any future meetings scheduled with this contact; if there are put them into the list
          * CHRONOLOGICALLY, checking for duplicate meetings before adding.
+         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
          * Return the list
          */
         return null;
@@ -162,6 +168,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Create an empty list which will hold any meetings
          * Check for meetings scheduled on that date; if there are put them into the list CHRONOLOGICALLY, checking
          * for duplicate meetings before adding.
+         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
+         * ((What about PastMeetings, what if one has notes and other doesn't and you return the one without notes))
          * Return the list
          */
         return null;
@@ -188,8 +196,12 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Check the contact ID exists; if it doesn't throw an IllegalArgumentException
          * Check the contact is not null; if it is throw a NullPointerException
          * Create an empty list which will hold any past meetings
-         * Check if the contact was an attendee for any past meetings; if they were add the PastMeeting to the list
+         * Check if the contact was an attendee for any meetings that happened in the past. ((If a meeting happened in
+         * the past but is a FutureMeeting, convert it to a PastMeeting)). If contact was an attendee for any past
+         * meetings, add the PastMeeting to the list
          * CHRONOLOGICALLY, checking for duplicates before adding.
+         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal, but prefer
+         * to use one with notes over one without notes.
          * Return the list.
          */
         return null;
@@ -210,7 +222,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
         /**
-         * Check the date IS in the past. If it isn't; throw an IllegalArgumentException
+         * Check the date IS in the past. If it isn't; throw an IllegalArgumentException (forum)
          * Check the Set of contacts is not empty; if it is throw an IllegalArgumentException
          * Check that each the ID for each contact exists; if any don't straight away throw an IllegalArgumentException
          * Check that none of the arguments are null; if any are straight away throw a NullPointerException
@@ -300,6 +312,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * If the string is "", assign the set containing all current contacts to the empty set.
          * If not, look through each contact in turn and check if their name contains the provided string. If it does,
          * add it to the Set.
+         * Don't plan to make this lenient with upper/lowercase
          * Return the set
          */
         return null;
