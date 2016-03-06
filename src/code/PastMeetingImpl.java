@@ -18,14 +18,14 @@ import java.io.Serializable;
  */
 public class PastMeetingImpl extends MeetingImpl implements PastMeeting, Serializable {
 
-    private String notes;
+    private String text;
 
-    public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
+    public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String text) {
         super(id, date, contacts);
-        if (notes == null) {
+        if (text == null) {
             throw new NullPointerException("Please make sure to enter notes that are not null");
         } else {
-            this.notes = notes;
+            this.text = text;
         }
     }
 
@@ -34,7 +34,7 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting, Seriali
      */
     @Override
     public String getNotes() {
-        return notes;
+        return text;
     }
 
 }
