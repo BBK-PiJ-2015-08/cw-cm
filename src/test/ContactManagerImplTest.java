@@ -38,25 +38,54 @@ public class ContactManagerImplTest {
 
     //fields
     //private final Calendar currentDate = new GregorianCalendar(2016, 2, 6, 11, 45, 10);
+    private static final String FILENAME = "contacts.txt";
+    //private int meetingId;
+    //private int contactId;
     private Calendar currentDate;
+    private List<Meeting> allMeetings;
+    private Set<Contact> allContacts;
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
+
     private ContactManager cm;
-    private static final String FILENAME = "contacts.txt";
+
+    private int testContactId;
+    private String testName;
+    private String testNotes;
+    private Contact testContact1;
+    private Contact testContact2;
+    private Contact testContact3;
+    private Contact additionalContact1;
+    private Contact additionalContact2;
+    private Meeting testMeeting;
+    private int testMeetingId;
 
     @Before
     public void setUp() {
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
+
+        testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
+        testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
+        testContact3 = new ContactImpl(3, "Louie", "Jungle VIP");
+        allContacts = new HashSet<>();
+
+        allContacts.add(testContact1);
+        allContacts.add(testContact2);
+        allContacts.add(testContact3);
+
+        additionalContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
+        additionalContact2 = new ContactImpl(5, "Kaa", "Not very successful");
+
     }
-/**
+
     @Test
     public void testAddFutureMeeting() {
-
+        testMeeting = new FutureMeetingImpl(testMeetingId, futureDate, /**Set of contacts */)
     }
-
+    /**
     @Test
     public void testGetPastMeeting() {
 
