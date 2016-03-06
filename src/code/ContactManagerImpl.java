@@ -35,6 +35,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
         else {
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            //The below should happen both when file didn't originally exist and if file.length() = 0
             meetingID = 0;
             contactID = 0;
             allMeetings = new ArrayList<>();
