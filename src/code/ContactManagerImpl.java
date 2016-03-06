@@ -1,13 +1,10 @@
 package code;
 
 import java.util.*;
-import java.io.Serializable;
+import java.io.*;
 
 import java.beans.XMLEncoder;
 import java.beans.XMLDecoder;
-import java.io.FileOutputStream;
-
-
 
 /**
  * @author Jade Dickinson jdicki04
@@ -18,7 +15,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
 
     private static final String FILENAME = "contacts.txt";
 
-    //Create fields
+    /**
+     * Create fields
+     */
+
 
     //Create constructor. One constructor with no parameters. Create body of it.
     public ContactManagerImpl() {
@@ -40,6 +40,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
+        //Field <- int <- id of meeting created. Unique. Start field at 0, increment by 1 at start of method. Use that.
         return 0;
     }
 
@@ -57,6 +58,12 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
+        /**
+        Check the ID exists; if it doesn't return null
+         Check the meeting happened in the past; if it is yet to happen throw an IllegalStateException
+         return a PastMeeting
+         Aim for only one return
+         */
         return null;
     }
 
@@ -73,6 +80,12 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
+        /**
+         Check the ID exists; if it doesn't return null
+         Check the meeting is scheduled in the future; if it has already happened throw an IllegalArgumentException
+         return a FutureMeeting
+         Aim for only one return
+         */
         return null;
     }
 
@@ -87,6 +100,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Meeting getMeeting(int id) {
+        /**
+         * Check the ID exists; if it doesn't return null
+         * Otherwise, return the meeting which corresponds to this ID (could be in the past or future)
+         */
         return null;
     }
 
@@ -104,6 +121,13 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
+        /**
+         * Check the contact ID exists; if it doesn't throw an IllegalArgumentException
+         * Check the contact is not null; if it is throw a NullPointerException
+         * Create an empty list which will hold any future meetings
+         * Check if there are any future meetings scheduled with this contact; if there are put them into the list
+         * Return the list
+         */
         return null;
     }
 
