@@ -37,6 +37,11 @@ import static org.junit.Assert.*;
 public class ContactManagerImplTest {
 
     //fields
+    private final Calendar currentDate = new GregorianCalendar(2016, 2, 6, 11, 45, 10);
+    private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
+    private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
+    private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
+    private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
 
     @Before
     public void setUp() {
