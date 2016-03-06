@@ -126,6 +126,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Check the contact is not null; if it is throw a NullPointerException
          * Create an empty list which will hold any future meetings
          * Check if there are any future meetings scheduled with this contact; if there are put them into the list
+         * CHRONOLOGICALLY, checking for duplicate meetings before adding.
          * Return the list
          */
         return null;
@@ -146,6 +147,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
+        /**
+         * ((Check the date is valid))
+         * Check the date is not null; if it is throw a NullPointerException
+         * Create an empty list which will hold any meetings
+         * Check for meetings scheduled on that date; if there are put them into the list CHRONOLOGICALLY, checking
+         * for duplicate meetings before adding.
+         * Return the list
+         */
         return null;
     }
 
@@ -166,6 +175,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
+        /**
+         * Check the contact ID exists; if it doesn't throw an IllegalArgumentException
+         * Check the contact is not null; if it is throw a NullPointerException
+         * Create an empty list which will hold any past meetings
+         * Check if the contact was an attendee for any past meetings; if they were add the PastMeeting to the list
+         * CHRONOLOGICALLY, checking for duplicates before adding.
+         * Return the list.
+         */
         return null;
     }
 
