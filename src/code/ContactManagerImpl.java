@@ -6,6 +6,7 @@ import java.io.*;
 import java.beans.XMLEncoder;
 import java.beans.XMLDecoder;
 
+
 /**
  * @author Jade Dickinson jdicki04
  */
@@ -13,13 +14,32 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     private static final String FILENAME = "contacts.txt";
     private int meetingID;
     private int contactID;
-    private Calendar currentDate = Calendar.getInstance();
+    private Calendar currentDate;
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
 
     //Create constructor. One constructor with no parameters. Create body of it.
     public ContactManagerImpl() {
-
+        File file = new File(FILENAME);
+        currentDate = Calendar.getInstance();
+        //Below checks both that the file exists and that it contains at least one character
+        if (file.exists() && file.length() > 0) {
+            try (ObjectInputStream
+                         decoding = new ObjectInputStream(
+                    new BufferedInputStream(
+                            new FileInputStream(FILENAME)));) {
+                allMeetings = (List<Meeting>) decoding.readObject();
+                allContacts = (Set<Contact>) decoding.readObject();
+            } catch (IOException | ClassNotFoundException ex) {
+                System.err.println("Error: " + ex);
+            }
+        }
+        else {
+            meetingID = 0;
+            contactID = 0;
+            allMeetings = new ArrayList<>();
+            allContacts = new HashSet<>();
+        }
     }
 
 
