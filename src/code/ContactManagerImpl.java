@@ -34,13 +34,22 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      * @param date     the date on which the meeting will take place
      *
      * @return the ID for the meeting
-     * @throws IllegalArgumentException if the meeting is set for a time
-     *                     in the past, or if any contact is unknown / non-existent.
+     * @throws IllegalArgumentException if the meeting is set for a time in the past, or if any contact is
+     * unknown / non-existent.
      * @throws NullPointerException     if the set of contacts or the date are null
      */
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-        //Field <- int <- id of meeting created. Unique. Start field at 0, increment by 1 at start of method. Use that.
+        /**
+         * Check if the provided date or Set of contacts are null; if either are throw a NullPointerException
+         * Check that the date given is not in the past; if it is throw an IllegalArgumentException
+         * Within the Set of contacts, check every contact's ID exists; if any don't throw an IllegalArgumentException
+         * There should be an int field for meetingID. This should start at 0 (the value 0 is never used), and be
+         * incremented up by 1 at the beginning of the method, before being used.
+         * Create a new FutureMeeting with the current value of meetingID (which we just increased by 1), with the provided
+         * values for Set<Contact> contacts and date.
+         * Return a copy of the current value of meetingID.
+         */
         return 0;
     }
 
@@ -61,7 +70,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
         Check the ID exists; if it doesn't return null
          Check the meeting happened in the past; if it is yet to happen throw an IllegalStateException
-         return a PastMeeting
+         Return a PastMeeting
          Aim for only one return
          */
         return null;
@@ -83,7 +92,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
          Check the ID exists; if it doesn't return null
          Check the meeting is scheduled in the future; if it has already happened throw an IllegalArgumentException
-         return a FutureMeeting
+         Return a FutureMeeting
          Aim for only one return
          */
         return null;
@@ -233,8 +242,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Check the meeting has already taken place; if it hasn't throw an IllegalStateException
          * Check if the notes to be added are null; if they are throw a NullPointerException
          * Add the notes to the already existing notes (which may be empty)
-         * When testing, need to make sure that if notes existed already, the new notes were added to these rather
+         * When testing, need to make sure that if notes existed already, new notes were added to existing notes rather
          * than replacing them.
+         * Return the PastMeeting with notes
          */
         return null;
     }
@@ -253,6 +263,17 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public int addNewContact(String name, String notes) {
+        /**
+         * ((Seems odd that there isn't an addNewContact method with just String name, given that the more limited
+         * constructor without notes does exist))
+         * Check if the name or notes are empty strings; if either are throw an IllegalArgumentException
+         * Check if the name or notes are null; if either are throw a NullPointerException
+         * There should be an int field for contactID. This should start at 0, and be incremented by 1 at method start,
+         * before being used.
+         * Create a new contact with the current value of contactID (which we increased by 1 at the start of the method),
+         * with the provided values for name and notes.
+         * Return a copy of the current value of contactID.
+         */
         return 0;
     }
 
