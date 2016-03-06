@@ -84,14 +84,51 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testAddFutureMeeting() {
-        cm.addFutureMeeting(allContacts, futureDate);
+    public void testAddFutureMeetingFirstIdReturned() {
+        int thisMeetingId = cm.addFutureMeeting(allContacts, futureDate);
+        assertEquals(1, thisMeetingId);
     }
-    /**
+
     @Test
-    public void testGetPastMeeting() {
+    public void testAddFutureMeetingSecondIdReturned() {
 
     }
+
+    @Test
+    public void testAddFutureMeetingNullDate() {
+
+    }
+
+    @Test
+    public void testAddFutureMeetingNullSetContacts() {
+
+    }
+
+    @Test
+    public void testAddFutureMeetingDateInPast() {
+
+    }
+
+    @Test
+    public void testAddFutureMeetingOneContactIdNonExistent() {
+
+    }
+    /**
+
+    @Test
+    public void testGetPastMeetingNormal() {
+
+    }
+
+     @Test
+     public void testGetPastMeetingDoesntExist() {
+
+     }
+
+     @Test
+     public void testGetPastMeetingMeetingInFuture() {
+
+     }
 
     @Test
     public void testGetFutureMeeting() {
