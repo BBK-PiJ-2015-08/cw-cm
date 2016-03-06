@@ -12,8 +12,8 @@ import java.beans.XMLDecoder;
  */
 public class ContactManagerImpl implements ContactManager, Serializable {
     private static final String FILENAME = "contacts.txt";
-    private int meetingID;
-    private int contactID;
+    private int meetingId;
+    private int contactId;
     private Calendar currentDate;
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
@@ -30,6 +30,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                             new FileInputStream(FILENAME)));) {
                 allMeetings = (List<Meeting>) decoding.readObject();
                 allContacts = (Set<Contact>) decoding.readObject();
+                //meetingId = (int) decoding.
             } catch (IOException | ClassNotFoundException ex) {
                 System.err.println("Error: " + ex);
             }
@@ -43,8 +44,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 }
             }
             //The below should happen both when file didn't originally exist and if file.length() = 0
-            meetingID = 0;
-            contactID = 0;
+            meetingId = 0;
+            contactId = 0;
             allMeetings = new ArrayList<>();
             allContacts = new HashSet<>();
         }
