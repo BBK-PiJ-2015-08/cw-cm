@@ -130,11 +130,29 @@ public class ContactManagerImplTest {
 
      }
 
+
+
+
     @Test
-    public void testGetFutureMeeting() {
+    public void testGetFutureMeetingNormal() {
 
     }
 
+     @Test
+     public void testGetFutureMeetingDoesntExist() {
+
+     }
+
+     @Test
+     public void testGetFutureMeetingMeetingInPast() {
+
+     }
+
+     @Test
+     public void testGetFutureMeetingInvalidId() {
+
+     }
+     
     @Test
     public void testGetMeeting() {
 
