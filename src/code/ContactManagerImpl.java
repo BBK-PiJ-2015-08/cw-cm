@@ -221,6 +221,11 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public PastMeeting addMeetingNotes(int id, String text) {
+        /**
+         * Check if the meeting ID exists; if it doesn't throw an IllegalArgumentException
+         * Check the meeting has already taken place; if it hasn't throw an IllegalStateException
+         * Check
+         */
         return null;
     }
 
