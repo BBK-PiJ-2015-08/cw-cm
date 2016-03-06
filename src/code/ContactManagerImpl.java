@@ -231,7 +231,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
          * Check if the meeting ID exists; if it doesn't throw an IllegalArgumentException
          * Check the meeting has already taken place; if it hasn't throw an IllegalStateException
-         * Check
+         * Check if the notes to be added are null; if they are throw a NullPointerException
+         * Add the notes to the already existing notes (which may be empty)
+         * When testing, need to make sure that if notes existed already, the new notes were added to these rather
+         * than replacing them.
          */
         return null;
     }
