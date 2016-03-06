@@ -47,7 +47,7 @@ public class ContactManagerImplTest {
     public void setUp() {
 
     }
-
+/**
     @Test
     public void testAddFutureMeeting() {
 
@@ -112,4 +112,5 @@ public class ContactManagerImplTest {
     public void testFlush() {
 
     }
+    */
 }
