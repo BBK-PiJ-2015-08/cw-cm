@@ -357,7 +357,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         contactId++;
         allContacts.add(new ContactImpl(contactId, name, notes));
         //this should be a copy rather than a reference to.
-        return contactId;
+        int result = contactId;
+        return result;
     }
 
 
