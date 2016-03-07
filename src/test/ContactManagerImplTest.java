@@ -36,7 +36,6 @@ import static org.junit.Assert.*;
 
 public class ContactManagerImplTest {
 
-    //fields
     //private final Calendar currentDate = new GregorianCalendar(2016, 2, 6, 11, 45, 10);
     private static final String FILENAME = "contacts.txt";
     //private int meetingId;
@@ -76,16 +75,16 @@ public class ContactManagerImplTest {
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
         allMeetings = new ArrayList<>();
-
-        contactId++;
+/**
+        //contactId++;
         testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
         allContacts.add(testContact1);
 
-        contactId++;
+        //contactId++;
         testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
         allContacts.add(testContact2);
 
-        contactId++;
+        //contactId++;
         testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
         allContacts.add(testContact3);
 
@@ -115,6 +114,7 @@ public class ContactManagerImplTest {
         group5 = new HashSet<>();
         group5.add(testContact1);
         group5.add(additionalContact2);
+ */
     }
 
     @Test
@@ -361,13 +361,14 @@ public class ContactManagerImplTest {
      public void testAddNewContactNotesEmptyString() {
 
      }
-
+**/
      @Test
      public void testAddNewContactNormal() {
-
+         int result = cm.addNewContact("Akela", "A lone wolf");
+         assertEquals(result, 1);
      }
 
-
+/**
      @Test
      public void testGetContactsProvidedNull() {
 
