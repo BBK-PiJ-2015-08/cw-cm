@@ -83,7 +83,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         else if (date.before(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
         }
-        else if (!allContacts.containsAll(contacts)) {
+        else if (allContacts.containsAll(contacts)) {
             throw new IllegalArgumentException("All contacts must exist already");
         }
         else {
