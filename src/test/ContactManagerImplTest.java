@@ -44,6 +44,12 @@ public class ContactManagerImplTest {
     private Calendar currentDate;
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
+    private Set<Contact> group1;
+    private Set<Contact> group2;
+    private Set<Contact> group3;
+    private Set<Contact> group4;
+    private Set<Contact> group5;
+
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
@@ -86,11 +92,34 @@ public class ContactManagerImplTest {
         additionalContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
         additionalContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
+        //Group 1 - 1 contact in allContacts
+        group1 = new HashSet<>();
+        group1.add(testContact1);
+
+        //Group 2 - 2 contacts in allContacts
+        group2 = new HashSet<>();
+        group2.add(testContact1);
+        group2.add(testContact2);
+
+        //Group 3 - All 3 contacts in allContacts
+        group3 = new HashSet<>();
+        group3.add(testContact1);
+        group3.add(testContact2);
+        group3.add(testContact3);
+
+        //Group 4 - 1 contact not yet added to allContacts
+        group4 = new HashSet<>();
+        group4.add(additionalContact1);
+
+        //Group 5 - 1 contact from allContacts, 1 contact not yet added to allContacts;
+        group5 = new HashSet<>();
+        group5.add(testContact1);
+        group5.add(additionalContact2);
     }
 
     @Test
     public void testAddFutureMeetingFirstIdReturned() {
-        int thisMeetingId = cm.addFutureMeeting(allContacts, futureDate);
+        int thisMeetingId = cm.addFutureMeeting(group1, futureDate);
         assertEquals(1, thisMeetingId);
     }
 
