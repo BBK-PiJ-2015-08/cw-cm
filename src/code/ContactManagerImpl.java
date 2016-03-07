@@ -336,6 +336,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         /**
          * ((Seems odd that there isn't an addNewContact method with just String name, given that the more limited
          * constructor without notes does exist))
+         *
          * Check if the name or notes are empty strings; if either are throw an IllegalArgumentException
          * Check if the name or notes are null; if either are throw a NullPointerException
          * There should be an int field for contactID. This should start at 0, and be incremented by 1 at method start,
@@ -344,7 +345,19 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * with the provided values for name and notes.
          * Return a copy of the current value of contactID.
          */
-        return 0;
+        if (contactId < 0 ) {
+            System.out.println("something has gone wrong and contactId is below 0");
+        }
+        else if (name == null || notes == null) {
+            throw new NullPointerException("Please make sure neither name or notes are null");
+        }
+        else if (name.equals("") || notes.equals("")) {
+            throw new IllegalArgumentException("Neither name nor notes can be empty");
+        }
+        contactId++;
+        allContacts.add(new ContactImpl(contactId, name, notes));
+        //this should be a copy rather than a reference to.
+        return contactId;
     }
 
 
