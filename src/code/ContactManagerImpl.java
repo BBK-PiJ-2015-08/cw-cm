@@ -79,15 +79,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          */
         if (contacts == null || date == null) {
             throw new NullPointerException("Make sure neither date not set of contacts provided are null");
-        } else if (date.before(currentDate)) {
+        }
+        else if (date.before(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
-        } else {
-            /**for (Contact contact : contacts) {
-                if (contact.getId() > contactId) {
-                    throw new IllegalArgumentException("All contacts must exist already");
-                }
-            }
-             */
+        }
+        else if (!allContacts.containsAll(contacts)) {
+            throw new IllegalArgumentException("All contacts must exist already");
+        }
+        else {
             meetingId++;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
             int currentMeetingId = meetingId;
