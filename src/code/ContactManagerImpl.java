@@ -83,18 +83,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         else if (date.before(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
         }
-        else {
-            for (Contact contact : contacts) {
-                if (!allContacts.contains(contact)) {
-                    throw new IllegalArgumentException("All contacts must exist already");
-                }
-            }
-            meetingId++;
-            allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
-            int currentMeetingId = meetingId;
-            return currentMeetingId;
-        }
-        /**
         else if (!allContacts.containsAll(contacts)) {
             throw new IllegalArgumentException("All contacts must exist already");
         }
@@ -104,7 +92,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             int currentMeetingId = meetingId;
             return currentMeetingId;
         }
-         */
     }
 
     /**
