@@ -88,8 +88,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 }
             }
             meetingId++;
-            Meeting meeting = new FutureMeetingImpl(meetingId, date, contacts);
-            return meeting.getId();
+            allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
+            int currentMeetingId = meetingId;
+            return currentMeetingId;
         }
     }
 
