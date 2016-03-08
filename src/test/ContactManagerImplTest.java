@@ -378,6 +378,10 @@ public class ContactManagerImplTest {
         assertEquals(result, 1);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testAddNewContactNotesNull() {
+        cm.addNewContact("Akela", null);
+    }
 /**
      @Test
      public void testGetContactsProvidedNull() {
