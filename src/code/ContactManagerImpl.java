@@ -84,6 +84,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             throw new IllegalArgumentException("Date can't be in the past");
         }
         else if (!allContacts.containsAll(contacts)) {
+            /**
             //iterate through contacts and print out
             System.out.println("From contacts: ");
             for (Contact contact : contacts) {
@@ -94,6 +95,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
             }
             System.out.println("allContacts does not contain all of the elements of contacts");
+             */
             throw new IllegalArgumentException("All contacts must exist already");
         }
         else {
