@@ -380,12 +380,13 @@ public class ContactManagerImplTest {
         int result = cm.addNewContact("Shere Khan", "Super evil");
         assertEquals(result, 2);
     }
-/**
+
+ //getContacts (String name)
      @Test
      public void testGetContactsProvidedNull() {
-
+         cm.getContacts(null);
      }
-
+/**
      @Test
     public void testGetContactsStringIsEmptyString() {
 
@@ -411,7 +412,7 @@ public class ContactManagerImplTest {
 
      }
 
-
+//getContacts(int... ids)
     @Test
     public void testGetContactsCorrespondingToIdsSingleId() {
 
