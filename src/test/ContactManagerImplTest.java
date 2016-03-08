@@ -73,17 +73,18 @@ public class ContactManagerImplTest {
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
         allMeetings = new ArrayList<>();
+        contactId = 0;
 
         testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
         testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
 
-        allContacts.add(testContact1);
-        allContacts.add(testContact2);
-        allContacts.add(testContact3);
+        cm.addNewContact("Mowgli", "Man cub");
+        cm.addNewContact("Baloo", "The sleepy brown bear");
+        cm.addNewContact("Louie", "Jungle VIP");
 
-        extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
-        extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
+        //extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
+        //extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
         //Group 1 - 1 contact in allContacts
         group1 = new HashSet<>();
