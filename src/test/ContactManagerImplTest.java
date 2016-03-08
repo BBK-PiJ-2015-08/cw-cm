@@ -431,15 +431,15 @@ public class ContactManagerImplTest {
     public void testGetContactsIdsSingleId() {
 
     }
-     @Test(expected = IllegalArgumentException.class)
-     public void testGetContactsIdsNoIdsProvided() {
-         cm.getContacts();
-     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetContactsIdsNoIdsProvided() {
+        cm.getContacts();
+    }
 
-     @Test(expected = IllegalArgumentException.class)
-     public void testGetContactsIdsOneProvidedIdNonExistent() {
-         cm.getContacts(50);
-     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetContactsIdsOneProvidedIdNonExistent() {
+        cm.getContacts(50);
+    }
 /**
     //Save all data to disk.
      //This method must be executed when the program is closed and when/if the user requests it.
