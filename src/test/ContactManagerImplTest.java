@@ -367,15 +367,16 @@ public class ContactManagerImplTest {
 
     }
      **/
-    @Test(expected = NullPointerException.class)
-    public void testAddNewContactNameNull() {
-        cm.addNewContact(null, "A lone wolf");
-    }
 
     @Test
     public void testAddNewContactNormal() {
         int result = cm.addNewContact("Akela", "A lone wolf");
         assertEquals(result, 1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testAddNewContactNameNull() {
+        cm.addNewContact(null, "A lone wolf");
     }
 
     @Test(expected = NullPointerException.class)
