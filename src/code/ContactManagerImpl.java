@@ -390,8 +390,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         else if (name.equals("")) {
             return allContacts;
         }
-        else {
-            Set<Contact> resultSet = new HashSet<>();
+        Set<Contact> resultSet = new HashSet<>();
             System.out.println("From allContacts: ");
             for (Contact c : allContacts) {
                 if (c.getName().contains(name)) {
@@ -399,8 +398,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 }
                 //System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
             }
-            return resultSet;
-        }
+        return resultSet;
     }
 
 
