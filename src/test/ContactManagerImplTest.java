@@ -125,9 +125,9 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(null, futureDate);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testAddFutureMeetingDateInPast() {
-
+        cm.addFutureMeeting(cm.getContacts(1), distantPastDate);
     }
 
     @Test
