@@ -47,7 +47,7 @@ public class ContactManagerImplTest {
     private Set<Contact> group1;
     private Set<Contact> group2;
     private Set<Contact> group3;
-    //private Set<Contact> group4;
+    private Set<Contact> group4;
     //private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
@@ -100,6 +100,11 @@ public class ContactManagerImplTest {
 
         extraContact1 = new ContactImpl(4, "Louie", "Jungle VIP");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
+
+        //Group 4 - 1 contact not in the main contactmanager
+        group4 = new HashSet<>();
+        group4.add(extraContact1);
+
     }
 
     @Test
@@ -130,9 +135,9 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), distantPastDate);
     }
 
-    @Test
-    public void testAddFutureMeetingOneContactIdNonExistent() {
-
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddFutureMeetingOneContactIdNonExistentInCM() {
+        cm.addFutureMeeting(group4, futureDate);
     }
     /**
     @Test
