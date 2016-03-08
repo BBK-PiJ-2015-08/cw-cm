@@ -69,8 +69,6 @@ public class ContactManagerImplTest {
 
     @Before
     public void setUp() {
-        contactId = 0;
-
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
