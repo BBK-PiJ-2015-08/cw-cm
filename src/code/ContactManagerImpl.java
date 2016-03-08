@@ -36,6 +36,11 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
         else {
+            //The below should happen both when file didn't originally exist and if file.length() = 0
+            meetingId = 0;
+            contactId = 0;
+            allMeetings = new ArrayList<>();
+            allContacts = new HashSet<>();
             if (!file.exists()) {
                 try {
                     file.createNewFile();
@@ -43,11 +48,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                     ex.printStackTrace();
                 }
             }
-            //The below should happen both when file didn't originally exist and if file.length() = 0
-            meetingId = 0;
-            contactId = 0;
-            allMeetings = new ArrayList<>();
-            allContacts = new HashSet<>();
         }
     }
 
@@ -387,17 +387,20 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
         }
-        Set resultSet;
-        if (name.equals("")) {
-            resultSet = new HashSet<>(allContacts);
+        else if (name.equals("")) {
+            return allContacts;
         }
         else {
+            Set<Contact> resultSet = new HashSet<>();
             System.out.println("From allContacts: ");
-            for (Contact contact : allContacts) {
-                System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
+            for (Contact c : allContacts) {
+                if (c.getName().contains(name)) {
+                    resultSet.add(c);
+                }
+                //System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
             }
+            return resultSet;
         }
-        return null;
     }
 
 
@@ -412,6 +415,30 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Set<Contact> getContacts(int... ids) {
+        if (ids.length < 1) {
+            throw new IllegalArgumentException("You must provide at least one ID");
+        }
+        int totalValid = 0;
+        for (Contact c : allContacts) {
+            for (int i : ids) {
+                if (c.getId() == i) {
+                    totalValid++;
+                }
+            }
+        }
+        if (totalValid != (ids.length)) {
+            throw new IllegalArgumentException("All IDs you provide must correspond to a real contact");
+        } else {
+            Set<Contact> resultSet = new HashSet<>();
+            for (int i : ids) {
+                for (Contact c: allContacts) {
+                    if (c.getId() == i) {
+                        resultSet.add(c);
+                    }
+                }
+            }
+            return resultSet;
+        }
         /**
          * Check that at least one ID is provided; if not, throw an IllegalArgumentException
          * Check that every contactID exists; if any don't, throw an IllegalArgumentException
@@ -419,7 +446,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Going through the contactIDs provided in order, add the contact corresponding to each contactID to the Set.
          * Return the set.
          */
-        return null;
     }
 
 
