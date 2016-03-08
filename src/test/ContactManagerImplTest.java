@@ -421,22 +421,22 @@ public class ContactManagerImplTest {
 
 //getContacts(int... ids)
     @Test
-    public void testGetContactsCorrespondingToIdsSingleId() {
+    public void testGetContactsIdsSingleId() {
 
     }
 
      @Test
-     public void testGetContactsCorrespondingToIdsTwoIds() {
+     public void testGetContactsIdsTwoIds() {
 
      }
 */
      @Test(expected = IllegalArgumentException.class)
-     public void testGetContactsCorrespondingToIdsNoIdsProvided() {
+     public void testGetContactsIdsNoIdsProvided() {
          cm.getContacts();
      }
 /**
      @Test
-     public void testGetContactsCorrespondingToIdsOneProvidedIdNonExistent() {
+     public void testGetContactsIdsOneProvidedIdNonExistent() {
 
      }
 
