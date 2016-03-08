@@ -77,9 +77,10 @@ public class ContactManagerImplTest {
 
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
-        testContact3 = new ContactImpl(3, "Louie", "Jungle VIP");
+        testContact3 = new ContactImpl(3, "Bagheera", "Found Mowgli");
 
         cm.addNewContact("Mowgli", "Man cub");
+        cm.addNewContact("Baloo", "The sleepy brown bear");
 
         //Group 1 - 1 contact
         group1 = new HashSet<>();
@@ -96,7 +97,7 @@ public class ContactManagerImplTest {
         group3.add(testContact2);
         group3.add(testContact3);
 
-        extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
+        extraContact1 = new ContactImpl(4, "Louie", "Jungle VIP");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
     }
 
