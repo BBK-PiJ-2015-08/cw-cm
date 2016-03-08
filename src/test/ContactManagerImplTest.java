@@ -420,16 +420,17 @@ public class ContactManagerImplTest {
      }
 
 //getContacts(int... ids)
-    @Test
-    public void testGetContactsIdsSingleId() {
 
-    }
 
      @Test
      public void testGetContactsIdsTwoIds() {
 
      }
 */
+    @Test
+    public void testGetContactsIdsSingleId() {
+
+    }
      @Test(expected = IllegalArgumentException.class)
      public void testGetContactsIdsNoIdsProvided() {
          cm.getContacts();
