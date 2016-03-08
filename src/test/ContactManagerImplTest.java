@@ -77,6 +77,22 @@ public class ContactManagerImplTest {
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
         testContact3 = new ContactImpl(3, "Louie", "Jungle VIP");
+
+        //Group 1 - 1 contact
+        group1 = new HashSet<>();
+        group1.add(testContact1);
+
+        //Group 2 - 2 contacts
+        group2 = new HashSet<>();
+        group2.add(testContact1);
+        group2.add(testContact2);
+
+        //Group 3 - 3 contacts
+        group3 = new HashSet<>();
+        group3.add(testContact1);
+        group3.add(testContact2);
+        group3.add(testContact3);
+        
 /**
 
         allContacts.add(testContact1);
@@ -86,29 +102,9 @@ public class ContactManagerImplTest {
         extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
-        //Group 1 - 1 contact in allContacts
-        group1 = new HashSet<>();
-        group1.add(testContact1);
 
-        //Group 2 - 2 contacts in allContacts
-        group2 = new HashSet<>();
-        group2.add(testContact1);
-        group2.add(testContact2);
 
-        //Group 3 - All 3 contacts in allContacts
-        group3 = new HashSet<>();
-        group3.add(testContact1);
-        group3.add(testContact2);
-        group3.add(testContact3);
 
-        //Group 4 - 1 contact not yet added to allContacts
-        group4 = new HashSet<>();
-        group4.add(extraContact1);
-
-        //Group 5 - 1 contact from allContacts, 1 contact not yet added to allContacts;
-        group5 = new HashSet<>();
-        group5.add(testContact1);
-        group5.add(extraContact2);
  */
     }
 
