@@ -74,15 +74,12 @@ public class ContactManagerImplTest {
         allContacts = new HashSet<>();
         allMeetings = new ArrayList<>();
 /**
-        //contactId++;
         testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
         allContacts.add(testContact1);
 
-        //contactId++;
         testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
         allContacts.add(testContact2);
 
-        //contactId++;
         testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
         allContacts.add(testContact3);
 
