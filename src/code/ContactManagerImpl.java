@@ -428,17 +428,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         if (totalValid != (ids.length)) {
             throw new IllegalArgumentException("All IDs you provide must correspond to a real contact");
-        } else {
-            Set<Contact> resultSet = new HashSet<>();
-            for (int i : ids) {
-                for (Contact c: allContacts) {
-                    if (c.getId() == i) {
-                        resultSet.add(c);
-                    }
+        }
+        Set<Contact> resultSet = new HashSet<>();
+        for (int i : ids) {
+            for (Contact c: allContacts) {
+                if (c.getId() == i) {
+                    resultSet.add(c);
                 }
             }
-            return resultSet;
         }
+        return resultSet;
     }
 
 
