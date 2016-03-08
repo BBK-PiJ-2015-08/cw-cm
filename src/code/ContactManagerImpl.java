@@ -345,10 +345,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * with the provided values for name and notes.
          * Return a copy of the current value of contactID.
          */
-        if (contactId < 0 ) {
-            System.out.println("something has gone wrong and contactId is below 0");
-        }
-        else if (name == null || notes == null) {
+        if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
         }
         else if (name.equals("") || notes.equals("")) {
