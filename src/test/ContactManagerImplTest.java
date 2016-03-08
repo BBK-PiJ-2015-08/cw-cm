@@ -382,9 +382,10 @@ public class ContactManagerImplTest {
     }
 
  //getContacts (String name)
-     @Test
+     @Test(expected = NullPointerException.class)
      public void testGetContactsProvidedNull() {
-         cm.getContacts(null);
+         String providedNull = null;
+         cm.getContacts(providedNull);
      }
 /**
      @Test
