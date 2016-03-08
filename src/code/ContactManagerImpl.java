@@ -387,6 +387,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
         }
+        Set resultSet;
+        if (name.equals("")) {
+            resultSet = new HashSet<>(allContacts);
+        }
+        else {
+            System.out.println("From allContacts: ");
+            for (Contact contact : allContacts) {
+                System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
+            }
+        }
         return null;
     }
 
