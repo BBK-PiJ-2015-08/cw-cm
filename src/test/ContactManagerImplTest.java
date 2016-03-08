@@ -115,9 +115,9 @@ public class ContactManagerImplTest {
         assertEquals(2, thisMeetingId);
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testAddFutureMeetingNullDate() {
-
+        cm.addFutureMeeting(cm.getContacts(1), null);
     }
 
     @Test
