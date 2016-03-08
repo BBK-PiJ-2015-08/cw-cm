@@ -383,6 +383,16 @@ public class ContactManagerImplTest {
     public void testAddNewContactNotesNull() {
         cm.addNewContact("Akela", null);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddNewContactNameEmptyString() {
+        cm.addNewContact("", "A lone wolf");
+    }
+
+    @Test(expected =  IllegalArgumentException.class)
+    public void testAddNewContactNotesEmptyString() {
+        cm.addNewContact("Akela", "");
+    }
 /**
      @Test
      public void testGetContactsProvidedNull() {
