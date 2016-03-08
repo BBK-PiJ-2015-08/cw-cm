@@ -349,7 +349,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             throw new NullPointerException("Please make sure neither name or notes are null");
         }
         else if (name.equals("") || notes.equals("")) {
-            throw new IllegalArgumentException("Neither name nor notes can be empty");
+            throw new NullPointerException("Neither name nor notes can be empty");
         }
         contactId++;
         allContacts.add(new ContactImpl(contactId, name, notes));

@@ -384,12 +384,12 @@ public class ContactManagerImplTest {
         cm.addNewContact("Akela", null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void testAddNewContactNameEmptyString() {
         cm.addNewContact("", "A lone wolf");
     }
 
-    @Test(expected =  IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void testAddNewContactNotesEmptyString() {
         cm.addNewContact("Akela", "");
     }
