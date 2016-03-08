@@ -392,15 +392,14 @@ public class ContactManagerImplTest {
          String providedNull = null;
          cm.getContacts(providedNull);
      }
-/**
+
     //Double check what this is meant to do since the spec/forum seem to be in contradiction
      @Test
     public void testGetContactsStringIsEmptyString() {
-         String providedEmpty = "";
-         cm.getContacts(providedEmpty);
+         assertEquals(cm.getContacts(""), cm.getContacts(1,2,3));
     }
 
-*/
+
     @Test
      public void testGetContactsStringIsPresentInOneName() {
         assertEquals(cm.getContacts("Mowgli"),cm.getContacts(1));
