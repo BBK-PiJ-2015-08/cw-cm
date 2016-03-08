@@ -384,6 +384,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Don't plan to make this lenient with upper/lowercase
          * Return the set
          */
+        if (name == null) {
+            throw new NullPointerException("Please make sure name is not null");
+        }
         return null;
     }
 
