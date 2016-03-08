@@ -434,12 +434,12 @@ public class ContactManagerImplTest {
      public void testGetContactsIdsNoIdsProvided() {
          cm.getContacts();
      }
-/**
-     @Test
+
+     @Test(expected = IllegalArgumentException.class)
      public void testGetContactsIdsOneProvidedIdNonExistent() {
-
+         cm.getContacts(50);
      }
-
+/**
     //Save all data to disk.
      //This method must be executed when the program is closed and when/if the user requests it.
     //testing:call flush and check stuff written on the outside is the same as written on the inside
