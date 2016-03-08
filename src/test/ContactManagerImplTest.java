@@ -110,7 +110,9 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddFutureMeetingSecondIdReturned() {
-
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        int thisMeetingId = cm.addFutureMeeting(cm.getContacts(2,3), futureDate);
+        assertEquals(2, thisMeetingId);
     }
 
     @Test
