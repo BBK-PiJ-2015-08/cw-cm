@@ -120,9 +120,9 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), null);
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testAddFutureMeetingNullSetContacts() {
-
+        cm.addFutureMeeting(null, futureDate);
     }
 
     @Test
