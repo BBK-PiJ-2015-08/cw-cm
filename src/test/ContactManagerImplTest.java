@@ -39,7 +39,7 @@ public class ContactManagerImplTest {
     //private final Calendar currentDate = new GregorianCalendar(2016, 2, 6, 11, 45, 10);
     private static final String FILENAME = "contacts.txt";
     //private int meetingId;
-    private int contactId;
+    //private int contactId;
     private Calendar currentDate;
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
@@ -56,9 +56,9 @@ public class ContactManagerImplTest {
 
     private ContactManager cm;
 
-    private int testContactId;
-    private String testName;
-    private String testNotes;
+    //private int testContactId;
+    //private String testName;
+    //private String testNotes;
     private Contact testContact1;
     private Contact testContact2;
     private Contact testContact3;
@@ -73,10 +73,11 @@ public class ContactManagerImplTest {
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
         allMeetings = new ArrayList<>();
+
+        testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
+        testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
+        testContact3 = new ContactImpl(3, "Louie", "Jungle VIP");
 /**
-        testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
-        testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
-        testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
 
         allContacts.add(testContact1);
         allContacts.add(testContact2);
