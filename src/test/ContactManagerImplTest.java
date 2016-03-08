@@ -28,6 +28,7 @@ import code.PastMeeting;
 import code.PastMeetingImpl;
 
 import java.util.*;
+import java.io.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -71,12 +72,14 @@ public class ContactManagerImplTest {
     public void setUp() {
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
-        allContacts = new HashSet<>();
-        allMeetings = new ArrayList<>();
+        //allContacts = new HashSet<>();
+        //allMeetings = new ArrayList<>();
 
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
         testContact3 = new ContactImpl(3, "Louie", "Jungle VIP");
+
+        cm.addNewContact("Mowgli", "Man cub");
 
         //Group 1 - 1 contact
         group1 = new HashSet<>();
@@ -394,16 +397,14 @@ public class ContactManagerImplTest {
          String providedEmpty = "";
          cm.getContacts(providedEmpty);
     }
-*/
+
 
     @Test
      public void testGetContactsStringIsPresentInOneName() {
-        Set<Contact> resultContacts = cm.getContacts("Mow");
-        assertEquals(1, resultContacts.size());
-        assertTrue(resultContacts.contains(testContact1));
-     }
-/**
- @Test
+        assertEquals(cm.getContacts("Mowgli"),group1);
+    }
+
+    @Test
      public void testGetContactsStringIsPresentInTwoNames() {
 
      }
@@ -428,12 +429,12 @@ public class ContactManagerImplTest {
      public void testGetContactsCorrespondingToIdsTwoIds() {
 
      }
-
-     @Test
+*/
+     @Test(expected = IllegalArgumentException.class)
      public void testGetContactsCorrespondingToIdsNoIdsProvided() {
-
+         cm.getContacts();
      }
-
+/**
      @Test
      public void testGetContactsCorrespondingToIdsOneProvidedIdNonExistent() {
 
