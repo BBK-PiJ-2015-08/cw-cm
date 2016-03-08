@@ -1,7 +1,7 @@
 /**
  * Plan for order of test creation:
- * 1. Create a new contact: (AddNewContact)
- * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name))
+ * 1. Create a new contact: (AddNewContact) X
+ * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
  * 3. Create new meeting in future (addFutureMeeting)
  * 4. Create new meeting in past (addNewPastMeeting)
  * 5. Add notes to a meeting (addMeetingNotes)
@@ -104,7 +104,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddFutureMeetingFirstIdReturned() {
-        int thisMeetingId = cm.addFutureMeeting(group1, futureDate);
+        int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
         assertEquals(1, thisMeetingId);
     }
 
