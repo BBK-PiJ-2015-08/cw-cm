@@ -62,8 +62,8 @@ public class ContactManagerImplTest {
     private Contact testContact1;
     private Contact testContact2;
     private Contact testContact3;
-    private Contact additionalContact1;
-    private Contact additionalContact2;
+    private Contact extraContact1;
+    private Contact extraContact2;
     private Meeting testMeeting;
     private int testMeetingId;
 
@@ -73,8 +73,7 @@ public class ContactManagerImplTest {
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
         allMeetings = new ArrayList<>();
-<<<<<<< HEAD
-
+/**
         testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
         testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
@@ -85,20 +84,6 @@ public class ContactManagerImplTest {
 
         extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
-=======
-/**
-        testContact1 = new ContactImpl(contactId, "Mowgli", "Man cub");
-        allContacts.add(testContact1);
-
-        testContact2 = new ContactImpl(contactId, "Baloo", "The sleepy brown bear");
-        allContacts.add(testContact2);
-
-        testContact3 = new ContactImpl(contactId, "Louie", "Jungle VIP");
-        allContacts.add(testContact3);
-
-        additionalContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
-        additionalContact2 = new ContactImpl(5, "Kaa", "Not very successful");
->>>>>>> parent of d0259bc... Minor renaming and reordering
 
         //Group 1 - 1 contact in allContacts
         group1 = new HashSet<>();
@@ -123,6 +108,7 @@ public class ContactManagerImplTest {
         group5 = new HashSet<>();
         group5.add(testContact1);
         group5.add(extraContact2);
+ */
     }
 
     @Test
