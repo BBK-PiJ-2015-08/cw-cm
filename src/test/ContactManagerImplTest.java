@@ -409,12 +409,13 @@ public class ContactManagerImplTest {
      public void testGetContactsStringIsPresentInTwoNames() {
         assertEquals(cm.getContacts("Ba"), cm.getContacts(2,3));
      }
-    /**
+
      @Test
      public void testGetContactsStringNotPresent() {
-
+         Set<Contact> resultSet =  cm.getContacts("Haathi");
+         assertTrue(resultSet.size() == 0);
      }
-
+    /**
      @Test
      public void testGetContactsEmptySetContacts() {
 
