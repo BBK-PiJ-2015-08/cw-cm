@@ -42,13 +42,13 @@ public class ContactManagerImplTest {
     //private int meetingId;
     //private int contactId;
     private Calendar currentDate;
-    private List<Meeting> allMeetings;
+    //private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
     private Set<Contact> group1;
     private Set<Contact> group2;
     private Set<Contact> group3;
-    private Set<Contact> group4;
-    private Set<Contact> group5;
+    //private Set<Contact> group4;
+    //private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
@@ -72,7 +72,7 @@ public class ContactManagerImplTest {
     public void setUp() {
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
-        //allContacts = new HashSet<>();
+        allContacts = new HashSet<>();
         //allMeetings = new ArrayList<>();
 
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
@@ -429,8 +429,11 @@ public class ContactManagerImplTest {
 */
     @Test
     public void testGetContactsIdsSingleId() {
-
+        Set<Contact> resultSet = cm.getContacts(1);
+        assertEquals(1, resultSet.size());
+        assertEquals(cm.getContacts(1),resultSet);
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void testGetContactsIdsNoIdsProvided() {
         cm.getContacts();
