@@ -92,20 +92,9 @@ public class ContactManagerImplTest {
         group3.add(testContact1);
         group3.add(testContact2);
         group3.add(testContact3);
-        
-/**
-
-        allContacts.add(testContact1);
-        allContacts.add(testContact2);
-        allContacts.add(testContact3);
 
         extraContact1 = new ContactImpl(4, "Bagheera", "Found Mowgli");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
-
-
-
-
- */
     }
 
     @Test
