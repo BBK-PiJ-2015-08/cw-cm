@@ -81,6 +81,7 @@ public class ContactManagerImplTest {
 
         cm.addNewContact("Mowgli", "Man cub");
         cm.addNewContact("Baloo", "The sleepy brown bear");
+        cm.addNewContact("Bagheera", "Found Mowgli");
 
         //Group 1 - 1 contact
         group1 = new HashSet<>();
@@ -404,12 +405,12 @@ public class ContactManagerImplTest {
      public void testGetContactsStringIsPresentInOneName() {
         assertEquals(cm.getContacts("Mowgli"),cm.getContacts(1));
     }
-/**
+
     @Test
      public void testGetContactsStringIsPresentInTwoNames() {
-
+        assertEquals(cm.getContacts("Ba"), cm.getContacts(2,3));
      }
-
+    /**
      @Test
      public void testGetContactsStringNotPresent() {
 
