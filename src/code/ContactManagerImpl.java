@@ -341,7 +341,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (!validID) {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
-        if
+        Meeting temp = getMeeting(id);
+        temp.getDate()
 
         return null;
     }
