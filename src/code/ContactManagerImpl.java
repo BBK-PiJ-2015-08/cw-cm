@@ -295,7 +295,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (contacts.isEmpty()) {
             throw new IllegalArgumentException("Set of contacts must not be empty");
         }
-
+        if (!allContacts.containsAll(contacts)) {
+            throw new IllegalArgumentException("All contacts have to exist already");
+        }
     }
 
 
