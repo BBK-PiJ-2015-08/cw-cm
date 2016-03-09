@@ -461,12 +461,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             return allContacts;
         }
         Set<Contact> resultSet = new HashSet<>();
-            System.out.println("From allContacts: ");
             for (Contact c : allContacts) {
                 if (c.getName().contains(name)) {
                     resultSet.add(c);
                 }
-                //System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
             }
         return resultSet;
     }
