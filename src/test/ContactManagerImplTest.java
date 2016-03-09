@@ -377,7 +377,8 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddMeetingNotesMeetingInFuture() {
-
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        cm.addMeetingNotes(1, "Mowgli should rejoin the man tribe");
     }
 
 
