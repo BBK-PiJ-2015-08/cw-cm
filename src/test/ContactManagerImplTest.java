@@ -203,7 +203,10 @@ public class ContactManagerImplTest {
 */
     @Test
     public void testGetMeetingIdDoesntExist() {
-
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        assertEquals(null, cm.getMeeting(3));
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Looking for bear necessities");
+        assertEquals(null, cm.getMeeting(4));
     }
 /**
 
