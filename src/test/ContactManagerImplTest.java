@@ -194,13 +194,17 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
         cm.getFutureMeeting(1);
     }
-    /**
+
 
     @Test
     public void testGetMeetingNormal() {
-
+        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        Meeting checkFuture = cm.getMeeting(1);
+        assertEquals(checkFuture.getContacts(), cm.getContacts(1,2));
+        assertEquals(checkFuture.getDate(), futureDate);
+        assertEquals(checkFuture.getId(), 1);
     }
-*/
+
     @Test
     public void testGetMeetingIdDoesntExist() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
