@@ -384,7 +384,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (!validID) {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
-        PastMeeting pastMeetingPlusNotes = new PastMeetingImpl(temp.getId(), temp.getDate(), temp.getContacts(), temp.getNotes());
+        PastMeeting pastMeetingPlusNotes = new PastMeetingImpl(temp.getId(), temp.getDate(), temp.getContacts(), (temp.getNotes()) + text);
         allMeetings.add(pastMeetingPlusNotes);
         return pastMeetingPlusNotes;
     }
