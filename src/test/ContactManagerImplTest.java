@@ -48,7 +48,7 @@ public class ContactManagerImplTest {
     private Set<Contact> group2;
     private Set<Contact> group3;
     private Set<Contact> group4;
-    //private Set<Contact> group5;
+    private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
@@ -104,6 +104,9 @@ public class ContactManagerImplTest {
         //Group 4 - 1 contact not in the main contactmanager
         group4 = new HashSet<>();
         group4.add(extraContact1);
+
+        //Group 5 - actually an empty set
+        group5 = new HashSet<>();
 
     }
 
@@ -308,12 +311,12 @@ public class ContactManagerImplTest {
     public void testAddNewPastMeetingDateInFuture() {
         cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Should Mowgli leave jungle?");
     }
-/**
-     @Test
+
+     @Test(expected = IllegalArgumentException.class)
      public void testAddNewPastMeetingSetContactsEmpty() {
-
+         cm.addNewPastMeeting(group5, pastDate, "Should Mowgli leave jungle?");
      }
-
+    /**
      @Test
      public void testAddNewPastMeetingOneContactIdNonExistent() {
 
