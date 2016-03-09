@@ -2,7 +2,7 @@
  * Plan for order of test creation:
  * 1. Create a new contact: (AddNewContact) X
  * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
- * 3. Create new meeting in future (addFutureMeeting)
+ * 3. Create new meeting in future (addFutureMeeting) X
  * 4. Create new meeting in past (addNewPastMeeting)
  * 5. Add notes to a meeting (addMeetingNotes)
  * 6. Get and return individual meetings (getPastMeeting), (getFutureMeeting) & (getMeeting)
@@ -303,12 +303,12 @@ public class ContactManagerImplTest {
      public void testGetPastMeetingListForNullContact() {
 
      }
-
-    @Test
+*/
+    @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingDateInFuture() {
-
+        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Should Mowgli leave jungle?");
     }
-
+/**
      @Test
      public void testAddNewPastMeetingSetContactsEmpty() {
 
