@@ -1,7 +1,17 @@
 package code;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 /**
 import java.beans.XMLEncoder;
 import java.beans.XMLDecoder;
@@ -50,7 +60,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
     }
-    
+
     /**
      * Add a new meeting to be held in the future.
      * An ID is returned when the meeting is put into the system. This

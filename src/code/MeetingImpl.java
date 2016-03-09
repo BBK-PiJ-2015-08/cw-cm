@@ -1,6 +1,7 @@
 package code;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Set;
 /**
  * The class implementing this interface must be abstract. It must have only one
  * constructor with three parameters: an ID (int), a date, and a set of contacts that

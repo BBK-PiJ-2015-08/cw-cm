@@ -27,13 +27,16 @@ import code.MeetingImpl;
 import code.PastMeeting;
 import code.PastMeetingImpl;
 
-import java.util.*;
-import java.io.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ContactManagerImplTest {
 
@@ -371,37 +374,19 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
         cm.addMeetingNotes(2, "Perhaps");
     }
-    /**
-     @Test
-     public void testAddMeetingNotesMeetingInFuture() {
-
-     }
-
-     @Test
-     public void testAddMeetingNotesMeetingHappenedInPastButIsFutureMeeting() {
-
-     }
-
-     @Test
-     public void testAddMeetingNotesNormal() {
-
-     }
 
     @Test
-    public void testAddNewContactNameEmptyString() {
+    public void testAddMeetingNotesMeetingInFuture() {
 
     }
 
-     @Test
-     public void testAddNewContactNotesEmptyString() {
-
-     }
 
     @Test
-    public void testAddNewContact() {
+    public void testAddMeetingNotesNormal() {
 
     }
-     **/
+
+
 
     @Test
     public void testAddNewContactNormal() {

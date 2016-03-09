@@ -11,9 +11,12 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MeetingImplTest {
     private int testMeetingId;
