@@ -198,15 +198,23 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      * @param id the ID for the meeting
      * @return the meeting with the requested ID, or null if it there is none.
      */
+    /**
+     * Check the ID exists; if it doesn't return null
+     * Otherwise, return the meeting which corresponds to this ID (could be in the past or future)
+     */
     @Override
     public Meeting getMeeting(int id) {
+        boolean validID = false;
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                validID = true;
+            }
+        }
+        Meeting thisMeetingOrNull = null;
+        if (validID) {
 
-
-        /**
-         * Check the ID exists; if it doesn't return null
-         * Otherwise, return the meeting which corresponds to this ID (could be in the past or future)
-         */
-        return null;
+        }
+        return thisMeetingOrNull;
     }
 
 
