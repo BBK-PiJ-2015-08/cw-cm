@@ -331,7 +331,29 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * When testing, need to make sure that if notes existed already, new notes were added to existing notes rather
          * than replacing them.
          * Return the PastMeeting with notes
+
+        int totalValid = 0;
+        for (Contact c : allContacts) {
+            for (int i : ids) {
+                if (c.getId() == i) {
+                    totalValid++;
+                }
+            }
+        }
+        if (totalValid != (ids.length)) {
+            throw new IllegalArgumentException("All IDs you provide must correspond to a real contact");
+        }
          */
+        boolean validID = false;
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                validID = true;
+            }
+        }
+        if (!validID) {
+            throw new IllegalArgumentException("There is no meeting corresponding to this ID");
+        }
+
         return null;
     }
 
