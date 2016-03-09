@@ -344,7 +344,7 @@ public class ContactManagerImplTest {
 //Need getPastMeeting to test here
      }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdNonExistent() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
         cm.addMeetingNotes(2, "Perhaps");
