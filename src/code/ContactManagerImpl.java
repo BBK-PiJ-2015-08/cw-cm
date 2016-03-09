@@ -298,6 +298,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (!allContacts.containsAll(contacts)) {
             throw new IllegalArgumentException("All contacts have to exist already");
         }
+        else {
+            meetingId++;
+            allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
+        }
     }
 
 
