@@ -375,7 +375,7 @@ public class ContactManagerImplTest {
         cm.addMeetingNotes(2, "Perhaps");
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void testAddMeetingNotesMeetingInFuture() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
         cm.addMeetingNotes(1, "Mowgli should rejoin the man tribe");
