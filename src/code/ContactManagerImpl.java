@@ -50,8 +50,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
     }
-
-
+    
     /**
      * Add a new meeting to be held in the future.
      * An ID is returned when the meeting is put into the system. This
@@ -93,17 +92,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             return currentMeetingId;
         }
     }
-
-    /**
-     *
-     for (Contact contact : contacts) {
-     if (contact.getName() == null || contact.getNotes() == null) {
-     throw new NullPointerException("Make sure none of the contacts have names or notes that are null");
-     }
-     }
-     */
-
-
 
     /**
      * Returns the PAST meeting with the requested ID, or null if it there is none.
@@ -307,9 +295,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         return null;
     }
 
-
-
-
     /**
      * Create a new record for a meeting that took place in the past.
      *
@@ -345,9 +330,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
         }
     }
-
-
-
 
     /**
      * Add notes to a meeting.
@@ -389,9 +371,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         return null;
     }
 
-
-
-
     /**
      * Create a new contact with the specified name and notes.
      *
@@ -404,8 +383,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public int addNewContact(String name, String notes) {
         /**
-         * ((Seems odd that there isn't an addNewContact method with just String name, given that the more limited
-         * constructor without notes does exist))
          *
          * Check if the name or notes are empty strings; if either are throw an IllegalArgumentException
          * Check if the name or notes are null; if either are throw a NullPointerException
@@ -427,8 +404,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         int result = contactId;
         return result;
     }
-
-
 
     /**
      * Returns a Set with the contacts whose name contains that string:
@@ -469,7 +444,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         return resultSet;
     }
 
-
     /**
      * Returns a Set containing the contacts that correspond to the IDs.
      * Note that this method can be used to retrieve just one contact by passing only one ID.
@@ -505,7 +479,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         return resultSet;
     }
-
 
     /**
      * Save all data to disk.
