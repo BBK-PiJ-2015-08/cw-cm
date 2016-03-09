@@ -153,12 +153,15 @@ public class ContactManagerImplTest {
          cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
          assertEquals(null, cm.getPastMeeting(2));
      }
-/**
-     @Test
-     public void testGetPastMeetingMeetingInFuture() {
 
+
+    @Test
+     public void testGetPastMeetingMeetingInFuture() {
+         cm.addFutureMeeting(cm.getContacts(1), pastDate);
+         cm.getPastMeeting(1);
      }
 
+    /**
      //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
 
 

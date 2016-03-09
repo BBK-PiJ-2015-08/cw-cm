@@ -135,11 +135,48 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          Return a PastMeeting
          Aim for only one return
          */
-        return null;
+        boolean validID = false;
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                validID = true;
+            }
+        }
+        PastMeeting thisMeetingOrNull = null;
+        if (validID) {
+            for (Meeting m : allMeetings) {
+                if (m.getId() == id) {
+                    //Meeting happened in future RATHER THAN PAST
+                    if (!m.getDate().before(currentDate)) {
+                        throw new IllegalStateException("Meeting date must be in the past");
+                    }
+                    /**
+                    else if (m instanceof FutureMeeting) {
+                        //could convert it to a past meeting
+                        throw new IllegalStateException("ID provided refers to a FutureMeeting");
+                    }
+                     */
+                    else {
+                        thisMeetingOrNull = (PastMeeting) m;
+                    }
+                }
+            }
+        }
+        return thisMeetingOrNull;
     }
-
-
-
+    /**
+    if (date.after(currentDate)) {
+            throw new IllegalArgumentException("Date must be in the past");
+        }
+    Set<Contact> resultSet = new HashSet<>();
+    System.out.println("From allContacts: ");
+    for (Contact c : allContacts) {
+        if (c.getName().contains(name)) {
+            resultSet.add(c);
+        }
+        //System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
+    }
+    return resultSet;
+    */
 
     /**
      * Returns the FUTURE meeting with the requested ID, or null if there is none.
