@@ -307,19 +307,20 @@ public class ContactManagerImplTest {
 
      }
 */
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
-
+        cm.addNewPastMeeting(null, pastDate, "Should Mowgli leave jungle?");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullDate() {
-
+        cm.addNewPastMeeting(cm.getContacts(1), null, "Should Mowgli leave jungle?");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullText() {
-
+        String nullString = null;
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, nullString);
     }
 
     @Test(expected = IllegalArgumentException.class)
