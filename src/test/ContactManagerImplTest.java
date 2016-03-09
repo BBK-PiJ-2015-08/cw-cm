@@ -4,7 +4,7 @@
  * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
  * 3. Create new meeting in future (addFutureMeeting) X
  * 4. Create new meeting in past (addNewPastMeeting) X
- * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting)
+ * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting) X
  * 6. Add notes to a meeting (addMeetingNotes)
  * 7. Construct and return lists of meetings (getFutureMeetingList), (getMeetingListOn) & (getPastMeetingListFor)
  * 8. Save all data (flush)
@@ -350,21 +350,21 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Should Mowgli leave jungle?");
     }
 
-     @Test(expected = IllegalArgumentException.class)
-     public void testAddNewPastMeetingSetContactsEmpty() {
-         cm.addNewPastMeeting(group5, pastDate, "Should Mowgli leave jungle?");
-     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddNewPastMeetingSetContactsEmpty() {
+        cm.addNewPastMeeting(group5, pastDate, "Should Mowgli leave jungle?");
+    }
 
-     @Test(expected = IllegalArgumentException.class)
-     public void testAddNewPastMeetingOneContactIdNonExistent() {
-         cm.addNewPastMeeting(group4, pastDate, "Should Mowgli leave jungle?");
-     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddNewPastMeetingOneContactIdNonExistent() {
+        cm.addNewPastMeeting(group4, pastDate, "Should Mowgli leave jungle?");
+    }
 
-     @Test
-     public void testAddNewPastMeetingNormal() {
-         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-//Need getPastMeeting to test here
-     }
+    @Test
+    public void testAddNewPastMeetingNormal() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        assertEquals((cm.getPastMeeting(1)).getId(), 1);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdNonExistent() {
