@@ -3,7 +3,7 @@
  * 1. Create a new contact: (AddNewContact) X
  * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
  * 3. Create new meeting in future (addFutureMeeting) X
- * 4. Create new meeting in past (addNewPastMeeting)
+ * 4. Create new meeting in past (addNewPastMeeting) X
  * 5. Add notes to a meeting (addMeetingNotes)
  * 6. Get and return individual meetings (getPastMeeting), (getFutureMeeting) & (getMeeting)
  * 7. Construct and return lists of meetings (getFutureMeetingList), (getMeetingListOn) & (getPastMeetingListFor)
@@ -341,14 +341,15 @@ public class ContactManagerImplTest {
      @Test
      public void testAddNewPastMeetingNormal() {
          cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-
+//Need getPastMeeting to test here
      }
-    /**
+
     @Test
     public void testAddMeetingNotesMeetingIdNonExistent() {
-
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addMeetingNotes(2, "Perhaps");
     }
-
+    /**
      @Test
      public void testAddMeetingNotesMeetingInFuture() {
 
