@@ -180,17 +180,20 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         FutureMeeting thisMeetingOrNull = null;
         if (validID) {
-
+            for (Meeting m : allMeetings) {
+                if (m.getId() == id) {
+                    if (!m.getDate().after(currentDate)) {
+                        throw new IllegalArgumentException("Meeting has already happened");
+                    }
+                    else {
+                        thisMeetingOrNull = (FutureMeeting) m;
+                    }
+                }
+            }
         }
         return thisMeetingOrNull;
     }
 /**
-    boolean validID = false;
-    for (Meeting m : allMeetings) {
-        if (m.getId() == id) {
-            validID = true;
-        }
-    }
     PastMeeting thisMeetingOrNull = null;
     if (validID) {
         for (Meeting m : allMeetings) {
