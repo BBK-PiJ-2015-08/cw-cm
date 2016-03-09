@@ -384,7 +384,9 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddMeetingNotesNormal() {
-
+        cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "");
+        cm.addMeetingNotes(1, "Baloo sure sings a lot");
+        assertEquals((cm.getPastMeeting(1)).getNotes(), "Baloo sure sings a lot");
     }
 
 
