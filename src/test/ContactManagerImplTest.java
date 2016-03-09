@@ -337,12 +337,13 @@ public class ContactManagerImplTest {
      public void testAddNewPastMeetingOneContactIdNonExistent() {
          cm.addNewPastMeeting(group4, pastDate, "Should Mowgli leave jungle?");
      }
-    /**
+
      @Test
      public void testAddNewPastMeetingNormal() {
+         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
 
      }
-
+    /**
     @Test
     public void testAddMeetingNotesMeetingIdNonExistent() {
 
