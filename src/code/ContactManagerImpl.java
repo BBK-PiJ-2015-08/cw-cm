@@ -137,10 +137,13 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                     if (!m.getDate().before(currentDate)) {
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
+                    //Sergio stated in forum that "you can assume that some other component will take care of "checking"
+                    // which future meetings have already become part of the past and ---if any--- will require notes
+                    // from the user to call addMeetingNotes(int, String)"; will come back to the below if have time.
                     /**
                     else if (m instanceof FutureMeeting) {
                         //could convert it to a past meeting
-                        throw new IllegalStateException("ID provided refers to a FutureMeeting");
+                        thisMeetingOrNull = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
                     }
                      */
                     else {
