@@ -212,7 +212,11 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         Meeting thisMeetingOrNull = null;
         if (validID) {
-
+            for (Meeting m : allMeetings) {
+                if (m.getId() == id) {
+                    thisMeetingOrNull = m;
+                }
+            }
         }
         return thisMeetingOrNull;
     }
