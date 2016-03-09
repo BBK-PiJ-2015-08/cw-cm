@@ -366,22 +366,27 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * than replacing them.
          * Return the PastMeeting with notes
          */
+        if (text == null) {
+            throw new NullPointerException("Notes to be added can't be null");
+        }
+        if ((getMeeting(id).getDate()).after(currentDate)) {
+            throw new IllegalStateException("The meeting you specified hasn't yet taken place");
+        }
         boolean validID = false;
+        PastMeeting temp = null;
         for (Meeting m : allMeetings) {
             if (m.getId() == id) {
                 validID = true;
+                temp = (PastMeeting) m;
+                allMeetings.remove(m);
             }
         }
         if (!validID) {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
-        if ((getMeeting(id).getDate()).after(currentDate)) {
-            throw new IllegalStateException("The meeting you specified hasn't yet taken place");
-        }
-        Meeting temp = getMeeting(id);
-        temp.getDate();
-
-        return null;
+        PastMeeting pastMeetingPlusNotes = new PastMeetingImpl(temp.getId(), temp.getDate(), temp.getContacts(), temp.getNotes());
+        allMeetings.add(pastMeetingPlusNotes);
+        return pastMeetingPlusNotes;
     }
 
     /**
