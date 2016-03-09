@@ -142,29 +142,27 @@ public class ContactManagerImplTest {
     public void testAddFutureMeetingOneContactIdNonExistentInCM() {
         cm.addFutureMeeting(group4, futureDate);
     }
-    /**
+
     @Test
     public void testGetPastMeetingNormal() {
 
     }
-*/
-     @Test
-     public void testGetPastMeetingIdDoesntExist() {
-         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-         assertEquals(null, cm.getPastMeeting(2));
-     }
-
 
     @Test
-     public void testGetPastMeetingMeetingInFuture() {
-         cm.addFutureMeeting(cm.getContacts(1), pastDate);
-         cm.getPastMeeting(1);
-     }
+    public void testGetPastMeetingIdDoesntExist() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        assertEquals(null, cm.getPastMeeting(2));
+    }
 
-    /**
+    @Test
+    public void testGetPastMeetingMeetingInFuture() {
+        cm.addFutureMeeting(cm.getContacts(1), pastDate);
+        cm.getPastMeeting(1);
+    }
+
      //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
 
-
+     /**
     @Test
     public void testGetFutureMeetingNormal() {
 
