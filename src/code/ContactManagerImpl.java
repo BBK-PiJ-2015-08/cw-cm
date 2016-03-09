@@ -289,6 +289,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (date.after(currentDate)) {
             throw new IllegalArgumentException("Date must be in the past");
         }
+        if (contacts.isEmpty()) {
+            throw new IllegalArgumentException("Set of contacts must not be empty");
+        }
     }
 
 
