@@ -406,7 +406,7 @@ public class ContactManagerImplTest {
     @Test
     public void testAddNewContactNormal() {
         int result = cm.addNewContact("Akela", "A lone wolf");
-        assertEquals(result, 1);
+        assertEquals(result, 4);
     }
 
     @Test(expected = NullPointerException.class)
