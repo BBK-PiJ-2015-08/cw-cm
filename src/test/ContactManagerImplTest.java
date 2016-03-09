@@ -433,7 +433,7 @@ public class ContactManagerImplTest {
     public void testAddNewContactSecondContactAddedId() {
         cm.addNewContact("Akela", "A lone wolf");
         int result = cm.addNewContact("Shere Khan", "Super evil");
-        assertEquals(result, 2);
+        assertEquals(result, 5);
     }
 
  //getContacts (String name)
