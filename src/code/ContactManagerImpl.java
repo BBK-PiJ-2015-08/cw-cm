@@ -172,10 +172,41 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          Return a FutureMeeting
          Aim for only one return
          */
-        return null;
+        boolean validID = false;
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                validID = true;
+            }
+        }
+        FutureMeeting thisMeetingOrNull = null;
+        if (validID) {
+
+        }
+        return thisMeetingOrNull;
     }
-
-
+/**
+    boolean validID = false;
+    for (Meeting m : allMeetings) {
+        if (m.getId() == id) {
+            validID = true;
+        }
+    }
+    PastMeeting thisMeetingOrNull = null;
+    if (validID) {
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                //Meeting happened in future RATHER THAN PAST
+                if (!m.getDate().before(currentDate)) {
+                    throw new IllegalStateException("Meeting date must be in the past");
+                }
+                else {
+                    thisMeetingOrNull = (PastMeeting) m;
+                }
+            }
+        }
+    }
+    return thisMeetingOrNull;
+*/
 
 
     /**
