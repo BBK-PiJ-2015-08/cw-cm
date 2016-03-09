@@ -154,20 +154,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         return thisMeetingOrNull;
     }
-    /**
-    if (date.after(currentDate)) {
-            throw new IllegalArgumentException("Date must be in the past");
-        }
-    Set<Contact> resultSet = new HashSet<>();
-    System.out.println("From allContacts: ");
-    for (Contact c : allContacts) {
-        if (c.getName().contains(name)) {
-            resultSet.add(c);
-        }
-        //System.out.println("ID: " + contact.getId() + " Name: " + contact.getName() + " Notes: "+ contact.getNotes());
-    }
-    return resultSet;
-    */
 
     /**
      * Returns the FUTURE meeting with the requested ID, or null if there is none.
