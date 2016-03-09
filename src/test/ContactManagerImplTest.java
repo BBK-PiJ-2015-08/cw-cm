@@ -147,19 +147,15 @@ public class ContactManagerImplTest {
     public void testGetPastMeetingNormal() {
 
     }
-
+*/
      @Test
-     public void testGetPastMeetingDoesntExist() {
-
+     public void testGetPastMeetingIdDoesntExist() {
+         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+         assertEquals(null, cm.getPastMeeting(2));
      }
-
+/**
      @Test
      public void testGetPastMeetingMeetingInFuture() {
-
-     }
-
-     @Test
-     public void testGetPastMeetingInvalidId() {
 
      }
 
