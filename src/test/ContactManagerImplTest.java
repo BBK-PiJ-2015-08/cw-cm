@@ -332,12 +332,12 @@ public class ContactManagerImplTest {
      public void testAddNewPastMeetingSetContactsEmpty() {
          cm.addNewPastMeeting(group5, pastDate, "Should Mowgli leave jungle?");
      }
-    /**
-     @Test
+
+     @Test(expected = IllegalArgumentException.class)
      public void testAddNewPastMeetingOneContactIdNonExistent() {
-
+         cm.addNewPastMeeting(group4, pastDate, "Should Mowgli leave jungle?");
      }
-
+    /**
      @Test
      public void testAddNewPastMeetingNormal() {
 
