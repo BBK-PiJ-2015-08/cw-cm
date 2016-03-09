@@ -286,6 +286,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Check that none of the arguments are null; if any are straight away throw a NullPointerException
          * Create a new PastMeeting with the given values.
          */
+        if (date.after(currentDate)) {
+            throw new IllegalArgumentException("Date must be in the past");
+        }
     }
 
 
