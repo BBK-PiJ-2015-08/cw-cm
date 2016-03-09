@@ -146,7 +146,11 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingNormal() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-        cm.getPastMeeting(1);
+        PastMeeting check = cm.getPastMeeting(1);
+        assertEquals(check.getNotes(), "Should Mowgli leave jungle?");
+        assertEquals(check.getContacts(), cm.getContacts(1));
+        assertEquals(check.getDate(), pastDate);
+        assertEquals(check.getId(), 1);
     }
 
     @Test
@@ -164,12 +168,11 @@ public class ContactManagerImplTest {
     }
     */
 
-     /**
     @Test
     public void testGetFutureMeetingNormal() {
 
     }
-*/
+
      @Test
      public void testGetFutureMeetingDoesntExist() {
          cm.addFutureMeeting(cm.getContacts(1), futureDate);
@@ -182,10 +185,6 @@ public class ContactManagerImplTest {
          cm.getFutureMeeting(1);
      }
     /**
-     @Test
-     public void testGetFutureMeetingInvalidId() {
-
-     }
 
     @Test
     public void testGetMeetingNormal() {
