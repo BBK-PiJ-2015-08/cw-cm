@@ -389,6 +389,13 @@ public class ContactManagerImplTest {
         assertEquals((cm.getPastMeeting(1)).getNotes(), "Baloo sure sings a lot");
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testAddMeetingNotesAddingNullNotes() {
+        cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "");
+        String nullNotes = null;
+        cm.addMeetingNotes(1, nullNotes);
+    }
+
 
 
     @Test
