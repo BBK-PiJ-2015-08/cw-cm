@@ -342,7 +342,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
         Meeting temp = getMeeting(id);
-        temp.getDate()
+        temp.getDate();
 
         return null;
     }

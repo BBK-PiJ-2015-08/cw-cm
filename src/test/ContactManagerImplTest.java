@@ -4,8 +4,8 @@
  * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
  * 3. Create new meeting in future (addFutureMeeting) X
  * 4. Create new meeting in past (addNewPastMeeting) X
- * 5. Add notes to a meeting (addMeetingNotes)
- * 6. Get and return individual meetings (getPastMeeting), (getFutureMeeting) & (getMeeting)
+ * 5. Get and return individual meetings (getPastMeeting), (getFutureMeeting) & (getMeeting)
+ * 6. Add notes to a meeting (addMeetingNotes)
  * 7. Construct and return lists of meetings (getFutureMeetingList), (getMeetingListOn) & (getPastMeetingListFor)
  * 8. Save all data (flush)
  * 13 methods to test in total
