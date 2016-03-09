@@ -183,33 +183,29 @@ public class ContactManagerImplTest {
         assertEquals(check.getId(), 1);
     }
 
-     @Test
-     public void testGetFutureMeetingDoesntExist() {
-         cm.addFutureMeeting(cm.getContacts(1), futureDate);
-         assertEquals(null, cm.getPastMeeting(2));
-     }
+    @Test
+    public void testGetFutureMeetingDoesntExist() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        assertEquals(null, cm.getPastMeeting(2));
+    }
 
-     @Test(expected = IllegalArgumentException.class)
-     public void testGetFutureMeetingMeetingInPast() {
-         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-         cm.getFutureMeeting(1);
-     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFutureMeetingMeetingInPast() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.getFutureMeeting(1);
+    }
     /**
 
     @Test
     public void testGetMeetingNormal() {
 
     }
+*/
+    @Test
+    public void testGetMeetingIdDoesntExist() {
 
-     @Test
-     public void testGetMeetingDoesntExist() {
-
-     }
-
-     @Test
-     public void testGetMeetingInvalidId() {
-
-     }
+    }
+/**
 
      //List will be chronologically sorted
 
