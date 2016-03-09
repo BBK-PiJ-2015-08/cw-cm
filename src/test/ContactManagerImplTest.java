@@ -169,12 +169,13 @@ public class ContactManagerImplTest {
     public void testGetFutureMeetingNormal() {
 
     }
-
+*/
      @Test
      public void testGetFutureMeetingDoesntExist() {
-
+         cm.addFutureMeeting(cm.getContacts(1), futureDate);
+         assertEquals(null, cm.getPastMeeting(2));
      }
-
+/**
      @Test
      public void testGetFutureMeetingMeetingInPast() {
 
