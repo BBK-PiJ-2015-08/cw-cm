@@ -4,7 +4,7 @@
  * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
  * 3. Create new meeting in future (addFutureMeeting) X
  * 4. Create new meeting in past (addNewPastMeeting) X
- * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) & (getMeeting)
+ * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting)
  * 6. Add notes to a meeting (addMeetingNotes)
  * 7. Construct and return lists of meetings (getFutureMeetingList), (getMeetingListOn) & (getPastMeetingListFor)
  * 8. Save all data (flush)
@@ -159,6 +159,11 @@ public class ContactManagerImplTest {
         assertEquals(null, cm.getPastMeeting(2));
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void testGetPastMeetingMeetingInFuture() {
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
+        cm.getPastMeeting(1);
+    }
     //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
     /**
     @Test
