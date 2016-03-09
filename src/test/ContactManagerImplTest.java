@@ -307,6 +307,21 @@ public class ContactManagerImplTest {
 
      }
 */
+    @Test
+    public void testAddNewPastMeetingNullContacts() {
+
+    }
+
+    @Test
+    public void testAddNewPastMeetingNullDate() {
+
+    }
+
+    @Test
+    public void testAddNewPastMeetingNullText() {
+
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingDateInFuture() {
         cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Should Mowgli leave jungle?");
