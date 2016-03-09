@@ -203,6 +203,15 @@ public class ContactManagerImplTest {
         assertEquals(checkFuture.getContacts(), cm.getContacts(1,2));
         assertEquals(checkFuture.getDate(), futureDate);
         assertEquals(checkFuture.getId(), 1);
+
+        cm.addNewPastMeeting(cm.getContacts(2,3), pastDate, "How to infiltrate monkey lair");
+        Meeting checkPast = cm.getMeeting(2);
+        assertEquals(checkPast.getContacts(), cm.getContacts(2,3));
+        assertEquals(checkPast.getDate(), pastDate);
+        assertEquals(checkPast.getId(), 2);
+
+        PastMeeting checkPastNotes = (PastMeeting) cm.getMeeting(2);
+        assertEquals(checkPastNotes.getNotes(), "How to infiltrate monkey lair");
     }
 
     @Test
