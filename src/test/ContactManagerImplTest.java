@@ -366,7 +366,11 @@ public class ContactManagerImplTest {
     @Test
     public void testAddNewPastMeetingNormal() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-        assertEquals((cm.getPastMeeting(1)).getId(), 1);
+        PastMeeting check = cm.getPastMeeting(1);
+        assertEquals(check.getId(), 1);
+        assertEquals(check.getDate(), pastDate);
+        assertEquals(check.getContacts(), cm.getContacts(1));
+        assertEquals(check.getNotes(), "Should Mowgli leave jungle?");
     }
 
     @Test(expected = IllegalArgumentException.class)
