@@ -162,14 +162,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          Return a FutureMeeting
          Aim for only one return
          */
-        boolean validID = false;
-        for (Meeting m : allMeetings) {
-            if (m.getId() == id) {
-                validID = true;
-            }
-        }
         FutureMeeting thisMeetingOrNull = null;
-        if (validID) {
+        if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
                     if (!m.getDate().after(currentDate)) {
@@ -196,14 +190,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Meeting getMeeting(int id) {
-        boolean validID = false;
-        for (Meeting m : allMeetings) {
-            if (m.getId() == id) {
-                validID = true;
-            }
-        }
         Meeting thisMeetingOrNull = null;
-        if (validID) {
+        if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
                     thisMeetingOrNull = m;
@@ -356,13 +344,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (text == null) {
             throw new NullPointerException("Notes to be added can't be null");
         }
-        boolean validID = false;
-        for (Meeting m : allMeetings) {
-            if (m.getId() == id) {
-                validID = true;
-            }
-        }
-        if (!validID) {
+        if (!validID(id)) {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
         if (getMeeting(id).getDate().after(currentDate)) {
