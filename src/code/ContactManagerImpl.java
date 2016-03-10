@@ -229,7 +229,14 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (!validContact(contact)) {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
-
+        List<Meeting> nonChronologicalMeetings = new ArrayList<>();
+        List<Meeting> chronologicalMeetings = new ArrayList<>();
+        for (Meeting m : allMeetings) {
+            if (m instanceof FutureMeeting && m.getContacts().contains(contact)) {
+                nonChronologicalMeetings.add(m);
+            }
+        }
+        
         return null;
     }
 
