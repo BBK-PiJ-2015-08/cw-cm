@@ -5,6 +5,10 @@ package test;
 
 import code.Meeting;
 import code.MeetingImpl;
+import code.PastMeeting;
+import code.PastMeetingImpl;
+import code.FutureMeeting;
+import code.FutureMeetingImpl;
 import code.Contact;
 import code.ContactImpl;
 import org.junit.Before;
@@ -31,11 +35,11 @@ public class MeetingImplTest {
         contact1 = new ContactImpl(1, "Yogi Bear", "Smarter than your average");
         contact2 = new ContactImpl(2, "Boo Boo Bear", "Mr Ranger isn't going to like this");
         testDate = new GregorianCalendar(2015, 03, 18);
-        testMeetingId = 999;
+        testMeetingId = 1;
         invited = new HashSet<>();
         invited.add(contact1);
         invited.add(contact2);
-        testMeeting = new MeetingImpl(testMeetingId, testDate, invited);
+        testMeeting = new FutureMeetingImpl(testMeetingId, testDate, invited);
     }
 
     @Test
