@@ -202,6 +202,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     }
     
     /**
+     * Returns the list of future meetings scheduled with this contact.
+     *
      * If there are none, the returned list will be empty. Otherwise, the list will be chronologically sorted and will
      * not contain any duplicates.
      *
@@ -213,7 +215,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
         /**
-         * Check the contact ID exists; if it doesn't throw an IllegalArgumentException
+         * Check the contact exists; if it doesn't throw an IllegalArgumentException
          * Check the contact is not null; if it is throw a NullPointerException
          * Create an empty list which will hold any future meetings
          * Check if there are any future meetings scheduled with this contact; if there are put them into the list
@@ -221,8 +223,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
          * Return the list
          */
-        //boolean
-        //if (contact.getId())
+        if (!validContact(contact)) {
+            throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
+        }
         return null;
     }
 
@@ -476,6 +479,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
         return validID;
+    }
+
+    public boolean validContact(Contact contact) {
+        boolean validContact = false;
+        for (Contact c : allContacts) {
+            if (c.getId() == contact.getId()) {
+                validContact = true;
+            }
+        }
+        return validContact;
     }
 
     /**
