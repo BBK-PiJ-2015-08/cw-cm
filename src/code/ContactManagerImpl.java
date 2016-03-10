@@ -121,14 +121,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          Return a PastMeeting
          Aim for only one return
          */
-        boolean validID = false;
-        for (Meeting m : allMeetings) {
-            if (m.getId() == id) {
-                validID = true;
-            }
-        }
         PastMeeting thisMeetingOrNull = null;
-        if (validID) {
+        if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
                     //Meeting happened in future RATHER THAN PAST
@@ -239,7 +233,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
          * Return the list
          */
-
+        //boolean
+        //if (contact.getId())
         return null;
     }
 
@@ -489,6 +484,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             }
         }
         return resultSet;
+    }
+
+    public boolean validID(int id) {
+        boolean validID = false;
+        for (Meeting m : allMeetings) {
+            if (m.getId() == id) {
+                validID = true;
+            }
+        }
+        return validID;
     }
 
     /**

@@ -7,6 +7,7 @@
  * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting) X
  * 6. Add notes to a meeting (addMeetingNotes) X
  * 7. Construct and return lists of meetings (getFutureMeetingList), (getMeetingListOn) & (getPastMeetingListFor)
+ * NB Consider making validID check its own method
  * 8. Save all data (flush)
  * 13 methods to test in total
  */
