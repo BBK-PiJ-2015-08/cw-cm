@@ -223,11 +223,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
          * Return the list
          */
+        if (contact == null) {
+            throw new NullPointerException("The contact you provided was null");
+        }
         if (!validContact(contact)) {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
+
         return null;
     }
+
 
     /**
      * Returns the list of meetings that are scheduled for, or that took place on, the specified date
