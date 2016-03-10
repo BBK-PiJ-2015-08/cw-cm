@@ -218,10 +218,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         return thisMeetingOrNull;
     }
-
-
-
-
+    
     /**
      * If there are none, the returned list will be empty. Otherwise, the list will be chronologically sorted and will
      * not contain any duplicates.
@@ -242,11 +239,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
          * Return the list
          */
+
         return null;
     }
-
-
-
 
     /**
      * Returns the list of meetings that are scheduled for, or that took place on, the specified date
@@ -272,9 +267,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          */
         return null;
     }
-
-
-
 
     /**
      * Returns the list of past meetings in which this contact has participated.
