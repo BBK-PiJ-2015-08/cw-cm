@@ -369,22 +369,22 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (text == null) {
             throw new NullPointerException("Notes to be added can't be null");
         }
-        if ((getMeeting(id).getDate()).after(currentDate)) {
-            throw new IllegalStateException("The meeting you specified hasn't yet taken place");
-        }
         boolean validID = false;
-        PastMeeting temp = null;
         for (Meeting m : allMeetings) {
             if (m.getId() == id) {
                 validID = true;
-                temp = (PastMeeting) m;
-                allMeetings.remove(m);
             }
         }
         if (!validID) {
             throw new IllegalArgumentException("There is no meeting corresponding to this ID");
         }
-        PastMeeting pastMeetingPlusNotes = new PastMeetingImpl(temp.getId(), temp.getDate(), temp.getContacts(), (temp.getNotes()) + text);
+        if (getMeeting(id).getDate().after(currentDate)) {
+            throw new IllegalStateException("The meeting you specified hasn't yet taken place");
+        }
+        PastMeeting temp = getPastMeeting(id);
+        allMeetings.remove(temp.getId());
+        PastMeeting pastMeetingPlusNotes;
+        pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
         allMeetings.add(pastMeetingPlusNotes);
         return pastMeetingPlusNotes;
     }
