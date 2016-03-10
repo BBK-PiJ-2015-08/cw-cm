@@ -383,6 +383,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         PastMeeting temp = getPastMeeting(id);
         PastMeeting pastMeetingPlusNotes;
+        //Using addMeetingNotes on a PastMeeting which already has notes will not overwrite the old notes, but add the new notes to the old ones.
         pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
         allMeetings.add(pastMeetingPlusNotes);
         allMeetings.remove(temp);
