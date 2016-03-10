@@ -382,10 +382,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             throw new IllegalStateException("The meeting you specified hasn't yet taken place");
         }
         PastMeeting temp = getPastMeeting(id);
-        allMeetings.remove(temp.getId());
         PastMeeting pastMeetingPlusNotes;
         pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
         allMeetings.add(pastMeetingPlusNotes);
+        allMeetings.remove(temp);
         return pastMeetingPlusNotes;
     }
 
