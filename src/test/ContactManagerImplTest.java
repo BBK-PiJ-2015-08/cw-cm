@@ -40,10 +40,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ContactManagerImplTest {
 
-    //private final Calendar currentDate = new GregorianCalendar(2016, 2, 6, 11, 45, 10);
     private static final String FILENAME = "contacts.txt";
-    //private int meetingId;
-    //private int contactId;
     private Calendar currentDate;
     //private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
@@ -60,16 +57,11 @@ public class ContactManagerImplTest {
 
     private ContactManager cm;
 
-    //private int testContactId;
-    //private String testName;
-    //private String testNotes;
     private Contact testContact1;
     private Contact testContact2;
     private Contact testContact3;
     private Contact extraContact1;
     private Contact extraContact2;
-    private Meeting testMeeting;
-    private int testMeetingId;
 
     @Before
     public void setUp() {
