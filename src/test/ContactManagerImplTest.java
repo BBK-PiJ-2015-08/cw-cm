@@ -225,12 +225,12 @@ public class ContactManagerImplTest {
     public void testGetFutureMeetingListContactNonExistent() {
         cm.getFutureMeetingList(extraContact1);
     }
-    /**
-     @Test
+
+     @Test(expected = NullPointerException.class)
      public void testGetFutureMeetingListContactNull() {
-
+         cm.getFutureMeetingList(null);
      }
-
+     /**
      @Test
      public void testGetFutureMeetingListNormal() {
 
