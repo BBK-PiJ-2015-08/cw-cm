@@ -244,6 +244,21 @@ public class ContactManagerImplTest {
          assertEquals(check.get(0).getDate(), cm.getFutureMeeting(1).getDate());
      }
 
+    @Test
+    public void testGetFutureMeetingListNormalTwoMeetingsPlanned() {
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
+        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        //assertEquals(check.size(), 2);
+        //assertTrue(check.contains(cm.getFutureMeeting(1)));
+        //assertTrue(check.contains(cm.getFutureMeeting(2)));
+        //assertEquals(check.get(0), cm.getFutureMeeting(2));
+        //assertEquals(check.get(1), cm.getFutureMeeting(1));
+        //assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(2).getContacts());
+        //assertEquals(check.get(0).getDate(), cm.getFutureMeeting(2).getDate());
+        //assertEquals(check.get(1).getContacts(), cm.getFutureMeeting(1).getContacts());
+        //assertEquals(check.get(1).getDate(), cm.getFutureMeeting(1).getContacts());
+    }
     /**
      @Test
      public void testGetFutureMeetingListNoMeetingsPlanned() {
@@ -392,7 +407,7 @@ public class ContactManagerImplTest {
     public void testAddMeetingNotesNormal() {
         cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "That ");
         cm.addMeetingNotes(1, "Baloo sure sings a lot");
-        assertEquals((cm.getPastMeeting(1)).getNotes(), "That Baloo sure sings a lot");
+        assertEquals(cm.getPastMeeting(1).getNotes(), "That Baloo sure sings a lot");
     }
 
     @Test(expected = NullPointerException.class)

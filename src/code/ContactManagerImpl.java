@@ -9,9 +9,12 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static java.util.Collections.*;
 /**
 import java.beans.XMLEncoder;
 import java.beans.XMLDecoder;
@@ -229,19 +232,18 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (!validContact(contact)) {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
-        List<Meeting> nonChronologicalMeetings = new ArrayList<>();
-        List<Meeting> chronologicalMeetings = new ArrayList<>();
+        Set<Meeting> nonChronologicalMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting && m.getContacts().contains(contact)) {
                 nonChronologicalMeetings.add(m);
             }
         }
-        for (Meeting unsortedM : nonChronologicalMeetings) {
-            if (!chronologicalMeetings.contains(unsortedM)) {
-                
-            }
+        List<Meeting> sortedMeetings = new ArrayList<>();
+        for (Meeting m : nonChronologicalMeetings) {
+            sortedMeetings.add(m);
         }
-        return null;
+        Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+        return sortedMeetings;
     }
 
 
@@ -473,7 +475,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 }
             }
         }
-        if (totalValid != (ids.length)) {
+        if (totalValid != ids.length) {
             throw new IllegalArgumentException("All IDs you provide must correspond to a real contact");
         }
         Set<Contact> resultSet = new HashSet<>();
@@ -506,6 +508,16 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         return validContact;
     }
+
+
+    /**
+    Collections.sort(nonChronologicalMeetings, new Comparator<Meeting>() {
+        @Override
+        public int compare(Meeting m1, Meeting m2) {
+            return m1.getDate().compareTo(m2.getDate());
+        }
+    });
+    */
 
     /**
      * Save all data to disk.
