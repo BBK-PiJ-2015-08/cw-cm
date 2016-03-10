@@ -217,15 +217,15 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Looking for bear necessities");
         assertEquals(null, cm.getMeeting(4));
     }
-/**
+
 
      //List will be chronologically sorted
 
-    @Test
-    public void testGetFutureMeetingListContactIdNonExistent() {
-
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFutureMeetingListContactNonExistent() {
+        cm.getFutureMeetingList(extraContact1);
     }
-
+    /**
      @Test
      public void testGetFutureMeetingListContactNull() {
 
