@@ -236,7 +236,11 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                 nonChronologicalMeetings.add(m);
             }
         }
-        
+        for (Meeting unsortedM : nonChronologicalMeetings) {
+            if (!chronologicalMeetings.contains(unsortedM)) {
+                
+            }
+        }
         return null;
     }
 
