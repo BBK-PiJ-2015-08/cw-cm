@@ -234,8 +234,12 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         Set<Meeting> nonChronologicalMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
-            if (m instanceof FutureMeeting && m.getContacts().contains(contact)) {
-                nonChronologicalMeetings.add(m);
+            if (m instanceof FutureMeeting) {
+                for (Contact c : m.getContacts()) {
+                    if (c.getId() == contact.getId()) {
+                        nonChronologicalMeetings.add(m);
+                    }
+                }
             }
         }
         List<Meeting> sortedMeetings = new ArrayList<>();
