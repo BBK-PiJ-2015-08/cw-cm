@@ -80,13 +80,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         /**
-         * Check if the provided date or Set of contacts are null; if either are throw a NullPointerException
-         * Check that the date given is not in the past; if it is throw an IllegalArgumentException
-         * Within the Set of contacts, check every contact's ID exists; if any don't throw an IllegalArgumentException
          * There should be an int field for meetingID. This should start at 0 (the value 0 is never used), and be
          * incremented up by 1 at the beginning of the method, before being used.
-         * Create a new FutureMeeting with the current value of meetingID (which we just increased by 1), with the provided
-         * values for Set<Contact> contacts and date.
          * Return a copy of the current value of meetingID.
          */
         if (contacts == null || date == null) {
@@ -117,13 +112,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
-        /**
-        Check the ID exists; if it doesn't return null
-         Check the meeting happened in the past; if it is yet to happen throw an IllegalStateException
-         ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
-         Return a PastMeeting
-         Aim for only one return
-         */
         PastMeeting thisMeetingOrNull = null;
         if (validID(id)) {
             for (Meeting m : allMeetings) {
@@ -131,12 +119,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
                     if (!m.getDate().before(currentDate)) {
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
-                    /**
-                    else if (m instanceof FutureMeeting) {
-                        //could convert it to a past meeting
-                        thisMeetingOrNull = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
-                    }
-                     */
                     else {
                         thisMeetingOrNull = (PastMeeting) m;
                     }
@@ -156,13 +138,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
-        /**
-         Check the ID exists; if it doesn't return null
-         Check the meeting is scheduled in the future; if it has already happened throw an IllegalArgumentException
-         If the meeting is scheduled in the future but is a PastMeeting throw an IllegalArgumentException
-         Return a FutureMeeting
-         Aim for only one return
-         */
         FutureMeeting thisMeetingOrNull = null;
         if (validID(id)) {
             for (Meeting m : allMeetings) {
@@ -215,15 +190,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
-        /**
-         * Check the contact exists; if it doesn't throw an IllegalArgumentException
-         * Check the contact is not null; if it is throw a NullPointerException
-         * Create an empty list which will hold any future meetings
-         * Check if there are any future meetings scheduled with this contact; if there are put them into the list
-         * CHRONOLOGICALLY, checking for duplicate meetings before adding.
-         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
-         * Return the list
-         */
+        //Two meetings are equal if and only if their IDs are equal
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
         }
@@ -265,6 +232,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      * @param date the date
      * @return the list of meetings
      * @throws NullPointerException if the date are null
+     *
+     * Check the date is valid
+     * Two meetings are equal only if their IDs are equal
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
@@ -289,16 +259,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
         return sortedMeetings;
-        /**
-         * ((Check the date is valid))
-         * Check the date is not null; if it is throw a NullPointerException
-         * Create an empty list which will hold any meetings
-         * Check for meetings scheduled on that date; if there are put them into the list CHRONOLOGICALLY, checking
-         * for duplicate meetings before adding.
-         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal
-         * ((What about PastMeetings, what if one has notes and other doesn't and you return the one without notes))
-         * Return the list
-         */
     }
 
     /**
@@ -315,17 +275,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-        /**
-         * Check the contact is not null; if it is throw a NullPointerException
-         * Check the contact exists; if it doesn't throw an IllegalArgumentException
-         * Create an empty list which will hold any past meetings
-         * Check if the contact was an attendee for any meetings that happened in the past. If contact was an attendee for any past
-         * meetings, add the PastMeeting to the list CHRONOLOGICALLY, checking for duplicates before adding.
-         * ((If a meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting - not essential)).
-         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal, <can this prefer
-         * to use one with notes over one without notes?>
-         * Return the list.
-         */
+        //Two meetings are equal if and only if their IDs are equal.
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
@@ -371,10 +321,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
         /**
          * Check the date IS in the past. If it isn't; throw an IllegalArgumentException (forum)
-         * Check the Set of contacts is not empty; if it is throw an IllegalArgumentException
-         * Check that each the ID for each contact exists; if any don't straight away throw an IllegalArgumentException
-         * Check that none of the arguments are null; if any are straight away throw a NullPointerException
-         * Create a new PastMeeting with the given values.
          */
         if (contacts == null || date == null || text == null) {
             throw new NullPointerException("Please make sure nothing entered is null");
@@ -410,15 +356,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public PastMeeting addMeetingNotes(int id, String text) {
-        /**
-         * Check if the meeting ID exists; if it doesn't throw an IllegalArgumentException
-         * Check the meeting has already taken place; if it hasn't throw an IllegalStateException
-         * Check if the notes to be added are null; if they are throw a NullPointerException
-         * Add the notes to the already existing notes (which may be empty)
-         * When testing, need to make sure that if notes existed already, new notes were added to existing notes rather
-         * than replacing them.
-         * Return the PastMeeting with notes
-         */
         if (text == null) {
             throw new NullPointerException("Notes to be added can't be null");
         }
@@ -430,7 +367,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         PastMeeting temp = getPastMeeting(id);
         PastMeeting pastMeetingPlusNotes;
-        //Using addMeetingNotes on a PastMeeting which already has notes will not overwrite the old notes, but add the new notes to the old ones.
         pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
         allMeetings.add(pastMeetingPlusNotes);
         allMeetings.remove(temp);
@@ -449,24 +385,17 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public int addNewContact(String name, String notes) {
         /**
-         *
-         * Check if the name or notes are empty strings; if either are throw an IllegalArgumentException
-         * Check if the name or notes are null; if either are throw a NullPointerException
          * There should be an int field for contactID. This should start at 0, and be incremented by 1 at method start,
-         * before being used.
-         * Create a new contact with the current value of contactID (which we increased by 1 at the start of the method),
-         * with the provided values for name and notes.
-         * Return a copy of the current value of contactID.
+         * before being used to create a new contact, for which the ID will be the current value of contactID.
          */
         if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
         }
         else if (name.equals("") || notes.equals("")) {
-            throw new NullPointerException("Neither name nor notes can be empty");
+            throw new IllegalArgumentException("Neither name nor notes can be empty");
         }
         contactId++;
         allContacts.add(new ContactImpl(contactId, name, notes));
-        //this should be a copy rather than a reference to.
         int result = contactId;
         return result;
     }
@@ -486,15 +415,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public Set<Contact> getContacts(String name) {
-        /**
-         * Check the provided name is not null; if it is throw a NullPointerException
-         * Create an empty set.
-         * If the string is "", assign the set containing all current contacts to the empty set.
-         * If not, look through each contact in turn and check if their name contains the provided string. If it does,
-         * add it to the Set.
-         * Don't plan to make this lenient with upper/lowercase
-         * Return the set
-         */
+        //Don't plan to make this lenient with upper/lowercase
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
         }
@@ -556,6 +477,12 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         return validID;
     }
 
+    /**
+     * This method is for checking if a contact exists in this contact manager. It is boolean so that if it returns true
+     * for a given contact, the method utilising it can throw the appropriate IllegalArgumentException
+     * @param contact
+     * @return
+     */
     public boolean validContact(Contact contact) {
         boolean validContact = false;
         for (Contact c : allContacts) {
@@ -565,16 +492,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         return validContact;
     }
-
-
-    /**
-    Collections.sort(nonChronologicalMeetings, new Comparator<Meeting>() {
-        @Override
-        public int compare(Meeting m1, Meeting m2) {
-            return m1.getDate().compareTo(m2.getDate());
-        }
-    });
-    */
 
     /**
      * Save all data to disk.
