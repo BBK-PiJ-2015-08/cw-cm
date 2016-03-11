@@ -319,6 +319,8 @@ public class ContactManagerImplTest {
         List<Meeting> check = cm.getMeetingListOn(futureDate);
         assertEquals(check.size(), 1);
         assertTrue(check.contains(cm.getFutureMeeting(2)));
+        assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(2).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getFutureMeeting(2).getDate());
     }
 
     @Test
