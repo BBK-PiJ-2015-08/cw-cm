@@ -398,6 +398,8 @@ public class ContactManagerImplTest {
         assertEquals(check.size(), 3);
     }
 /**
+ * Test for ignoring one duplicate meeting - sharing same ID as another
+ *
     @Test
     public void testGetPastMeetingListForTwoMeetingsOneDuplicatedWithNotes() {
 
