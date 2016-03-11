@@ -228,21 +228,21 @@ public class ContactManagerImplTest {
         cm.getFutureMeetingList(extraContact1);
     }
 
-     @Test(expected = NullPointerException.class)
-     public void testGetFutureMeetingListContactNull() {
-         cm.getFutureMeetingList(null);
-     }
+    @Test(expected = NullPointerException.class)
+    public void testGetFutureMeetingListContactNull() {
+        cm.getFutureMeetingList(null);
+    }
 
-     @Test
-     public void testGetFutureMeetingListNormalOneMeetingPlanned() {
-         cm.addFutureMeeting(cm.getContacts(1), futureDate);
-         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-         assertEquals(check.size(), 1);
-         assertTrue(check.contains(cm.getFutureMeeting(1)));
-         assertEquals(check.get(0), cm.getFutureMeeting(1));
-         assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(1).getContacts());
-         assertEquals(check.get(0).getDate(), cm.getFutureMeeting(1).getDate());
-     }
+    @Test
+    public void testGetFutureMeetingListNormalOneMeetingPlanned() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        assertEquals(check.size(), 1);
+        assertTrue(check.contains(cm.getFutureMeeting(1)));
+        assertEquals(check.get(0), cm.getFutureMeeting(1));
+        assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(1).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getFutureMeeting(1).getDate());
+    }
 
     @Test
     public void testGetFutureMeetingListNormalTwoMeetingsPlanned() {
@@ -260,11 +260,11 @@ public class ContactManagerImplTest {
         assertEquals(check.get(1).getDate(), cm.getFutureMeeting(1).getDate());
     }
 
-     @Test
-     public void testGetFutureMeetingListNoMeetingsPlanned() {
-         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-         assertTrue(check.isEmpty());
-     }
+    @Test
+    public void testGetFutureMeetingListNoMeetingsPlanned() {
+        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        assertTrue(check.isEmpty());
+    }
 /**
 
      //List will be chronologically sorted
