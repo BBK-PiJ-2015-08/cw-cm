@@ -270,12 +270,12 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListThreeMeetingsOneDuplicated() {
+    public void testGetFutureMeetingListThreeMeetingsOneSamePropertiesExceptId() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-        assertEquals(check.size(), 2);
+        assertEquals(check.size(), 3);
     }
 
     @Test(expected = NullPointerException.class)
