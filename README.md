@@ -5,6 +5,6 @@ Note about ContactManagerImpl - addMeetingNotes(int id, String text)
 
 Note about getPastMeetingListFor(Contact contact)
 --------------
-* Sergio stated on forum that meetings are considered equal if and only if their IDs are equal.
+* Sergio [stated on forum](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=53251) that meetings are considered equal if and only if their IDs are equal.
 * I had previously based equality on all of date, contacts and notes matching (see ContactManagerImpl commit [6869a6d](https://github.com/BBK-PiJ-2015-08/cw-cm/commit/6869a6d0627d03b75464a92ab7e9da4de8478ef0))
 * I adjusted this to base equality of meetings only on their having the same ID.
