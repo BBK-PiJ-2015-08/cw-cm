@@ -274,77 +274,77 @@ public class ContactManagerImplTest {
 
     }
 
-     @Test
-     public void testGetMeetingListOnWereNoMeetings() {
+    @Test
+    public void testGetMeetingListOnWereNoMeetings() {
 
-     }
+    }
 
-     @Test
-     public void testGetMeetingListOnMustDisregardOneDuplicate() {
+    @Test
+    public void testGetMeetingListOnMustDisregardOneDuplicate() {
 
-     }
+    }
 
-     @Test
-     public void testGetMeetingListOnNullDate() {
+    @Test
+    public void testGetMeetingListOnNullDate() {
 
-     }
+    }
 
-     @Test
-     public void testGetMeetingListOnTryToPreferDuplicateWithNotes() {
+    @Test
+    public void testGetMeetingListOnTryToPreferDuplicateWithNotes() {
 
-     }
+    }
 
 //List will be chronologically sorted
 
-     @Test
-     public void testGetPastMeetingListForNoMeetings() {
+    @Test
+    public void testGetPastMeetingListForNoMeetings() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedOne() {
+    @Test
+    public void testGetPastMeetingListForAttendedOne() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedTwo() {
+    @Test
+    public void testGetPastMeetingListForAttendedTwo() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedThree() {
+    @Test
+    public void testGetPastMeetingListForAttendedThree() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedTwoDisregardOneDuplicate() {
+    @Test
+    public void testGetPastMeetingListForAttendedTwoDisregardOneDuplicate() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedTwoPreferDuplicateWithNotes() {
+    @Test
+    public void testGetPastMeetingListForAttendedTwoPreferDuplicateWithNotes() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForAttendedFourOneDuplicate() {
+    @Test
+    public void testGetPastMeetingListForAttendedFourOneDuplicate() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
+    @Test
+    public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForContactIdNonExistent() {
+    @Test
+    public void testGetPastMeetingListForContactIdNonExistent() {
 
-     }
+    }
 
-     @Test
-     public void testGetPastMeetingListForNullContact() {
-
-     }
+    @Test
+    public void testGetPastMeetingListForNullContact() {
+    
+    }
 */
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
@@ -450,14 +450,14 @@ public class ContactManagerImplTest {
     }
 
  //getContacts (String name)
-     @Test(expected = NullPointerException.class)
-     public void testGetContactsProvidedNull() {
-         String providedNull = null;
-         cm.getContacts(providedNull);
-     }
+    @Test(expected = NullPointerException.class)
+    public void testGetContactsProvidedNull() {
+        String providedNull = null;
+        cm.getContacts(providedNull);
+    }
 
     //Double check what this is meant to do since the spec/forum seem to be in contradiction
-     @Test
+    @Test
     public void testGetContactsStringIsEmptyString() {
          assertEquals(cm.getContacts(""), cm.getContacts(1,2,3));
     }
@@ -473,11 +473,11 @@ public class ContactManagerImplTest {
         assertEquals(cm.getContacts("Ba"), cm.getContacts(2,3));
      }
 
-     @Test
-     public void testGetContactsStringNotPresent() {
-         Set<Contact> resultSet =  cm.getContacts("Haathi");
-         assertTrue(resultSet.size() == 0);
-     }
+    @Test
+    public void testGetContactsStringNotPresent() {
+        Set<Contact> resultSet =  cm.getContacts("Haathi");
+        assertTrue(resultSet.size() == 0);
+    }
     /**
      @Test
      public void testGetContactsEmptySetContacts() {
