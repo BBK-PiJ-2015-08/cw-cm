@@ -246,10 +246,8 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         for (Meeting m : nonChronologicalMeetings) {
             boolean containsDuplicate = false;
             for (Meeting n : sortedMeetings) {
-                if (m.getDate().equals(n.getDate())) {
-                    if (m.getContacts().equals(n.getContacts())) {
-                        containsDuplicate = true;
-                    }
+                if (m.getId() == n.getId()) {
+                    containsDuplicate = true;
                 }
             }
             if(!containsDuplicate) {
