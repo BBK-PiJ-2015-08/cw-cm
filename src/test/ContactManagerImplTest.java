@@ -259,16 +259,13 @@ public class ContactManagerImplTest {
         assertEquals(check.get(1).getContacts(), cm.getFutureMeeting(1).getContacts());
         assertEquals(check.get(1).getDate(), cm.getFutureMeeting(1).getDate());
     }
-    /**
+
      @Test
      public void testGetFutureMeetingListNoMeetingsPlanned() {
-
+         List<Meeting> check = cm.getFutureMeetingList(testContact1);
+         assertTrue(check.isEmpty());
      }
-
-     @Test
-     public void testGetFutureMeetingListHadToDisregardOneDuplicate() {
-
-     }
+/**
 
      //List will be chronologically sorted
 
