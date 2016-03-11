@@ -275,29 +275,31 @@ public class ContactManagerImplTest {
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 2);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void testGetMeetingListOnNullDate() {
+        cm.getMeetingListOn(null);
+    }
 /**
 
      //List will be chronologically sorted
 
     @Test
-    public void testGetMeetingListOnNormal() {
+    public void testGetMeetingListOnOneMeeting() {
 
     }
 
     @Test
-    public void testGetMeetingListOnWereNoMeetings() {
+    public void testGetMeetingListOnNoMeetings() {
 
     }
 
     @Test
-    public void testGetMeetingListOnMustDisregardOneDuplicate() {
+    public void testGetMeetingListOnThreeMeetingsOneDuplicated() {
 
     }
 
-    @Test
-    public void testGetMeetingListOnNullDate() {
 
-    }
 
     @Test
     public void testGetMeetingListOnTryToPreferDuplicateWithNotes() {
