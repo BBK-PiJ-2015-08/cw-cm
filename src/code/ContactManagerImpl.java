@@ -332,8 +332,10 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             for (PastMeeting s : sortedMeetings) {
                 if (m.getDate().equals(s.getDate())) {
                     if (m.getContacts().equals(s.getContacts())) {
-                        //What about notes?
-                        containsDuplicate = true;
+                        if (m.getNotes().equals(s.getNotes())) {
+                            //Waiting for clarification
+                            containsDuplicate = true;
+                        }
                     }
                 }
             }
