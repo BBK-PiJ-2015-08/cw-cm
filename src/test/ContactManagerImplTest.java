@@ -249,15 +249,15 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-        //assertEquals(check.size(), 2);
-        //assertTrue(check.contains(cm.getFutureMeeting(1)));
-        //assertTrue(check.contains(cm.getFutureMeeting(2)));
-        //assertEquals(check.get(0), cm.getFutureMeeting(2));
-        //assertEquals(check.get(1), cm.getFutureMeeting(1));
-        //assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(2).getContacts());
-        //assertEquals(check.get(0).getDate(), cm.getFutureMeeting(2).getDate());
-        //assertEquals(check.get(1).getContacts(), cm.getFutureMeeting(1).getContacts());
-        //assertEquals(check.get(1).getDate(), cm.getFutureMeeting(1).getContacts());
+        assertEquals(check.size(), 2);
+        assertTrue(check.contains(cm.getFutureMeeting(1)));
+        assertTrue(check.contains(cm.getFutureMeeting(2)));
+        assertEquals(check.get(0), cm.getFutureMeeting(2));
+        assertEquals(check.get(1), cm.getFutureMeeting(1));
+        assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(2).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getFutureMeeting(2).getDate());
+        assertEquals(check.get(1).getContacts(), cm.getFutureMeeting(1).getContacts());
+        assertEquals(check.get(1).getDate(), cm.getFutureMeeting(1).getDate());
     }
     /**
      @Test
