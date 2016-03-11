@@ -272,6 +272,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
+        if (date == null) {
+            throw new NullPointerException("Please check that date is not null");
+        }
         /**
          * ((Check the date is valid))
          * Check the date is not null; if it is throw a NullPointerException
