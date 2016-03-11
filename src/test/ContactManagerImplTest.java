@@ -280,15 +280,24 @@ public class ContactManagerImplTest {
     public void testGetMeetingListOnNullDate() {
         cm.getMeetingListOn(null);
     }
-/**
 
-     //List will be chronologically sorted
-
+    //List will be chronologically sorted
     @Test
-    public void testGetMeetingListOnOneMeeting() {
-
+    public void testGetMeetingListOnOneFutureMeeting() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        List<Meeting> check = cm.getMeetingListOn(futureDate);
+        assertEquals(check.size(), 1);
+        assertEquals(check.get(0), cm.getFutureMeeting(1));
+        assertEquals(check.get(0).getId(), cm.getFutureMeeting(1).getId());
+        assertEquals(check.get(0).getContacts(), cm.getFutureMeeting(1).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getFutureMeeting(1).getDate());
     }
 
+    @Test
+    public void testGetMeetingListOnOnePastMeeting() {
+
+    }
+/**
     @Test
     public void testGetMeetingListOnNoMeetings() {
 
