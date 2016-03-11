@@ -326,13 +326,15 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getDate(), cm.getPastMeeting(1).getDate());
         assertEquals(check.get(0).getNotes(), cm.getPastMeeting(1).getNotes());
     }
-/**
+
     @Test
     public void testGetPastMeetingListForTwo() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Eating ants");
         cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Learning about paw paws and prickly pears");
+        List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
+        assertEquals(check.size(), 2);
     }
-
+/**
     @Test
     public void testGetPastMeetingListForNoMeetings() {
 
