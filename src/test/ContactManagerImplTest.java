@@ -335,6 +335,9 @@ public class ContactManagerImplTest {
         assertEquals(check.size(), 2);
         assertTrue(check.contains(cm.getPastMeeting(1)));
         assertTrue(check.contains(cm.getPastMeeting(2)));
+        assertEquals(check.get(0), cm.getPastMeeting(2));
+        assertEquals(check.get(1), cm.getPastMeeting(1));
+
 
     }
 /**
