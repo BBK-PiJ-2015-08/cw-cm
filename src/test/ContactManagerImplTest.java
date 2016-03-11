@@ -310,9 +310,9 @@ public class ContactManagerImplTest {
         cm.getPastMeetingListFor(null);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testGetPastMeetingListForNonExistentContact() {
-
+        cm.getPastMeetingListFor(extraContact2);
     }
 /**
     @Test
