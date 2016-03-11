@@ -234,7 +234,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListOneMeetingPlanned() {
+    public void testGetFutureMeetingListOneMeeting() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 1);
@@ -245,7 +245,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListTwoMeetingsPlanned() {
+    public void testGetFutureMeetingListTwoMeetings() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
@@ -261,7 +261,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListNoMeetingsPlanned() {
+    public void testGetFutureMeetingListNoMeetings() {
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertTrue(check.isEmpty());
     }
@@ -302,8 +302,32 @@ public class ContactManagerImplTest {
     public void testGetMeetingListOnTryToPreferDuplicateWithNotes() {
 
     }
-
+*/
 //List will be chronologically sorted
+    @Test
+    public void testGetPastMeetingListForNullContact() {
+
+    }
+
+    @Test
+    public void testGetPastMeetingListForNonExistentContact() {
+
+    }
+/**
+    @Test
+    public void testGetPastMeetingListForNoMeetings() {
+
+    }
+
+    @Test
+    public void testGetPastMeetingListForOne() {
+
+    }
+
+    @Test
+    public void testGetPastMeetingListForTwo() {
+
+    }
 
     @Test
     public void testGetPastMeetingListForNoMeetings() {
@@ -311,47 +335,17 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetPastMeetingListForAttendedOne() {
+    public void testGetPastMeetingListForTwoMeetingsOneDuplicated() {
 
     }
 
     @Test
-    public void testGetPastMeetingListForAttendedTwo() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForAttendedThree() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForAttendedTwoDisregardOneDuplicate() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForAttendedTwoPreferDuplicateWithNotes() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForAttendedFourOneDuplicate() {
+    public void testGetPastMeetingListForTwoMeetingsOneDuplicatedWithNotes() {
 
     }
 
     @Test
     public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForContactIdNonExistent() {
-
-    }
-
-    @Test
-    public void testGetPastMeetingListForNullContact() {
 
     }
 */
