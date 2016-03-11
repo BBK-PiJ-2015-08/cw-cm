@@ -333,6 +333,9 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Learning about paw paws and prickly pears");
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertEquals(check.size(), 2);
+        assertTrue(check.contains(cm.getPastMeeting(1)));
+        assertTrue(check.contains(cm.getPastMeeting(2)));
+
     }
 /**
     @Test
