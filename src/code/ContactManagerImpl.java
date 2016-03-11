@@ -275,6 +275,25 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (date == null) {
             throw new NullPointerException("Please check that date is not null");
         }
+        List<Meeting> unsortedMeetings = new ArrayList<>();
+        for (Meeting m : allMeetings) {
+            //It is really critical that this works for day rather than down to the specific minute
+            if(m.getDate().equals(date)) {
+                unsortedMeetings.add(m);
+            }
+        }
+        List<Meeting> sortedMeetings = new ArrayList<>();
+        for (Meeting u : unsortedMeetings) {
+            boolean containsAlready = false;
+            if (sortedMeetings.contains(u)) {
+                containsAlready = true;
+            }
+            if (!containsAlready) {
+                sortedMeetings.add(u);
+            }
+        }
+        Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+        return sortedMeetings;
         /**
          * ((Check the date is valid))
          * Check the date is not null; if it is throw a NullPointerException
@@ -285,7 +304,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
          * ((What about PastMeetings, what if one has notes and other doesn't and you return the one without notes))
          * Return the list
          */
-        return null;
     }
 
     /**
