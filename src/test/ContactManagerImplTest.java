@@ -475,7 +475,7 @@ public class ContactManagerImplTest {
         String nullNotes = null;
         cm.addMeetingNotes(1, nullNotes);
     }
-    
+
     @Test
     public void testAddNewContactNormal() {
         int result = cm.addNewContact("Akela", "A lone wolf");

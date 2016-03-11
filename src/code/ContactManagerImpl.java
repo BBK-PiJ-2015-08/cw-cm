@@ -128,11 +128,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
-                    //Meeting happened in future RATHER THAN PAST
                     if (!m.getDate().before(currentDate)) {
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
-                    //Sergio stated converting FutureMeeting to PastMeeting where necessary is not necessary
                     /**
                     else if (m instanceof FutureMeeting) {
                         //could convert it to a past meeting
