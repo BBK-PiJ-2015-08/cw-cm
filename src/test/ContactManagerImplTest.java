@@ -295,7 +295,13 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetMeetingListOnOnePastMeeting() {
-
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Notes");
+        List<Meeting> check = cm.getMeetingListOn(pastDate);
+        assertEquals(check.size(), 1);
+        assertEquals(check.get(0), cm.getPastMeeting(1));
+        assertEquals(check.get(0).getId(), cm.getPastMeeting(1).getId());
+        assertEquals(check.get(0).getContacts(), cm.getPastMeeting(1).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getPastMeeting(1).getDate());
     }
 /**
     @Test
