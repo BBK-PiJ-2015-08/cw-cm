@@ -55,8 +55,10 @@ public class ContactManagerImplTest {
     private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
+    private final Calendar futureDayPM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
+    private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
 
     private ContactManager cm;
