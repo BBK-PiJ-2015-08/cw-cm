@@ -275,7 +275,6 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         List<Meeting> unsortedMeetings = new ArrayList<>();
         for (Meeting m : allMeetings) {
-            //It is really critical that this works for day rather than down to the specific minute
             if(m.getDate().equals(date)) {
                 unsortedMeetings.add(m);
             }
