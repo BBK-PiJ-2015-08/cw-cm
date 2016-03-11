@@ -344,12 +344,13 @@ public class ContactManagerImplTest {
         assertEquals(check.get(1).getDate(), cm.getPastMeeting(1).getDate());
         assertEquals(check.get(1).getNotes(), cm.getPastMeeting(1).getNotes());
     }
-/**
+
     @Test
     public void testGetPastMeetingListForNoMeetings() {
-
+        List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
+        assertTrue(check.isEmpty());
     }
-
+/**
     @Test
     public void testGetPastMeetingListForTwoMeetingsOneDuplicated() {
 
