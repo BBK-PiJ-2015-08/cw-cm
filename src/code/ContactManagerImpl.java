@@ -300,17 +300,19 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
         /**
-         * Check the contact ID exists; if it doesn't throw an IllegalArgumentException
          * Check the contact is not null; if it is throw a NullPointerException
+         * Check the contact exists; if it doesn't throw an IllegalArgumentException
          * Create an empty list which will hold any past meetings
-         * Check if the contact was an attendee for any meetings that happened in the past. ((If a meeting happened in
-         * the past but is a FutureMeeting, convert it to a PastMeeting)). If contact was an attendee for any past
-         * meetings, add the PastMeeting to the list
-         * CHRONOLOGICALLY, checking for duplicates before adding.
-         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal, but prefer
-         * to use one with notes over one without notes.
+         * Check if the contact was an attendee for any meetings that happened in the past. If contact was an attendee for any past
+         * meetings, add the PastMeeting to the list CHRONOLOGICALLY, checking for duplicates before adding.
+         * ((If a meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting - not essential)).
+         * Two meetings are equal only if both their dates are equal and their sets of contacts are equal, <can this prefer
+         * to use one with notes over one without notes?>
          * Return the list.
          */
+        if (contact == null) {
+            throw new NullPointerException("Please make sure the contact is not null");
+        }
         return null;
     }
 
