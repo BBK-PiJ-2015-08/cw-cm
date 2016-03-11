@@ -234,7 +234,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListNormalOneMeetingPlanned() {
+    public void testGetFutureMeetingListOneMeetingPlanned() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 1);
@@ -245,7 +245,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListNormalTwoMeetingsPlanned() {
+    public void testGetFutureMeetingListTwoMeetingsPlanned() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
@@ -264,6 +264,15 @@ public class ContactManagerImplTest {
     public void testGetFutureMeetingListNoMeetingsPlanned() {
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertTrue(check.isEmpty());
+    }
+
+    @Test
+    public void testGetFutureMeetingListTwoMeetingsOneDuplicated() {
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
+        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        assertEquals(check.size(), 2);
     }
 /**
 
@@ -343,7 +352,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingListForNullContact() {
-    
+
     }
 */
     @Test(expected = NullPointerException.class)
