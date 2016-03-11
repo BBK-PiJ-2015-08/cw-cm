@@ -55,7 +55,7 @@ public class ContactManagerImplTest {
     private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
-    private final Calendar futureDayPM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
+    private final Calendar futureDatePM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
     private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
     private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
@@ -311,12 +311,25 @@ public class ContactManagerImplTest {
         List<Meeting> check = cm.getMeetingListOn(pastDate);
         assertEquals(check.size(), 0);
     }
-/**
-    @Test
-    public void testGetMeetingListOnNoMeetings() {
 
+    @Test
+    public void testGetMeetingListOnTwoFutureOneDay() {
+        cm.addFutureMeeting(cm.getContacts(3), futureDatePM);
+        cm.addFutureMeeting(cm.getContacts(2), futureDate);
+        List<Meeting> check = cm.getMeetingListOn(futureDate);
+        assertEquals(check.size(), 2);
+        assertEquals(check.get(0), cm.getFutureMeeting(2));
     }
 
+    @Test
+    public void testGetMeetingListOnTwoPastOneDay() {
+
+    }
+/**
+ @Test
+ public void testGetMeetingListOn() {
+
+ }
     @Test
     public void testGetMeetingListOnThreeMeetingsOneDuplicated() {
 
@@ -377,12 +390,12 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetPastMeetingListForThreeMeetingsOneDuplicated() {
+    public void testGetPastMeetingListForThreeMeetingsOneDuplicatesPropertiesButNotId() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
         cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Trying fancy ants");
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
-        assertEquals(check.size(), 2);
+        assertEquals(check.size(), 3);
     }
 /**
     @Test
