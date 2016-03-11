@@ -8,6 +8,7 @@
  * 6. Add notes to a meeting (addMeetingNotes) X
  * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) & (getPastMeetingListFor)
  * 7.5 Consider making validID check its own method X
+ * NB Need to handle being given IDs that are 0 or negative
  * 8. Save all data (flush)
  * 13 methods to test in total
  */
@@ -304,9 +305,9 @@ public class ContactManagerImplTest {
     }
 */
 //List will be chronologically sorted
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testGetPastMeetingListForNullContact() {
-
+        cm.getPastMeetingListFor(null);
     }
 
     @Test
