@@ -316,7 +316,33 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if(!validContact(contact)) {
             throw new IllegalArgumentException("That contact doesn't exist in this Contact Manager");
         }
-        return null;
+        Set<PastMeeting> unsortedMeetings = new HashSet<>();
+        for (Meeting m : allMeetings) {
+            if (m instanceof PastMeeting) {
+                for (Contact c : m.getContacts()) {
+                    if (c.getId() == contact.getId()) {
+                        unsortedMeetings.add((PastMeeting) m);
+                    }
+                }
+            }
+        }
+        List<PastMeeting> sortedMeetings = new ArrayList<>();
+        for (PastMeeting m : unsortedMeetings) {
+            boolean containsDuplicate = false;
+            for (PastMeeting s : sortedMeetings) {
+                if (m.getDate().equals(s.getDate())) {
+                    if (m.getContacts().equals(s.getContacts())) {
+                        //What about notes?
+                        containsDuplicate = true;
+                    }
+                }
+            }
+            if (!containsDuplicate) {
+                sortedMeetings.add(m);
+            }
+        }
+        Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+        return sortedMeetings;
     }
 
     /**
