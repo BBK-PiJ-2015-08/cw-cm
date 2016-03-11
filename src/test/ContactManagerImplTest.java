@@ -314,11 +314,6 @@ public class ContactManagerImplTest {
     public void testGetPastMeetingListForNonExistentContact() {
         cm.getPastMeetingListFor(extraContact2);
     }
-/**
-    @Test
-    public void testGetPastMeetingListForNoMeetings() {
-
-    }
 
     @Test
     public void testGetPastMeetingListForOne() {
