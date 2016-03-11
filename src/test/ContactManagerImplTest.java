@@ -305,6 +305,12 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getContacts(), cm.getPastMeeting(1).getContacts());
         assertEquals(check.get(0).getDate(), cm.getPastMeeting(1).getDate());
     }
+
+    @Test
+    public void testGetMeetingListOnNoMeetings() {
+        List<Meeting> check = cm.getMeetingListOn(pastDate);
+        assertEquals(check.size(), 0);
+    }
 /**
     @Test
     public void testGetMeetingListOnNoMeetings() {
