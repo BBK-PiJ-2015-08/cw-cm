@@ -268,7 +268,7 @@ public class ContactManagerImplTest {
     }
 
     @Test
-    public void testGetFutureMeetingListTwoMeetingsOneDuplicated() {
+    public void testGetFutureMeetingListThreeMeetingsOneDuplicated() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
@@ -350,12 +350,16 @@ public class ContactManagerImplTest {
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertTrue(check.isEmpty());
     }
-/**
+
     @Test
-    public void testGetPastMeetingListForTwoMeetingsOneDuplicated() {
-
+    public void testGetPastMeetingListForThreeMeetingsOneDuplicated() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
+        cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Trying fancy ants");
+        List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
+        assertEquals(check.size(), 2);
     }
-
+/**
     @Test
     public void testGetPastMeetingListForTwoMeetingsOneDuplicatedWithNotes() {
 
