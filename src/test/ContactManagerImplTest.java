@@ -6,7 +6,7 @@
  * 4. Create new meeting in past (addNewPastMeeting) X
  * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting) X
  * 6. Add notes to a meeting (addMeetingNotes) X
- * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) & (getPastMeetingListFor)
+ * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) X & (getPastMeetingListFor) X
  * 7.5 Consider making validID check its own method X
  * NB Need to handle being given IDs that are 0 or negative
  * 8. Save all data (flush)
@@ -46,7 +46,6 @@ public class ContactManagerImplTest {
 
     private static final String FILENAME = "contacts.txt";
     private Calendar currentDate;
-    //private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
     private Set<Contact> group1;
     private Set<Contact> group2;
@@ -74,7 +73,6 @@ public class ContactManagerImplTest {
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
-        //allMeetings = new ArrayList<>();
 
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
@@ -325,7 +323,14 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetMeetingListOnTwoPastOneDay() {
-
+        cm.addNewPastMeeting(cm.getContacts(3), pastDatePM, "Everybody wants to be a cat");
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Groovin'");
+        List<Meeting> check = cm.getMeetingListOn(pastDate);
+        assertEquals(check.size(), 1);
+        assertTrue(check.contains(cm.getPastMeeting(2)));
+        assertEquals(check.get(0).getContacts(), cm.getPastMeeting(2).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
+        assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
     }
 /**
  @Test
