@@ -244,12 +244,21 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         }
         List<Meeting> sortedMeetings = new ArrayList<>();
         for (Meeting m : nonChronologicalMeetings) {
-            sortedMeetings.add(m);
+            boolean containsDuplicate = false;
+            for (Meeting n : sortedMeetings) {
+                if (m.getDate().equals(n.getDate())) {
+                    if (m.getContacts().equals(n.getContacts())) {
+                        containsDuplicate = true;
+                    }
+                }
+            }
+            if(!containsDuplicate) {
+                sortedMeetings.add(m);
+            }
         }
         Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
         return sortedMeetings;
     }
-
 
     /**
      * Returns the list of meetings that are scheduled for, or that took place on, the specified date
