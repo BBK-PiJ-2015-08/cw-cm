@@ -331,14 +331,7 @@ public class ContactManagerImplTest {
 
  }
     @Test
-    public void testGetMeetingListOnThreeMeetingsOneDuplicated() {
-
-    }
-
-
-
-    @Test
-    public void testGetMeetingListOnTryToPreferDuplicateWithNotes() {
+    public void testGetMeetingListOnTwoMeetingsOneDuplicated() {
 
     }
 */
