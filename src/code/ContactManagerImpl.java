@@ -313,6 +313,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
+        if(!validContact(contact)) {
+            throw new IllegalArgumentException("That contact doesn't exist in this Contact Manager");
+        }
         return null;
     }
 
