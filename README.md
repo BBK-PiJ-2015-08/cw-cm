@@ -1,7 +1,7 @@
 # Programming in Java - Coursework 3 - Contact Manager
 General comments
 --------------
-* Both Keith and Sergio stated on forum that if something created as a FutureMeeting but that's now in the past is noticed, we should not convert it to a PastMeeting.
+* Both Keith and Sergio stated on forum that if something created as a FutureMeeting but that's now in the past is noticed, we don't have to convert it to a PastMeeting.
 
 Note about ContactManagerImpl - addMeetingNotes(int id, String text)
 --------------
