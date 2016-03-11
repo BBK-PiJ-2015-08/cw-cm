@@ -281,7 +281,6 @@ public class ContactManagerImplTest {
         cm.getMeetingListOn(null);
     }
 
-    //List will be chronologically sorted
     @Test
     public void testGetMeetingListOnOneFutureMeeting() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
@@ -342,7 +341,6 @@ public class ContactManagerImplTest {
 
     }
 */
-//List will be chronologically sorted
     @Test(expected = NullPointerException.class)
     public void testGetPastMeetingListForNullContact() {
         cm.getPastMeetingListFor(null);
@@ -477,9 +475,7 @@ public class ContactManagerImplTest {
         String nullNotes = null;
         cm.addMeetingNotes(1, nullNotes);
     }
-
-
-
+    
     @Test
     public void testAddNewContactNormal() {
         int result = cm.addNewContact("Akela", "A lone wolf");
