@@ -337,8 +337,12 @@ public class ContactManagerImplTest {
         assertTrue(check.contains(cm.getPastMeeting(2)));
         assertEquals(check.get(0), cm.getPastMeeting(2));
         assertEquals(check.get(1), cm.getPastMeeting(1));
-
-
+        assertEquals(check.get(0).getContacts(), cm.getPastMeeting(2).getContacts());
+        assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
+        assertEquals(check.get(0).getNotes(), cm.getPastMeeting(2).getNotes());
+        assertEquals(check.get(1).getContacts(), cm.getPastMeeting(1).getContacts());
+        assertEquals(check.get(1).getDate(), cm.getPastMeeting(1).getDate());
+        assertEquals(check.get(1).getNotes(), cm.getPastMeeting(1).getNotes());
     }
 /**
     @Test
