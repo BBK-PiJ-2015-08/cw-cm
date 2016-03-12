@@ -165,6 +165,12 @@ public class ContactManagerImplTest {
         assertNull(cm.getPastMeeting(0));
     }
 
+    @Test
+    public void testGetPastMeetingIdNegative() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        assertNull(cm.getPastMeeting(-1));
+    }
+
     @Test(expected = IllegalStateException.class)
     public void testGetPastMeetingMeetingInFuture() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
