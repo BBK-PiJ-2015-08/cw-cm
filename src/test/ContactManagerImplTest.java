@@ -611,8 +611,18 @@ public class ContactManagerImplTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetContactsIdsOneProvidedIdNonExistent() {
+    public void testGetContactsIdsIdNonExistent() {
         cm.getContacts(50);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetContactsIdsIdZero() {
+        cm.getContacts(0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetContactsIdsIdNegative() {
+        cm.getContacts(-1);
     }
 /**
     //Save all data to disk.
