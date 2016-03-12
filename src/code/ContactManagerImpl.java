@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.Serializable;
+//import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +23,7 @@ import java.beans.XMLDecoder;
 /**
  * @author Jade Dickinson jdicki04
  */
-public class ContactManagerImpl implements ContactManager, Serializable {
+public class ContactManagerImpl implements ContactManager {
     private static final String FILENAME = "contacts.txt";
     private int meetingId;
     private int contactId;
