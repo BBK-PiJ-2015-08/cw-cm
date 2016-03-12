@@ -40,6 +40,8 @@ public class ContactManagerImpl implements ContactManager {
                 allContacts = (Set<Contact>) inputOutput.readObject();
                 meetingId = (int) inputOutput.readObject();
                 contactId = (int) inputOutput.readObject();
+                file.delete();
+                file.createNewFile();
             }
             catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
@@ -59,6 +61,7 @@ public class ContactManagerImpl implements ContactManager {
                 }
             }
         }
+        flush();
     }
 
     /**
@@ -422,9 +425,10 @@ public class ContactManagerImpl implements ContactManager {
     //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
+        //If the file already exists, with contents, I'm aiming to make flush() overwrite the contents instead of adding to them
         try (ObjectOutputStream inputOutput = new ObjectOutputStream(
                 new BufferedOutputStream(
-                        new FileOutputStream(FILENAME)));) {
+                        new FileOutputStream(FILENAME,false)));) {
             inputOutput.writeObject(allMeetings);
             inputOutput.writeObject(allContacts);
             inputOutput.writeObject(meetingId);
