@@ -33,17 +33,16 @@ public class ContactManagerImpl implements ContactManager {
         currentDate = Calendar.getInstance();
         File file = new File(FILENAME);
         if (file.exists() && file.length() > 0) {
-            try (ObjectInputStream
-                         decode = new ObjectInputStream(
-                        new BufferedInputStream(
-                        new FileInputStream(FILENAME)));) {
-                allMeetings = (List<Meeting>) decode.readObject();
-                allContacts = (Set<Contact>) decode.readObject();
-                meetingId = (int) decode.readObject();
-                contactId = (int) decode.readObject();
+            try (ObjectInputStream inputOutput = new ObjectInputStream(
+                    new BufferedInputStream(
+                            new FileInputStream(FILENAME)));) {
+                allMeetings = (List<Meeting>) inputOutput.readObject();
+                allContacts = (Set<Contact>) inputOutput.readObject();
+                meetingId = (int) inputOutput.readObject();
+                contactId = (int) inputOutput.readObject();
             }
             catch (IOException | ClassNotFoundException ex) {
-                System.err.println("Error opening file: " + ex);
+                ex.printStackTrace();
             }
         }
         else {
@@ -423,9 +422,16 @@ public class ContactManagerImpl implements ContactManager {
     //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
-        ObjectOutputStream output;
-
-
-
+        try (ObjectOutputStream inputOutput = new ObjectOutputStream(
+                new BufferedOutputStream(
+                        new FileOutputStream(FILENAME)));) {
+            inputOutput.writeObject(allMeetings);
+            inputOutput.writeObject(allContacts);
+            inputOutput.writeObject(meetingId);
+            inputOutput.writeObject(contactId);
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
