@@ -428,7 +428,7 @@ public class ContactManagerImpl implements ContactManager {
         //If the file already exists, with contents, I'm aiming to make flush() overwrite the contents instead of adding to them
         try (ObjectOutputStream inputOutput = new ObjectOutputStream(
                 new BufferedOutputStream(
-                        new FileOutputStream(FILENAME,false)));) {
+                        new FileOutputStream(FILENAME,false)))) {
             inputOutput.writeObject(allMeetings);
             inputOutput.writeObject(allContacts);
             inputOutput.writeObject(meetingId);
