@@ -319,7 +319,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetMeetingListOnOnePastMeeting() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Notes");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Safe from Shere Khan");
         List<Meeting> check = cm.getMeetingListOn(pastDate);
         assertEquals(check.size(), 1);
         assertEquals(check.get(0), cm.getPastMeeting(1));
@@ -435,12 +435,12 @@ public class ContactManagerImplTest {
 */
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
-        cm.addNewPastMeeting(null, pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(null, pastDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullDate() {
-        cm.addNewPastMeeting(cm.getContacts(1), null, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), null, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = NullPointerException.class)
@@ -451,32 +451,32 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingDateInFuture() {
-        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingSetContactsEmpty() {
-        cm.addNewPastMeeting(group5, pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(group5, pastDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingOneContactIdNonExistent() {
-        cm.addNewPastMeeting(group4, pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(group4, pastDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test
     public void testAddNewPastMeetingNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Mowgli considered joining the Dawn Patrol");
         PastMeeting check = cm.getPastMeeting(1);
         assertEquals(check.getId(), 1);
         assertEquals(check.getDate(), pastDate);
         assertEquals(check.getContacts(), cm.getContacts(1));
-        assertEquals(check.getNotes(), "Should Mowgli leave jungle?");
+        assertEquals(check.getNotes(), "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdNonExistent() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
         cm.addMeetingNotes(2, "Perhaps");
     }
 
