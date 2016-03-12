@@ -489,6 +489,18 @@ public class ContactManagerImplTest {
         cm.addMeetingNotes(2, "Perhaps");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddMeetingNotesMeetingIdZero() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
+        assertNull(cm.addMeetingNotes(0, "Perhaps"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddMeetingNotesMeetingIdNegative() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
+        cm.addMeetingNotes(-1, "Perhaps");
+    }
+
     @Test(expected = IllegalStateException.class)
     public void testAddMeetingNotesMeetingInFuture() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
