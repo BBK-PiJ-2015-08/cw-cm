@@ -45,10 +45,10 @@ public class ContactManagerImpl implements ContactManager {
         }
         else {
             //The below should happen both when file didn't originally exist and if file.length() = 0
-            meetingId = 0;
-            contactId = 0;
             allMeetings = new ArrayList<>();
             allContacts = new HashSet<>();
+            meetingId = 0;
+            contactId = 0;
             if (!file.exists()) {
                 try {
                     file.createNewFile();
