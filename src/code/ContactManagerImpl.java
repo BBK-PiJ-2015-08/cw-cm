@@ -337,7 +337,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public Set<Contact> getContacts(String name) {
-        //Don't plan to make this lenient with upper/lowercase
+        //Don't plan to make this lenient with upper/lowercase. If want to, could use toLowerCase()
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
         }
