@@ -71,7 +71,7 @@ public class ContactManagerImpl implements ContactManager {
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         /**
          * There should be an int field for meetingID. This should start at the current size of the list of all meetings,
-         * and be incremented up by 1 before being used.
+         * plus 1. I.e. if no meetings exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
          * Return a copy of the current value of meetingID.
          */
         if (contacts == null || date == null) {
@@ -277,7 +277,7 @@ public class ContactManagerImpl implements ContactManager {
             throw new IllegalArgumentException("All contacts have to exist already");
         }
         else {
-            meetingId++;
+            meetingId = allMeetings.size() + 1;
             allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
         }
     }
