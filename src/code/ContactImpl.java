@@ -57,7 +57,7 @@ public class ContactImpl implements Contact, Serializable {
     }
 
     /**
-     * @return the ID of the contact.
+     * @see Contact
      */
     @Override
     public int getId() {
@@ -65,7 +65,7 @@ public class ContactImpl implements Contact, Serializable {
     }
 
     /**
-     * @return the name of the contact.
+     * @see Contact
      */
     @Override
     public String getName() {
@@ -73,7 +73,7 @@ public class ContactImpl implements Contact, Serializable {
     }
 
     /**
-     * @return a string with notes about the contact, maybe empty if we have not written anything about the contact.
+     * @see Contact
      */
     @Override
     public String getNotes() {
@@ -81,7 +81,7 @@ public class ContactImpl implements Contact, Serializable {
     }
 
     /**
-     * @param note the notes to be added
+     * @see Contact
      */
     @Override
     public void addNotes(String note) {
