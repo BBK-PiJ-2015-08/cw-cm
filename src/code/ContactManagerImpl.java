@@ -16,11 +16,6 @@ import java.util.Set;
 
 import static java.util.Collections.*;
 /**
-import java.beans.XMLEncoder;
-import java.beans.XMLDecoder;
-*/
-
-/**
  * @author Jade Dickinson jdicki04
  */
 public class ContactManagerImpl implements ContactManager {
@@ -339,7 +334,7 @@ public class ContactManagerImpl implements ContactManager {
      * @throws NullPointerException if the parameter is null
      */
     @Override
-    public Set<Contact> getContacts(String name)    {
+    public Set<Contact> getContacts(String name) {
         //Don't plan to make this lenient with upper/lowercase
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
@@ -387,7 +382,7 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * This method is for checking if a meeting ID provided exists in the set of all meetings.
+     * Checks if a meeting ID provided exists in the set of all meetings.
      * Used by getPastMeeting, getFutureMeeting, getMeeting and addMeetingNotes
      * @param id
      * @return
@@ -403,8 +398,7 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * This method is for checking if a contact exists in this contact manager. If it returns true for a given contact,
-     * the method utilising it can throw the appropriate IllegalArgumentException.
+     * Checks if a contact exists in this contact manager.
      * Used by getFutureMeetingList and getPastMeetingListFor
      * @param contact
      * @return

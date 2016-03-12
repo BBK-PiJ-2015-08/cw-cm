@@ -1,6 +1,3 @@
-/**
- * @author Jade Dickinson jdicki04
- */
 package test;
 
 import code.Contact;
@@ -10,7 +7,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class ContactImplTest {
     private int testId;
     private String testName;

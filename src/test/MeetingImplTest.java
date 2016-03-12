@@ -1,6 +1,3 @@
-/**
- * @author Jade Dickinson jdicki04
- */
 package test;
 
 import code.Meeting;
@@ -21,7 +18,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class MeetingImplTest {
     private int testMeetingId;
     private Calendar testDate;

@@ -1,21 +1,3 @@
-/**
- * Plan for order of test creation:
- * 1. Create a new contact: (AddNewContact) X
- * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
- * 3. Create new meeting in future (addFutureMeeting) X
- * 4. Create new meeting in past (addNewPastMeeting) X
- * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting) X
- * 6. Add notes to a meeting (addMeetingNotes) X
- * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) X & (getPastMeetingListFor) X
- * 7.5 Consider making validID check its own method X
- * NB Need to handle being given IDs that are 0 or negative
- * 8. Save all data (flush)
- * 13 methods to test in total
- */
-
-/**
- * @author Jade Dickinson jdicki04
- */
 package test;
 
 import code.Contact;
@@ -42,7 +24,24 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
+/**
+ * Plan for order of test creation:
+ * 1. Create a new contact: (AddNewContact) X
+ * 2. Construct and return sets of contacts: (getContacts(int... ids) and getContacts(String name)) X
+ * 3. Create new meeting in future (addFutureMeeting) X
+ * 4. Create new meeting in past (addNewPastMeeting) X
+ * 5. Get and return individual meetings (getPastMeeting) X, (getFutureMeeting) X & (getMeeting) X
+ * 6. Add notes to a meeting (addMeetingNotes) X
+ * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) X & (getPastMeetingListFor) X
+ * 7.5 Consider making validID check its own method X
+ * NB Need to handle being given IDs that are 0 or negative
+ * 8. Save all data (flush)
+ * 13 methods to test in total
+ * Create JavaDoc
+ */
+/**
+ * @author Jade Dickinson jdicki04
+ */
 public class ContactManagerImplTest {
 
     private static final String FILENAME = "contacts.txt";

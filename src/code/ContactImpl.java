@@ -13,7 +13,6 @@ import java.io.Serializable;
  * must be thrown. If any of the references / pointers passed as parameters to the
  * constructor is null, a NullPointerException must be thrown.
  */
-
 /**
  * @author Jade Dickinson jdicki04
  */
