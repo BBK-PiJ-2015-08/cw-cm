@@ -246,8 +246,17 @@ public class ContactManagerImplTest {
         assertEquals(null, cm.getMeeting(4));
     }
 
+    @Test
+    public void testGetMeetingIdZero() {
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Stealing honey from bees");
+        assertNull(cm.getMeeting(0));
+    }
 
-     //List will be chronologically sorted
+    @Test
+    public void testGetMeetingIdNegative() {
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Stealing honey from bees");
+        assertNull(cm.getMeeting(-1));
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingListContactNonExistent() {
