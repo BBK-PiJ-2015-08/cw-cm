@@ -113,6 +113,7 @@ public class ContactManagerImplTest {
     public void testAddFutureMeetingFirstIdReturned() {
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
         assertEquals(1, thisMeetingId);
+        cm.flush();
     }
 
     @Test
@@ -506,7 +507,6 @@ public class ContactManagerImplTest {
         cm.addMeetingNotes(1, "Mowgli should rejoin the man tribe");
     }
 
-
     @Test
     public void testAddMeetingNotesNormal() {
         cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "That ");
@@ -569,14 +569,14 @@ public class ContactManagerImplTest {
 
 
     @Test
-     public void testGetContactsStringIsPresentInOneName() {
+    public void testGetContactsStringIsPresentInOneName() {
         assertEquals(cm.getContacts("Mowgli"),cm.getContacts(1));
     }
 
     @Test
-     public void testGetContactsStringIsPresentInTwoNames() {
+    public void testGetContactsStringIsPresentInTwoNames() {
         assertEquals(cm.getContacts("Ba"), cm.getContacts(2,3));
-     }
+    }
 
     @Test
     public void testGetContactsStringNotPresent() {
