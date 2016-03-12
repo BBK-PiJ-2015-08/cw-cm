@@ -201,6 +201,18 @@ public class ContactManagerImplTest {
         assertEquals(null, cm.getPastMeeting(2));
     }
 
+    @Test
+    public void testGetFutureMeetingIdZero() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        assertNull(cm.getFutureMeeting(0));
+    }
+
+    @Test
+    public void testGetFutureMeetingIdNegative() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        assertNull(cm.getFutureMeeting(-1));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingMeetingInPast() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
