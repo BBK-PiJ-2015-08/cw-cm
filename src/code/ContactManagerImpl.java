@@ -3,8 +3,11 @@ package code;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 //import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -29,8 +32,19 @@ public class ContactManagerImpl implements ContactManager {
     public ContactManagerImpl() {
         currentDate = Calendar.getInstance();
         File file = new File(FILENAME);
-        if (file.exists()) {
-            try
+        if (file.exists() && file.length() > 0) {
+            try (ObjectInputStream
+                         decode = new ObjectInputStream(
+                        new BufferedInputStream(
+                        new FileInputStream(FILENAME)));) {
+                allMeetings = (List<Meeting>) decode.readObject();
+                allContacts = (Set<Contact>) decode.readObject();
+                meetingId = (int) decode.readObject();
+                contactId = (int) decode.readObject();
+            }
+            catch (IOException | ClassNotFoundException ex) {
+                System.err.println("Error opening file: " + ex);
+            }
         }
         else {
             //The below should happen both when file didn't originally exist and if file.length() = 0
@@ -409,6 +423,9 @@ public class ContactManagerImpl implements ContactManager {
     //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
+        ObjectOutputStream output;
+
+
 
     }
 }
