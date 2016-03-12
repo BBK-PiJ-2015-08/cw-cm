@@ -40,6 +40,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ContactManagerImplTest {
@@ -156,6 +157,12 @@ public class ContactManagerImplTest {
     public void testGetPastMeetingIdDoesntExist() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
         assertEquals(null, cm.getPastMeeting(2));
+    }
+
+    @Test
+    public void testGetPastMeetingIdZero() {
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        assertNull(cm.getPastMeeting(0));
     }
 
     @Test(expected = IllegalStateException.class)
