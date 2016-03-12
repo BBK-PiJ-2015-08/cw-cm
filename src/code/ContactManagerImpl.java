@@ -27,10 +27,10 @@ public class ContactManagerImpl implements ContactManager {
     private Set<Contact> allContacts;
 
     public ContactManagerImpl() {
-        File file = new File(FILENAME);
         currentDate = Calendar.getInstance();
-        if () {
-
+        File file = new File(FILENAME);
+        if (file.exists()) {
+            try
         }
         else {
             //The below should happen both when file didn't originally exist and if file.length() = 0
