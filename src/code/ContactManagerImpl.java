@@ -70,7 +70,7 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         /**
-         * There should be an int field for meetingID. This should start at the current size of the list of all meetings,
+         * There should be an int field for meetingID. This should be the current size of the list of all meetings,
          * plus 1. I.e. if no meetings exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
          * Return a copy of the current value of meetingID.
          */
@@ -310,8 +310,8 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addNewContact(String name, String notes) {
         /**
-         * There should be an int field for contactID. This should start at 0, and be incremented by 1 at method start,
-         * before being used to create a new contact, for which the ID will be the current value of contactID.
+         * There'll be an int field for contactID. This should be the current size of the Set of all contacts, plus 1.
+         * When creating a new contact, the ID will be the current value of contactID.
          */
         if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
@@ -319,7 +319,7 @@ public class ContactManagerImpl implements ContactManager {
         else if (name.equals("") || notes.equals("")) {
             throw new IllegalArgumentException("Neither name nor notes can be empty");
         }
-        contactId++;
+        contactId = allContacts.size() + 1;
         allContacts.add(new ContactImpl(contactId, name, notes));
         int result = contactId;
         return result;
