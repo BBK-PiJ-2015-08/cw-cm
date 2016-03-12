@@ -117,6 +117,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
                     if (!m.getDate().before(currentDate)) {
+                        //Not IllegalArgumentException as in getFutureMeeting; Sergio stated we should match the spec and throw IllegalStateException
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
                     else {
@@ -414,7 +415,7 @@ public class ContactManagerImpl implements ContactManager, Serializable {
      * @throws NullPointerException if the parameter is null
      */
     @Override
-    public Set<Contact> getContacts(String name) {
+    public Set<Contact> getContacts(String name)    {
         //Don't plan to make this lenient with upper/lowercase
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
@@ -467,6 +468,11 @@ public class ContactManagerImpl implements ContactManager, Serializable {
         return resultSet;
     }
 
+    /**
+     * This method is for checking if a meeting ID provided exists in the set of all meetings. Used by getPastMeeting, getFutureMeeting, getMeeting and addMeetingNotes
+     * @param id
+     * @return
+     */
     public boolean validID(int id) {
         boolean validID = false;
         for (Meeting m : allMeetings) {
@@ -478,8 +484,9 @@ public class ContactManagerImpl implements ContactManager, Serializable {
     }
 
     /**
-     * This method is for checking if a contact exists in this contact manager. It is boolean so that if it returns true
-     * for a given contact, the method utilising it can throw the appropriate IllegalArgumentException
+     * This method is for checking if a contact exists in this contact manager. If it returns true
+     * for a given contact, the method utilising it can throw the appropriate IllegalArgumentException.
+     * Used by getFutureMeetingList and getPastMeetingListFor
      * @param contact
      * @return
      */
