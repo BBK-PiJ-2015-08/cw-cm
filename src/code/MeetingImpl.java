@@ -51,7 +51,7 @@ public abstract class MeetingImpl implements Meeting {
     }
 
     /**
-     * @return the id of the meeting.
+     * @see Meeting
      */
     @Override
     public int getId() {
@@ -59,7 +59,7 @@ public abstract class MeetingImpl implements Meeting {
     }
 
     /**
-     * @return the date of the meeting.
+     * @see Meeting
      */
     @Override
     public Calendar getDate() {
@@ -67,11 +67,7 @@ public abstract class MeetingImpl implements Meeting {
     }
 
     /**
-     * The list contains a minimum of one contact (if there were
-     * just two people: the user and the contact) and may contain an
-     * arbitrary number of them.
-     *
-     * @return the details of people that attended the meeting.
+     * @see Meeting
      */
     @Override
     public Set<Contact> getContacts() {
