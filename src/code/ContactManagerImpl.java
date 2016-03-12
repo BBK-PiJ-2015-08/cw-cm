@@ -40,8 +40,6 @@ public class ContactManagerImpl implements ContactManager {
                 allContacts = (Set<Contact>) inputOutput.readObject();
                 meetingId = (int) inputOutput.readObject();
                 contactId = (int) inputOutput.readObject();
-                file.delete();
-                file.createNewFile();
             }
             catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
