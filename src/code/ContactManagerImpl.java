@@ -70,8 +70,8 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         /**
-         * There should be an int field for meetingID. This should start at 0 (the value 0 is never used), and be
-         * incremented up by 1 at the beginning of the method, before being used.
+         * There should be an int field for meetingID. This should start at the current size of the list of all meetings,
+         * and be incremented up by 1 before being used.
          * Return a copy of the current value of meetingID.
          */
         if (contacts == null || date == null) {
@@ -84,7 +84,7 @@ public class ContactManagerImpl implements ContactManager {
             throw new IllegalArgumentException("All contacts must exist already");
         }
         else {
-            meetingId++;
+            meetingId = allMeetings.size() + 1;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
             int currentMeetingId = meetingId;
             return currentMeetingId;
