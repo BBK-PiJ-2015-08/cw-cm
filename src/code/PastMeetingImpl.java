@@ -13,7 +13,6 @@ import java.util.Set;
  * A meeting that was held in the past.
  * It includes your notes about what happened and what was agreed.
  */
-
 /**
  * @author Jade Dickinson jdicki04
  */
@@ -31,7 +30,7 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
     }
 
     /**
-     * @return the notes from the meeting. If there are no notes, the empty string is returned.
+     * @see PastMeeting
      */
     @Override
     public String getNotes() {
