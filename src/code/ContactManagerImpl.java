@@ -1,9 +1,9 @@
 package code;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.BufferedInputStream;
 import java.io.ObjectInputStream;
 //import java.io.Serializable;
 
@@ -29,19 +29,8 @@ public class ContactManagerImpl implements ContactManager {
     public ContactManagerImpl() {
         File file = new File(FILENAME);
         currentDate = Calendar.getInstance();
-        //Below checks both that the file exists and that it contains at least one character
-        if (file.exists() && file.length() > 0) {
-            try (ObjectInputStream
-                         decoding = new ObjectInputStream(
-                    new BufferedInputStream(
-                            new FileInputStream(FILENAME)));) {
-                allMeetings = (List<Meeting>) decoding.readObject();
-                allContacts = (Set<Contact>) decoding.readObject();
-                meetingId = (int) decoding.readObject();
-                contactId = (int) decoding.readObject();
-            } catch (IOException | ClassNotFoundException ex) {
-                System.err.println("Error: " + ex);
-            }
+        if () {
+
         }
         else {
             //The below should happen both when file didn't originally exist and if file.length() = 0
