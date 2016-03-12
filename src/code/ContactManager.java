@@ -94,8 +94,7 @@ public interface ContactManager {
      * @param date the date on which the meeting took place
      * @param text messages to be added about the meeting.
      * @throws IllegalArgumentException if the list of contacts is
-     *
-    empty, or any of the contacts does not exist
+     * empty, or any of the contacts does not exist
      * @throws NullPointerException if any of the arguments is null
      */
     void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text);
@@ -120,12 +119,17 @@ public interface ContactManager {
      *
      * @param name  the name of the contact.
      * @param notes notes to be added about the contact.
+     * @return the ID for the new contact
+     * @throws IllegalArgumentException if the name or the notes are empty strings
      * @throws NullPointerException if the name or the notes are null
      */
     int addNewContact(String name, String notes);
 
     /**
      * Returns a list with the contacts whose name contains that string.
+     *
+     * If the string is the empty string, this methods returns the set
+     * that contains all current contacts.
      *
      * @param name the string to search for
      * @return a list with the contacts whose name contains that string.
@@ -135,16 +139,18 @@ public interface ContactManager {
 
     /**
      * Returns a list containing the contacts that correspond to the IDs.
+     * Note that this method can be used to retrieve just one contact by passing only one ID.
      *
      * @param ids an arbitrary number of contact IDs
      * @return a list containing the contacts that correspond to the IDs.
-     * @throws IllegalArgumentException if any of the IDs does not correspond to a real contact
+     * @throws IllegalArgumentException if no IDs are provided or if
+     * any of the IDs does not correspond to a real contact
      */
     Set<Contact> getContacts(int... ids);
 
     /**
      * Save all data to disk.
-     * <p/>
+     *
      * This method must be executed when the program is
      * closed and when/if the user requests it.
      */
