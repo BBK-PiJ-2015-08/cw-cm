@@ -628,10 +628,4 @@ public class ContactManagerImplTest {
     public void testGetContactsIdsIdNegative() {
         cm.getContacts(-1);
     }
-/**
-    @Test
-    public void testFlush() {
-
-    }
- */
 }
