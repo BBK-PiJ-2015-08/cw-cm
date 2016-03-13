@@ -59,7 +59,7 @@ public class ContactManagerImpl implements ContactManager {
             try {
                 fromFile.close();
             }
-            catch (IOException ex3){
+            catch (IOException | NullPointerException ex3){
                 ex3.printStackTrace();
             }
         }
