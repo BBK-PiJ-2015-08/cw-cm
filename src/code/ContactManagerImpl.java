@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 import static java.util.Collections.*;
 /**
@@ -192,18 +194,43 @@ public class ContactManagerImpl implements ContactManager {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
         Set<Meeting> nonChronologicalMeetings = new HashSet<>();
+        for (ListIterator<Meeting> iter = allMeetings.listIterator();iter.hasNext();) {
+            Meeting m = iter.next();
+            if (m instanceof FutureMeeting) {
+                for (Iterator<Contact> itertwo = allContacts.iterator(); itertwo.hasNext();) {
+                    Contact c = itertwo.next();
+                    if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
+                        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
+                        iter.set(nowPastMeeting);
+                        /**
+                        Meeting temp = getMeeting(m.getId());
+                        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
+                        iter.remove();
+                        allMeetings.add(nowPastMeeting);
+                         */
+                    }
+                    nonChronologicalMeetings.add(m);
+                }
+            }
+        }
+
+        /**
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting) {
                 for (Contact c : m.getContacts()) {
                     if (c.getId() == contact.getId()) {
                         if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
-                            changeFutureMeetingToPast(m);
+                            FutureMeeting temp = (FutureMeeting) getMeeting(m.getId());
+                            PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
+                            allMeetings.add(nowPastMeeting);
+                            allMeetings.remove(temp);
                         }
                         nonChronologicalMeetings.add(m);
                     }
                 }
             }
-        }
+         }
+        */
         List<Meeting> sortedMeetings = new ArrayList<>();
         for (Meeting m : nonChronologicalMeetings) {
             boolean containsDuplicate = false;
