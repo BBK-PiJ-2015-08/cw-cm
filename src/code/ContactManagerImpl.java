@@ -280,7 +280,7 @@ public class ContactManagerImpl implements ContactManager {
         if (contacts == null || date == null || text == null) {
             throw new NullPointerException("Please make sure nothing entered is null");
         }
-        if (date.after(currentDate)) {
+        if (date.after(currentDate) && !date.equals(currentDate)) {
             throw new IllegalArgumentException("Date must be in the past");
         }
         if (contacts.isEmpty()) {
