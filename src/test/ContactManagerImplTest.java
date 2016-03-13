@@ -173,6 +173,11 @@ public class ContactManagerImplTest {
     }
 
     @Test
+    public void testGetPastMeetingNoMeetingsExist() {
+        assertNull(cm.getPastMeeting(1));
+    }
+
+    @Test
     public void testGetPastMeetingIdZero() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
         assertNull(cm.getPastMeeting(0));
