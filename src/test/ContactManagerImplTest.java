@@ -270,6 +270,11 @@ public class ContactManagerImplTest {
     }
 
     @Test
+    public void testGetMeetingNoMeetingsExist() {
+        assertNull(cm.getMeeting(1));
+    }
+
+    @Test
     public void testGetMeetingIdZero() {
         cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Stealing honey from bees");
         assertNull(cm.getMeeting(0));
