@@ -110,6 +110,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
+        currentDate = Calendar.getInstance();
         PastMeeting thisMeetingOrNull = null;
         if (validID(id)) {
             for (Meeting m : allMeetings) {
@@ -119,7 +120,15 @@ public class ContactManagerImpl implements ContactManager {
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
                     else {
-                        thisMeetingOrNull = (PastMeeting) m;
+                        if (m instanceof FutureMeeting) {
+                            FutureMeeting temp = getFutureMeeting(id);
+                            thisMeetingOrNull = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), "");
+                            allMeetings.add(thisMeetingOrNull);
+                            allMeetings.remove(temp);
+                        }
+                        else {
+                            thisMeetingOrNull = (PastMeeting) m;
+                        }
                     }
                 }
             }
