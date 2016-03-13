@@ -39,6 +39,10 @@ public class ContactManagerImplTest {
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
 
     private static final String shouldMowgliLeave = "Should Mowgli leave jungle?";
+    private static final String mowgliConsidered = "Mowgli considered joining the Dawn Patrol";
+    private static final String wolfName = "Akela";
+    private static final String wolfNotes = "A lone wolf";
+    private static final String mowgliReturn = "Mowgli is returning to the man-village";
     private ContactManager cm;
 
     private Contact testContact1;
@@ -517,12 +521,12 @@ public class ContactManagerImplTest {
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
-        cm.addNewPastMeeting(null, pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(null, pastDate, mowgliConsidered);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullDate() {
-        cm.addNewPastMeeting(cm.getContacts(1), null, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(cm.getContacts(1), null, mowgliConsidered);
     }
 
     @Test(expected = NullPointerException.class)
@@ -533,7 +537,7 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingDateInFuture() {
-        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, mowgliConsidered);
     }
 
     @Test
@@ -548,22 +552,22 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingSetContactsEmpty() {
-        cm.addNewPastMeeting(group2, pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(group2, pastDate, mowgliConsidered);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingOneContactIdNonExistent() {
-        cm.addNewPastMeeting(group1, pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(group1, pastDate, mowgliConsidered);
     }
 
     @Test
     public void testAddNewPastMeetingNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, mowgliConsidered);
         PastMeeting check = cm.getPastMeeting(1);
         assertEquals(check.getId(), 1);
         assertEquals(check.getDate(), pastDate);
         assertEquals(check.getContacts(), cm.getContacts(1));
-        assertEquals(check.getNotes(), "Mowgli considered joining the Dawn Patrol");
+        assertEquals(check.getNotes(), mowgliConsidered);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -600,8 +604,8 @@ public class ContactManagerImplTest {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        cm.addMeetingNotes(1, "Mowgli is returning to the man-village");
-        assertEquals(cm.getPastMeeting(1).getNotes(), "Mowgli is returning to the man-village");
+        cm.addMeetingNotes(1, mowgliReturn);
+        assertEquals(cm.getPastMeeting(1).getNotes(), mowgliReturn);
     }
 
     @Test
@@ -620,33 +624,33 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddNewContactNormal() {
-        int result = cm.addNewContact("Akela", "A lone wolf");
+        int result = cm.addNewContact(wolfName, wolfNotes);
         assertEquals(result, 4);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewContactNameNull() {
-        cm.addNewContact(null, "A lone wolf");
+        cm.addNewContact(null, wolfNotes);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewContactNotesNull() {
-        cm.addNewContact("Akela", null);
+        cm.addNewContact(wolfName, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewContactNameEmptyString() {
-        cm.addNewContact("", "A lone wolf");
+        cm.addNewContact("", wolfNotes);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewContactNotesEmptyString() {
-        cm.addNewContact("Akela", "");
+        cm.addNewContact(wolfName, "");
     }
 
     @Test
     public void testAddNewContactSecondContactAddedId() {
-        cm.addNewContact("Akela", "A lone wolf");
+        cm.addNewContact(wolfName, wolfNotes);
         int result = cm.addNewContact("Shere Khan", "Super evil");
         assertEquals(result, 5);
     }
