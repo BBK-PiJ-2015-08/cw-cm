@@ -184,8 +184,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
         //Two meetings are equal if and only if their IDs are equal
-        //If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings, however
-        // it will ignore it when adding FutureMeetings to the list this method returns.
         currentDate = Calendar.getInstance();
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
