@@ -220,6 +220,11 @@ public class ContactManagerImplTest {
     }
 
     @Test
+    public void testGetFutureMeetingNoMeetingsExist() {
+        assertNull(cm.getFutureMeeting(1));
+    }
+
+    @Test
     public void testGetFutureMeetingIdZero() {
         cm.addFutureMeeting(cm.getContacts(2), futureDate);
         assertNull(cm.getFutureMeeting(0));
