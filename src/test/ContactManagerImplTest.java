@@ -631,4 +631,9 @@ public class ContactManagerImplTest {
     public void testGetContactsIdsIdNegative() {
         cm.getContacts(-1);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetContactsIdsNoneProvided() {
+        cm.getContacts();
+    }
 }
