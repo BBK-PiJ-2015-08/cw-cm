@@ -84,7 +84,7 @@ public class ContactImplTest {
         testContact.addNotes(null);
         assertEquals(testNotes,testContact.getNotes());
     }
-    
+
     @Test
     public void testAddNotesEmptyToExistingNotes() {
         testContact.addNotes("");
