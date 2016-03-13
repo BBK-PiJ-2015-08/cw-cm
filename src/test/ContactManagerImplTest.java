@@ -404,6 +404,8 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 1);
+        List<PastMeeting> checkPast = cm.getPastMeetingListFor(testContact1);
+        assertEquals(check.size(), 1);
     }
 
     @Test(expected = NullPointerException.class)
