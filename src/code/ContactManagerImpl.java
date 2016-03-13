@@ -87,10 +87,11 @@ public class ContactManagerImpl implements ContactManager {
          * plus 1. I.e. if no meetings exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
          * Return a copy of the current value of meetingID.
          */
+        currentDate = Calendar.getInstance();
         if (contacts == null || date == null) {
             throw new NullPointerException("Make sure neither date not set of contacts provided are null");
         }
-        else if (date.before(currentDate)) {
+        else if (date.before(currentDate) || date.equals(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
         }
         else if (!allContacts.containsAll(contacts)) {
