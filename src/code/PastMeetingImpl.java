@@ -10,10 +10,6 @@ import java.util.Set;
  * the notes for the meeting. If any of the references / pointers passed as
  * parameters is null, a NullPointerException must be thrown.
  *
- * A meeting that was held in the past.
- * It includes your notes about what happened and what was agreed.
- */
-/**
  * @author Jade Dickinson jdicki04
  */
 public class PastMeetingImpl extends MeetingImpl implements PastMeeting {

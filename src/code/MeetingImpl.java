@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 /**
- * @see Meeting
+ * The class implementing this interface must be abstract. It must have only one constructor with three parameters: an
+ * ID (int), a date, and a set of contacts that must be non-empty (otherwise, an IllegalArgumentException must be thrown).
+ * A IllegalArgumentException must also be thrown in the case the ID provided was non-positive or zero. If any of the
+ * references / pointers passed as parameters is null, a NullPointerException must be thrown.
  * @author Jade Dickinson jdicki04
  */
 public abstract class MeetingImpl implements Meeting, Serializable {
