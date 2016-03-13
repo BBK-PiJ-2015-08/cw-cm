@@ -70,7 +70,12 @@ public class ContactManagerImplTest {
     @Before
     public void setUp() {
         if (checkExistence.exists()) {
-            checkExistence.delete();
+            try {
+                checkExistence.delete();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
