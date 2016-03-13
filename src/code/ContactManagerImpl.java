@@ -141,6 +141,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public FutureMeeting getFutureMeeting(int id) {
+        currentDate = Calendar.getInstance();
         FutureMeeting thisMeetingOrNull = null;
         if (validID(id)) {
             for (Meeting m : allMeetings) {
@@ -149,7 +150,15 @@ public class ContactManagerImpl implements ContactManager {
                         throw new IllegalArgumentException("Meeting has already happened");
                     }
                     else {
-                        thisMeetingOrNull = (FutureMeeting) m;
+                        if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
+                            FutureMeeting temp = (FutureMeeting) getMeeting(id);
+                            PastMeeting nowPastMeeting = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), "");
+                            allMeetings.add(nowPastMeeting);
+                            allMeetings.remove(temp);
+                        }
+                        else {
+                            thisMeetingOrNull = (FutureMeeting) m;
+                        }
                     }
                 }
             }
