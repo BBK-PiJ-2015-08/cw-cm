@@ -265,7 +265,27 @@ public class ContactManagerImpl implements ContactManager {
         if(!validContact(contact)) {
             throw new IllegalArgumentException("That contact doesn't exist in this Contact Manager");
         }
-        Set<PastMeeting> unsortedMeetings = new HashSet<>();
+        Set<Meeting> unsortedMeetings = new HashSet<>();
+        for (ListIterator<Meeting> iter = allMeetings.listIterator();iter.hasNext();) {
+            Meeting m = iter.next();
+            if (m instanceof FutureMeeting) {
+                for (Iterator<Contact> itertwo = allContacts.iterator(); itertwo.hasNext();) {
+                    Contact c = itertwo.next();
+                    if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
+                        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
+                        iter.set(nowPastMeeting);
+                        unsortedMeetings.add(nowPastMeeting);
+                    }
+                }
+            }
+            else {
+                for (Iterator<Contact> iterthree = allContacts.iterator(); iterthree.hasNext();) {
+                    Contact c = iterthree.next();
+                    unsortedMeetings.add(m);
+                }
+            }
+        }
+        /**
         for (Meeting m : allMeetings) {
             if (m instanceof PastMeeting) {
                 for (Contact c : m.getContacts()) {
@@ -280,8 +300,9 @@ public class ContactManagerImpl implements ContactManager {
                 unsortedMeetings.add(nowPastMeeting);
             }
         }
+        */
         List<PastMeeting> sortedMeetings = new ArrayList<>();
-        for (PastMeeting m : unsortedMeetings) {
+        for (Meeting m : unsortedMeetings) {
             boolean containsDuplicate = false;
             for (PastMeeting s : sortedMeetings) {
                 if (m.getId() == (s.getId())) {
@@ -289,7 +310,7 @@ public class ContactManagerImpl implements ContactManager {
                 }
             }
             if (!containsDuplicate) {
-                sortedMeetings.add(m);
+                sortedMeetings.add((PastMeeting) m);
             }
         }
         Collections.sort(sortedMeetings, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
