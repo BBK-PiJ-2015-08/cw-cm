@@ -391,6 +391,21 @@ public class ContactManagerImplTest {
         assertEquals(check.size(), 3);
     }
 
+    @Test
+    public void testGetFutureMeetingListWereTwoFutureNowOneHasPast() {
+        Calendar nearFutureDate = Calendar.getInstance();
+        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
+        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        assertEquals(check.size(), 1);
+    }
+
     @Test(expected = NullPointerException.class)
     public void testGetMeetingListOnNullDate() {
         cm.getMeetingListOn(null);
