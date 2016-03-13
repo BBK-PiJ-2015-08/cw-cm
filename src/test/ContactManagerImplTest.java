@@ -334,7 +334,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetFutureMeetingListNoMeetings() {
-        List<Meeting> check = cm.getFutureMeetingList(testContact1);
+        List<Meeting> check = cm.getFutureMeetingList(testContact2);
         assertTrue(check.isEmpty());
     }
 
@@ -482,7 +482,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingListForNoMeetings() {
-        List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
+        List<PastMeeting> check = cm.getPastMeetingListFor(testContact3);
         assertTrue(check.isEmpty());
     }
 
