@@ -43,7 +43,6 @@ import static org.junit.Assert.assertTrue;
  * @author Jade Dickinson jdicki04
  */
 public class ContactManagerImplTest {
-
     private static final String FILENAME = "contacts.txt";
     private Calendar currentDate;
     private Set<Contact> allContacts;
@@ -106,13 +105,15 @@ public class ContactManagerImplTest {
 
         //Group 5 - actually an empty set
         group5 = new HashSet<>();
-
     }
 
     @Test
-    public void testAddFutureMeetingFirstIdReturned() {
+    public void testAddFutureMeetingIdReturned() {
+        //Tests that if only this contact has meetings, the meeting ID returned matches size of that contact's meeting list
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
-        assertEquals(1, thisMeetingId);
+        int numMeetingsOnlyThisContactHasMeetings = cm.getFutureMeetingList(testContact1).size() + cm.getPastMeetingListFor(testContact1).size();
+        assertEquals(numMeetingsOnlyThisContactHasMeetings, thisMeetingId);
+        System.out.println(numMeetingsOnlyThisContactHasMeetings);
         cm.flush();
     }
 
