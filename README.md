@@ -16,4 +16,5 @@ ContactManagerImpl: getPastMeetingListFor(Contact contact)
 ContactManagerImpl: addMeetingNotes(int id, String text)
 --------------
 * If using addMeetingNotes on a PastMeeting which already has notes, even though the specification doesn't state specifically what to do, I've opted to add the notes provided to the old notes, rather than overwriting them. Sergio [implied this should be done](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47554).
+* If using addMeetingNotes on a FutureMeeting which is now in the past, the method will remove the FutureMeeting from the list and add a PastMeeting which has the attributes of the FutureMeeting as well as the notes provided as String text.
 
