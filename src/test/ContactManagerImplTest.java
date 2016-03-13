@@ -551,6 +551,20 @@ public class ContactManagerImplTest {
     }
 
     @Test
+    public void testAddMeetingNotesFutureMeetingNowInPast() {
+        Calendar nearFutureDate = Calendar.getInstance();
+        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        cm.addMeetingNotes(1, "Mowgli is returning to the man-village");
+        assertEquals(cm.getPastMeeting(1).getNotes(), "Mowgli is returning to the man-village");
+    }
+
+    @Test
     public void testAddMeetingNotesNormal() {
         cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "That ");
         cm.addMeetingNotes(1, "Baloo sure sings a lot");
