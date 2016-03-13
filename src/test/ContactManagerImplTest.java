@@ -474,6 +474,11 @@ public class ContactManagerImplTest {
         cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, "Mowgli considered joining the Dawn Patrol");
     }
 
+    @Test
+    public void testAddNewPastMeetingDateIsNow() {
+        cm.addNewPastMeeting(cm.getContacts(1), currentDate, "Setting Shere Khan's tail on fire");
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingSetContactsEmpty() {
         cm.addNewPastMeeting(group5, pastDate, "Mowgli considered joining the Dawn Patrol");
