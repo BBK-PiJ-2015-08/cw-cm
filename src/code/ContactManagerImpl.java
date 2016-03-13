@@ -111,7 +111,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public PastMeeting getPastMeeting(int id) {
         PastMeeting thisMeetingOrNull = null;
-        currentDate = Calendar.getInstance();
         if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
