@@ -16,8 +16,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Iterator;
-import java.util.ListIterator;
 
 import static java.util.Collections.*;
 /**
@@ -28,9 +26,6 @@ public class ContactManagerImpl implements ContactManager {
     private int meetingId;
     private int contactId;
     private Calendar currentDate;
-    /**
-     * Think possibly allMeetings could be better divided into pastmeetings and futuremeetings
-     */
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
 
@@ -59,7 +54,7 @@ public class ContactManagerImpl implements ContactManager {
             try {
                 fromFile.close();
             }
-            catch (IOException | NullPointerException ex3){
+            catch (IOException ex3){
                 ex3.printStackTrace();
             }
         }
@@ -275,11 +270,6 @@ public class ContactManagerImpl implements ContactManager {
                         unsortedMeetings.add((PastMeeting) m);
                     }
                 }
-            }
-            else if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
-                FutureMeeting temp = (FutureMeeting) m;
-                PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
-                unsortedMeetings.add(nowPastMeeting);
             }
         }
         List<PastMeeting> sortedMeetings = new ArrayList<>();
@@ -506,13 +496,13 @@ public class ContactManagerImpl implements ContactManager {
             toFile.writeObject(meetingId);
             toFile.writeObject(contactId);
         }
-        catch (IOException | NullPointerException ex2 ){
+        catch (IOException ex2 ){
             ex2.printStackTrace();
         }
         try {
             toFile.close();
         }
-        catch (IOException | NullPointerException ex3){
+        catch (IOException ex3){
             ex3.printStackTrace();
         }
     }
