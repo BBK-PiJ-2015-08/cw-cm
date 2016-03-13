@@ -110,10 +110,11 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public PastMeeting getPastMeeting(int id) {
         PastMeeting thisMeetingOrNull = null;
+        currentDate = Calendar.getInstance();
         if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
-                    if (!m.getDate().before(currentDate)) {
+                    if (!m.getDate().before(currentDate) && !m.getDate().equals(currentDate)) {
                         //Not IllegalArgumentException as in getFutureMeeting; Sergio stated we should match the spec and throw IllegalStateException
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
@@ -277,6 +278,7 @@ public class ContactManagerImpl implements ContactManager {
         /**
          * Check the date IS in the past. If it isn't; throw an IllegalArgumentException (forum)
          */
+        currentDate = Calendar.getInstance();
         if (contacts == null || date == null || text == null) {
             throw new NullPointerException("Please make sure nothing entered is null");
         }
