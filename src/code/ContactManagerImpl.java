@@ -183,7 +183,11 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
-        //Two meetings are equal if and only if their IDs are equal
+        /**
+         * Two meetings are equal if and only if their IDs are equal
+         * If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings,
+         * however it will ignore it when adding FutureMeetings to the list this method returns.
+         */
         currentDate = Calendar.getInstance();
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
@@ -192,16 +196,12 @@ public class ContactManagerImpl implements ContactManager {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
         Set<Meeting> nonChronologicalMeetings = new HashSet<>();
-        for (ListIterator<Meeting> iter = allMeetings.listIterator();iter.hasNext();) {
-            Meeting m = iter.next();
+        for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting) {
-                for (Iterator<Contact> itertwo = allContacts.iterator(); itertwo.hasNext();) {
-                    Contact c = itertwo.next();
-                    if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
-                        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
-                        iter.set(nowPastMeeting);
+                for (Contact c : m.getContacts()) {
+                    if (c.getId() == contact.getId()) {
+                        nonChronologicalMeetings.add(m);
                     }
-                    nonChronologicalMeetings.add(m);
                 }
             }
         }
