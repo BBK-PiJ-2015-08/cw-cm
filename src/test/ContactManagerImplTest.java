@@ -209,6 +209,24 @@ public class ContactManagerImplTest {
         cm.getPastMeeting(1);
     }
 
+    @Test
+    public void testGetPastMeetingFutureMeetingNowInPast() {
+        Calendar nearFutureDate = Calendar.getInstance();
+        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        PastMeeting check = cm.getPastMeeting(1);
+        assertTrue(check instanceof PastMeeting);
+        assertEquals(check.getId(), 1);
+        assertEquals(check.getDate(), nearFutureDate);
+        assertEquals(check.getContacts(), cm.getContacts(1));
+        assertEquals(check.getNotes(), "");
+    }
+
     //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
     /**
     @Test
