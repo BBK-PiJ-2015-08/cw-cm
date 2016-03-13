@@ -111,7 +111,9 @@ public class ContactManagerImplTest {
         //Group 5 - actually an empty set
         group5 = new HashSet<>();
     }
-
+/**
+ * Testing flush(): call flush and check stuff written on the outside is the same as written on the inside
+*/
     @Test
     public void testAddFutureMeetingIdReturned() {
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
@@ -627,12 +629,9 @@ public class ContactManagerImplTest {
         cm.getContacts(-1);
     }
 /**
-    //Save all data to disk.
-     //This method must be executed when the program is closed and when/if the user requests it.
-    //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Test
     public void testFlush() {
 
     }
-    */
+ */
 }
