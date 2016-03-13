@@ -477,6 +477,11 @@ public class ContactManagerImplTest {
     @Test
     public void testAddNewPastMeetingDateIsNow() {
         cm.addNewPastMeeting(cm.getContacts(1), currentDate, "Setting Shere Khan's tail on fire");
+        PastMeeting check = cm.getPastMeeting(1);
+        assertEquals(check.getId(), 1);
+        assertEquals(check.getDate(), currentDate);
+        assertEquals(check.getContacts(), cm.getContacts(1));
+        assertEquals(check.getNotes(), "Setting Shere Khan's tail on fire");
     }
 
     @Test(expected = IllegalArgumentException.class)
