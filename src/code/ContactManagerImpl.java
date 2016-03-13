@@ -432,8 +432,8 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Checks if a meeting ID provided exists in the set of all meetings.
      * Used by getPastMeeting, getFutureMeeting, getMeeting and addMeetingNotes
-     * @param id
-     * @return
+     * @param id The meeting ID which is being checked for having a corresponding Meeting in the ContactManager
+     * @return A boolean value, true if the ID provided matches a Meeting in the ContactManager
      */
     public boolean validID(int id) {
         boolean validID = false;
@@ -448,8 +448,8 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Checks if a contact exists in this contact manager.
      * Used by getFutureMeetingList and getPastMeetingListFor
-     * @param contact
-     * @return
+     * @param contact A single contact whose existence in the ContactManager is being checked.
+     * @return A boolean value, true if the contact provided exists in the ContactManager's set of all contacts.
      */
     public boolean validContact(Contact contact) {
         boolean validContact = false;
@@ -462,11 +462,17 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Checks if a Meeting created as a FutureMeeting is now in the past. If it is, converts it to a PastMeeting with no
-     * notes and returns this.
+     * Used to convert a FutureMeeting that's now in the past to a PastMeeting with no notes, and returns this.
+     * Checking whether a FutureMeeting should be a PastMeeting is not done by this method.
      * Used by getPastMeeting, getFutureMeeting and addMeetingNotes
+     * @param m A meeting that exists as a FutureMeeting but should now be a past meeting
+     * @return A PastMeeting with the same ID, date and contacts as the meeting entered as well as empty string for notes.
+     * @throws IllegalArgumentException if the meeting hasn't yet happened
      */
     public PastMeeting changeFutureMeetingToPast(Meeting m) {
+        if (m.getDate().after(currentDate)) {
+            throw new IllegalArgumentException("Please ensure the meeting provided is right now or has already happened");
+        }
         FutureMeeting temp = (FutureMeeting) getMeeting(m.getId());
         PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
         allMeetings.add(nowPastMeeting);
