@@ -121,10 +121,8 @@ public class ContactManagerImpl implements ContactManager {
                     }
                     else {
                         if (m instanceof FutureMeeting) {
-                            FutureMeeting temp = getFutureMeeting(id);
-                            thisMeetingOrNull = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), "");
-                            allMeetings.add(thisMeetingOrNull);
-                            allMeetings.remove(temp);
+                            getFutureMeeting(id);
+                            thisMeetingOrNull = getPastMeeting(id);
                         }
                         else {
                             thisMeetingOrNull = (PastMeeting) m;
