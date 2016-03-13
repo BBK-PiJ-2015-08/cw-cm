@@ -530,16 +530,17 @@ public class ContactManagerImplTest {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Picking paw paws");
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
-        assertEquals(check.size(), 2);
+        assertEquals(check.size(), 1);
+        assertEquals(check.get(0).getId(), 1);
+        assertEquals(check.get(0).getContacts(), cm.getContacts(1));
+        assertEquals(check.get(0).getDate(), nearFutureDate);
+        assertEquals(check.get(0).getNotes(), "");
+        PastMeeting compare = cm.getPastMeeting(1);
+        //assertEquals(check, compare);
     }
-/**
-    @Test
-    public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
-
-    }
-*/
+    
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
         cm.addNewPastMeeting(null, pastDate, "Mowgli considered joining the Dawn Patrol");
