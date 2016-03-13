@@ -64,15 +64,14 @@ public class ContactImplTest {
         testContact = new ContactImpl(testId, testName, null);
         assertNull(testContact.getNotes());
     }
-/**
-    //What if there's not already notes and note = null
+
     @Test
     public void testAddNotesNullToNoNotes() {
         testContact = new ContactImpl(testId, testName);
         testContact.addNotes(null);
-        assertNull(testContact.getNotes());
+        assertEquals(testContact.getNotes(), "");
     }
-*/
+
     @Test
     public void testAddNotesNullToExistingNotes() {
         testContact.addNotes(null);
