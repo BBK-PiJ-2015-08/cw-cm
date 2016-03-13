@@ -4,7 +4,7 @@ General comments
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
 * I have opted to do so for getPastMeeting and getFutureMeeting.
 * addMeetingNotes will do this, as per the spec.
-* The above use my method changeFutureMeetingToPast for the conversion, avoiding duplicated code.
+* The above use my method changeFutureMeetingToPast (see below) for the conversion, avoiding duplicated code.
 * getFutureMeetingList and getPastMeetingListFor will also convert a FutureMeeting now in the past; but both use a combination of a ListIterator and and Iterator to do so.
 
 ContactManagerImpl: getPastMeeting(int id)
