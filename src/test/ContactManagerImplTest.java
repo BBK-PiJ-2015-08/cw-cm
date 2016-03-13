@@ -392,16 +392,7 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
         assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
     }
-/**
- @Test
- public void testGetMeetingListOn() {
 
- }
-    @Test
-    public void testGetMeetingListOnTwoMeetingsOneDuplicated() {
-
-    }
-*/
     @Test(expected = NullPointerException.class)
     public void testGetPastMeetingListForNullContact() {
         cm.getPastMeetingListFor(null);
@@ -457,13 +448,6 @@ public class ContactManagerImplTest {
         assertEquals(check.size(), 3);
     }
 /**
- * Test for ignoring one duplicate meeting - sharing same ID as another
- *
-    @Test
-    public void testGetPastMeetingListForTwoMeetingsOneDuplicatedWithNotes() {
-
-    }
-
     @Test
     public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
 
@@ -610,17 +594,7 @@ public class ContactManagerImplTest {
         Set<Contact> resultSet =  cm.getContacts("Haathi");
         assertTrue(resultSet.size() == 0);
     }
-    /**
-     @Test
-     public void testGetContactsEmptySetContacts() {
 
-     }
-
-//getContacts(int... ids)
-
-
-
-*/
     @Test
     public void testGetContactsIdsSingleId() {
         Set<Contact> resultSet = cm.getContacts(1);
