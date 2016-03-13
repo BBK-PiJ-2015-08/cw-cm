@@ -116,7 +116,6 @@ public class ContactManagerImplTest {
     public void testAddFutureMeetingIdReturned() {
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
         assertEquals(1, thisMeetingId);
-        System.out.println(thisMeetingId);
         cm.flush();
     }
 
