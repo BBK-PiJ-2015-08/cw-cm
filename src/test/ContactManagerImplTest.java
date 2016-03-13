@@ -516,6 +516,21 @@ public class ContactManagerImplTest {
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertEquals(check.size(), 3);
     }
+
+    @Test
+    public void testGetPastMeetingListForWereTwoFutureNowOneHasPast() {
+        Calendar nearFutureDate = Calendar.getInstance();
+        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Picking paw paws");
+        List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
+        assertEquals(check.size(), 2);
+    }
 /**
     @Test
     public void testGetPastMeetingListForSingleMeetingHappenedInPastButIsFutureMeeting() {
