@@ -128,6 +128,14 @@ public class ContactManagerImplTest {
         assertEquals(2, thisMeetingId);
     }
 
+    @Test
+    public void testAddFutureMeetingDetails() {
+        cm.addFutureMeeting(cm.getContacts(1), futureDate);
+        assertEquals(cm.getFutureMeeting(1).getId(), 1);
+        assertEquals(cm.getFutureMeeting(1).getDate(), futureDate);
+        assertEquals(cm.getFutureMeeting(1).getContacts(), cm.getContacts(1));
+    }
+
     @Test(expected = NullPointerException.class)
     public void testAddFutureMeetingNullDate() {
         cm.addFutureMeeting(cm.getContacts(1), null);
