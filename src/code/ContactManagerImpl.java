@@ -257,8 +257,6 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
         //Two meetings are equal if and only if their IDs are equal.
-        //If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings, but
-        //it will add it to the list as a PastMeeting with no notes.
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
@@ -285,22 +283,6 @@ public class ContactManagerImpl implements ContactManager {
                 }
             }
         }
-        /**
-        for (Meeting m : allMeetings) {
-            if (m instanceof PastMeeting) {
-                for (Contact c : m.getContacts()) {
-                    if (c.getId() == contact.getId()) {
-                        unsortedMeetings.add((PastMeeting) m);
-                    }
-                }
-            }
-            else if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
-                FutureMeeting temp = (FutureMeeting) m;
-                PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
-                unsortedMeetings.add(nowPastMeeting);
-            }
-        }
-        */
         List<PastMeeting> sortedMeetings = new ArrayList<>();
         for (Meeting m : unsortedMeetings) {
             boolean containsDuplicate = false;
