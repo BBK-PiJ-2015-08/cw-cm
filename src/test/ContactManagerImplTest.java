@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +35,7 @@ import static org.junit.Assert.assertTrue;
  * 6. Add notes to a meeting (addMeetingNotes) X
  * 7. Construct and return lists of meetings (getFutureMeetingList) X, (getMeetingListOn) X & (getPastMeetingListFor) X
  * 7.5 Consider making validID check its own method X
- * NB Need to handle being given IDs that are 0 or negative
+ * NB Need to handle being given IDs that are 0 or negative X
  * 8. Save all data (flush)
  * 13 methods to test in total
  * Create JavaDoc
@@ -44,6 +45,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class ContactManagerImplTest {
     private static final String FILENAME = "contacts.txt";
+    private File checkExistence = new File(FILENAME);
     private Calendar currentDate;
     private Set<Contact> allContacts;
     private Set<Contact> group1;
@@ -69,6 +71,9 @@ public class ContactManagerImplTest {
 
     @Before
     public void setUp() {
+        if (checkExistence.exists()) {
+            checkExistence.delete();
+        }
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
         allContacts = new HashSet<>();
@@ -109,11 +114,9 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddFutureMeetingIdReturned() {
-        //Tests that if only this contact has meetings, the meeting ID returned matches size of that contact's meeting list
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
-        int numMeetingsOnlyThisContactHasMeetings = cm.getFutureMeetingList(testContact1).size() + cm.getPastMeetingListFor(testContact1).size();
-        assertEquals(numMeetingsOnlyThisContactHasMeetings, thisMeetingId);
-        System.out.println(numMeetingsOnlyThisContactHasMeetings);
+        assertEquals(1, thisMeetingId);
+        System.out.println(thisMeetingId);
         cm.flush();
     }
 
