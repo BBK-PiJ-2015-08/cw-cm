@@ -202,35 +202,11 @@ public class ContactManagerImpl implements ContactManager {
                     if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
                         PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
                         iter.set(nowPastMeeting);
-                        /**
-                        Meeting temp = getMeeting(m.getId());
-                        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), m.getDate(), m.getContacts(), "");
-                        iter.remove();
-                        allMeetings.add(nowPastMeeting);
-                         */
                     }
                     nonChronologicalMeetings.add(m);
                 }
             }
         }
-
-        /**
-        for (Meeting m : allMeetings) {
-            if (m instanceof FutureMeeting) {
-                for (Contact c : m.getContacts()) {
-                    if (c.getId() == contact.getId()) {
-                        if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
-                            FutureMeeting temp = (FutureMeeting) getMeeting(m.getId());
-                            PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
-                            allMeetings.add(nowPastMeeting);
-                            allMeetings.remove(temp);
-                        }
-                        nonChronologicalMeetings.add(m);
-                    }
-                }
-            }
-         }
-        */
         List<Meeting> sortedMeetings = new ArrayList<>();
         for (Meeting m : nonChronologicalMeetings) {
             boolean containsDuplicate = false;
