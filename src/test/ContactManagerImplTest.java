@@ -202,6 +202,13 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.getPastMeeting(1);
     }
+
+    @Test
+    public void testGetPastMeetingMeetingNow() {
+        cm.addNewPastMeeting(cm.getContacts(1), currentDate, "Leaving the jungle");
+        cm.getPastMeeting(1);
+    }
+
     //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
     /**
     @Test
@@ -247,6 +254,12 @@ public class ContactManagerImplTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingMeetingInPast() {
         cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Doo-bee doo-bee doo-bee dee-doo");
+        cm.getFutureMeeting(1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFutureMeetingMeetingNow() {
+        cm.addNewPastMeeting(cm.getContacts(2), currentDate, "A scooby doo bop bop");
         cm.getFutureMeeting(1);
     }
 
