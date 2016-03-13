@@ -196,6 +196,9 @@ public class ContactManagerImpl implements ContactManager {
             if (m instanceof FutureMeeting) {
                 for (Contact c : m.getContacts()) {
                     if (c.getId() == contact.getId()) {
+                        if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
+                            changeFutureMeetingToPast(m);
+                        }
                         nonChronologicalMeetings.add(m);
                     }
                 }
