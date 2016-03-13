@@ -26,6 +26,9 @@ public class ContactManagerImpl implements ContactManager {
     private int meetingId;
     private int contactId;
     private Calendar currentDate;
+    /**
+     * Think possibly allMeetings could be better divided into pastmeetings and futuremeetings
+     */
     private List<Meeting> allMeetings;
     private Set<Contact> allContacts;
 
@@ -33,16 +36,29 @@ public class ContactManagerImpl implements ContactManager {
         currentDate = Calendar.getInstance();
         File file = new File(FILENAME);
         if (file.exists() && file.length() > 0) {
-            try (ObjectInputStream inputOutput = new ObjectInputStream(
-                    new BufferedInputStream(
-                            new FileInputStream(FILENAME)));) {
-                allMeetings = (List<Meeting>) inputOutput.readObject();
-                allContacts = (Set<Contact>) inputOutput.readObject();
-                meetingId = (int) inputOutput.readObject();
-                contactId = (int) inputOutput.readObject();
+            ObjectInputStream fromFile = null;
+            try {
+                fromFile = new ObjectInputStream(
+                        new BufferedInputStream(
+                                new FileInputStream(FILENAME)));
             }
-            catch (IOException | ClassNotFoundException ex) {
+            catch (IOException ex) {
                 ex.printStackTrace();
+            }
+            try {
+                allMeetings = (List<Meeting>) fromFile.readObject();
+                allContacts = (Set<Contact>) fromFile.readObject();
+                meetingId = (int) fromFile.readObject();
+                contactId = (int) fromFile.readObject();
+            }
+            catch (IOException | ClassNotFoundException ex2){
+                ex2.printStackTrace();
+            }
+            try {
+                fromFile.close();
+            }
+            catch (IOException ex3){
+                ex3.printStackTrace();
             }
         }
         else {
@@ -423,17 +439,28 @@ public class ContactManagerImpl implements ContactManager {
     //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
-        //If the file already exists, with contents, I'm aiming to make flush() overwrite the contents instead of adding to them
-        try (ObjectOutputStream inputOutput = new ObjectOutputStream(
+        ObjectOutputStream toFile = null;
+        try {toFile = new ObjectOutputStream(
                 new BufferedOutputStream(
-                        new FileOutputStream(FILENAME,false)))) {
-            inputOutput.writeObject(allMeetings);
-            inputOutput.writeObject(allContacts);
-            inputOutput.writeObject(meetingId);
-            inputOutput.writeObject(contactId);
+                        new FileOutputStream(FILENAME)));
         }
         catch (IOException ex) {
             ex.printStackTrace();
+        }
+        try {
+            toFile.writeObject(allMeetings);
+            toFile.writeObject(allContacts);
+            toFile.writeObject(meetingId);
+            toFile.writeObject(contactId);
+        }
+        catch (IOException ex2 ){
+            ex2.printStackTrace();
+        }
+        try {
+            toFile.close();
+        }
+        catch (IOException ex3){
+            ex3.printStackTrace();
         }
     }
 }
