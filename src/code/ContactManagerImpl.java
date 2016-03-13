@@ -286,7 +286,7 @@ public class ContactManagerImpl implements ContactManager {
         for (PastMeeting m : unsortedMeetings) {
             boolean containsDuplicate = false;
             for (PastMeeting s : sortedMeetings) {
-                if (m.getId() == (s.getId())) {
+                if (m.getId() == s.getId()) {
                     containsDuplicate = true;
                 }
             }

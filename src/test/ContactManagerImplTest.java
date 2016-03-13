@@ -38,6 +38,7 @@ public class ContactManagerImplTest {
     private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
 
+    private static final String shouldMowgliLeave = "Should Mowgli leave jungle?";
     private ContactManager cm;
 
     private Contact testContact1;
@@ -133,9 +134,9 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
         PastMeeting check = cm.getPastMeeting(1);
-        assertEquals(check.getNotes(), "Should Mowgli leave jungle?");
+        assertEquals(check.getNotes(), shouldMowgliLeave);
         assertEquals(check.getContacts(), cm.getContacts(1));
         assertEquals(check.getDate(), pastDate);
         assertEquals(check.getId(), 1);
@@ -143,7 +144,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingIdDoesntExist() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
         assertNull(cm.getPastMeeting(2));
     }
 
@@ -154,13 +155,13 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingIdZero() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
         assertNull(cm.getPastMeeting(0));
     }
 
     @Test
     public void testGetPastMeetingIdNegative() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
         assertNull(cm.getPastMeeting(-1));
     }
 
