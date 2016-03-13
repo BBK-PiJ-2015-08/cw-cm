@@ -22,9 +22,6 @@ public abstract class MeetingImpl implements Meeting, Serializable {
         else if (date == null) {
             throw new NullPointerException("Please ensure date is not null");
         }
-        else if (contacts == null) {
-            throw new NullPointerException("Please ensure Set of contacts is not null");
-        }
         else {
             //Check that no individual contact's name or notes are null
             for (Contact contact : contacts) {
