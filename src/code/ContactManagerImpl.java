@@ -136,7 +136,7 @@ public class ContactManagerImpl implements ContactManager {
         if (validID(id)) {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
-                    if (!m.getDate().after(currentDate)) {
+                    if (m instanceof PastMeeting) {
                         throw new IllegalArgumentException("Meeting has already happened");
                     }
                     else {
@@ -302,6 +302,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting addMeetingNotes(int id, String text) {
+        currentDate = Calendar.getInstance();
         if (text == null) {
             throw new NullPointerException("Notes to be added can't be null");
         }
@@ -311,11 +312,19 @@ public class ContactManagerImpl implements ContactManager {
         if (getMeeting(id).getDate().after(currentDate)) {
             throw new IllegalStateException("The meeting you specified hasn't yet taken place");
         }
-        PastMeeting temp = getPastMeeting(id);
         PastMeeting pastMeetingPlusNotes;
-        pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
-        allMeetings.add(pastMeetingPlusNotes);
-        allMeetings.remove(temp);
+        if (getMeeting(id) instanceof FutureMeeting) {
+            FutureMeeting temp = getFutureMeeting(id);
+            pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), text);
+            allMeetings.add(pastMeetingPlusNotes);
+            allMeetings.remove(temp);
+
+        } else{
+            PastMeeting temp = getPastMeeting(id);
+            pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
+            allMeetings.add(pastMeetingPlusNotes);
+            allMeetings.remove(temp);
+        }
         return pastMeetingPlusNotes;
     }
 
