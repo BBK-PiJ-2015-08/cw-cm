@@ -151,6 +151,15 @@ public class ContactManagerImplTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void testAddFutureMeetingDateIsNow() {
+        cm.addFutureMeeting(cm.getContacts(1), currentDate);
+        Meeting check = cm.getFutureMeeting(1);
+        assertEquals(check.getId(), 1);
+        assertEquals(check.getDate(), currentDate);
+        assertEquals(check.getContacts(), cm.getContacts(1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testAddFutureMeetingOneContactIdNonExistentInCM() {
         cm.addFutureMeeting(group4, futureDate);
     }
