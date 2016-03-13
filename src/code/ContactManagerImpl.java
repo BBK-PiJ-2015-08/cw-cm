@@ -75,7 +75,6 @@ public class ContactManagerImpl implements ContactManager {
                 }
             }
         }
-        flush();
     }
 
     /**
