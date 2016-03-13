@@ -557,8 +557,8 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
             Thread.sleep(20);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
         cm.addMeetingNotes(1, "Mowgli is returning to the man-village");
         assertEquals(cm.getPastMeeting(1).getNotes(), "Mowgli is returning to the man-village");
