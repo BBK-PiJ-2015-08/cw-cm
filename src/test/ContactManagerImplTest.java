@@ -5,11 +5,8 @@ import code.ContactImpl;
 import code.ContactManager;
 import code.ContactManagerImpl;
 import code.FutureMeeting;
-import code.FutureMeetingImpl;
 import code.Meeting;
-import code.MeetingImpl;
 import code.PastMeeting;
-import code.PastMeetingImpl;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -33,9 +30,6 @@ public class ContactManagerImplTest {
     private Calendar currentDate;
     private Set<Contact> group1;
     private Set<Contact> group2;
-    private Set<Contact> group3;
-    private Set<Contact> group4;
-    private Set<Contact> group5;
 
     private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
     private final Calendar futureDatePM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
@@ -73,30 +67,15 @@ public class ContactManagerImplTest {
         cm.addNewContact("Baloo", "The sleepy brown bear");
         cm.addNewContact("Bagheera", "Found Mowgli");
 
-        //Group 1 - 1 contact
-        group1 = new HashSet<>();
-        group1.add(testContact1);
-
-        //Group 2 - 2 contacts
-        group2 = new HashSet<>();
-        group2.add(testContact1);
-        group2.add(testContact2);
-
-        //Group 3 - 3 contacts
-        group3 = new HashSet<>();
-        group3.add(testContact1);
-        group3.add(testContact2);
-        group3.add(testContact3);
-
         extraContact1 = new ContactImpl(4, "Louie", "Jungle VIP");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
-        //Group 4 - 1 contact not in the main ContactManager
-        group4 = new HashSet<>();
-        group4.add(extraContact1);
+        //Group 1 - 1 contact not in the main ContactManager
+        group1 = new HashSet<>();
+        group1.add(extraContact1);
 
-        //Group 5 - actually an empty set
-        group5 = new HashSet<>();
+        //Group 2 - actually an empty set
+        group2 = new HashSet<>();
     }
 /**
  * Testing flush(): call flush and check stuff written on the outside is the same as written on the inside
@@ -149,7 +128,7 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddFutureMeetingOneContactIdNonExistentInCM() {
-        cm.addFutureMeeting(group4, futureDate);
+        cm.addFutureMeeting(group1, futureDate);
     }
 
     @Test
@@ -568,12 +547,12 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingSetContactsEmpty() {
-        cm.addNewPastMeeting(group5, pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(group2, pastDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingOneContactIdNonExistent() {
-        cm.addNewPastMeeting(group4, pastDate, "Mowgli considered joining the Dawn Patrol");
+        cm.addNewPastMeeting(group1, pastDate, "Mowgli considered joining the Dawn Patrol");
     }
 
     @Test

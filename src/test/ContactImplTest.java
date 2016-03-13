@@ -104,5 +104,4 @@ public class ContactImplTest {
         testContact.addNotes(noteAddition);
         assertEquals(testNotes+noteAddition,testContact.getNotes());
     }
-
 }
