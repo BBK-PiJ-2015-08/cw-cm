@@ -46,7 +46,6 @@ public class ContactManagerImplTest {
     private static final String FILENAME = "contacts.txt";
     private File checkExistence = new File(FILENAME);
     private Calendar currentDate;
-    private Set<Contact> allContacts;
     private Set<Contact> group1;
     private Set<Contact> group2;
     private Set<Contact> group3;
@@ -75,7 +74,6 @@ public class ContactManagerImplTest {
         }
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
-        allContacts = new HashSet<>();
 
         testContact1 = new ContactImpl(1, "Mowgli", "Man cub");
         testContact2 = new ContactImpl(2, "Baloo", "The sleepy brown bear");
@@ -103,7 +101,7 @@ public class ContactManagerImplTest {
         extraContact1 = new ContactImpl(4, "Louie", "Jungle VIP");
         extraContact2 = new ContactImpl(5, "Kaa", "Not very successful");
 
-        //Group 4 - 1 contact not in the main contactmanager
+        //Group 4 - 1 contact not in the main ContactManager
         group4 = new HashSet<>();
         group4.add(extraContact1);
 
@@ -220,22 +218,11 @@ public class ContactManagerImplTest {
             ex.printStackTrace();
         }
         PastMeeting check = cm.getPastMeeting(1);
-        assertTrue(check instanceof PastMeeting);
         assertEquals(check.getId(), 1);
         assertEquals(check.getDate(), nearFutureDate);
         assertEquals(check.getContacts(), cm.getContacts(1));
         assertEquals(check.getNotes(), "");
     }
-
-    //Testing for ((If the meeting happened in the past but is a FutureMeeting, convert it to a PastMeeting))
-    /**
-    @Test
-    public void testGetPastMeetingWasFutureMeetingNowInPast() {
-        cm.addFutureMeeting(cm.getContacts(1), futureDate);
-        currentDate = farFutureDate;
-        cm.getPastMeeting(1);
-    }
-    */
 
     @Test
     public void testGetFutureMeetingNormal() {
