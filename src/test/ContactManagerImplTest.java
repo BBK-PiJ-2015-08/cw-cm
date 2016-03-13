@@ -639,9 +639,6 @@ public class ContactManagerImplTest {
         Set<Contact> resultSet = cm.getContacts(1,2);
         assertEquals(2, resultSet.size());
         assertEquals(cm.getContacts(1,2),resultSet);
-        for(Contact c : resultSet) {
-            System.out.println("ID: " + c.getId() + " Name: " + c.getName() + " Notes: " + c.getNotes());
-        }
     }
 
     @Test(expected = IllegalArgumentException.class)
