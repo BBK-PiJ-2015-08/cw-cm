@@ -256,7 +256,11 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-        //Two meetings are equal if and only if their IDs are equal.
+        /**
+         * Two meetings are equal if and only if their IDs are equal.
+         * If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings, but
+         * it will add it to the list as a PastMeeting with no notes.
+         */
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
