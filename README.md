@@ -5,8 +5,7 @@ General comments
 * I have opted to do so for getPastMeeting and getFutureMeeting
 * addMeetingNotes will do this, as per the spec.
 * The above use my method changeFutureMeetingToPast for the conversion, avoiding duplicated code.
-* getFutureMeetingList will also convert a FutureMeeting now in the past; but uses a combination of a ListIterator and and Iterator to do so
-* Not yet implemented for getPastMeetingListFor
+* getFutureMeetingList and getPastMeetingListFor will also convert a FutureMeeting now in the past; but both use a combination of a ListIterator and and Iterator to do so
 
 ContactManagerImpl: getPastMeeting(int id)
 --------------
