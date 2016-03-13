@@ -452,13 +452,13 @@ public class ContactManagerImpl implements ContactManager {
             toFile.writeObject(meetingId);
             toFile.writeObject(contactId);
         }
-        catch (IOException ex2 ){
+        catch (IOException | NullPointerException ex2 ){
             ex2.printStackTrace();
         }
         try {
             toFile.close();
         }
-        catch (IOException ex3){
+        catch (IOException | NullPointerException ex3){
             ex3.printStackTrace();
         }
     }
