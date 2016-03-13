@@ -548,11 +548,6 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
         assertEquals(check.get(0).getDate(), nearFutureDate);
         assertEquals(check.get(0).getNotes(), "");
-        PastMeeting compare = cm.getPastMeeting(1);
-        assertEquals(check.get(0).getId(), compare.getId());
-        assertEquals(check.get(0).getDate(), compare.getDate());
-        assertEquals(check.get(0).getContacts(), compare.getContacts());
-        assertEquals(check.get(0).getNotes(), compare.getNotes());
     }
 
     @Test(expected = NullPointerException.class)
