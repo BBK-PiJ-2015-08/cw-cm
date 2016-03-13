@@ -169,7 +169,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingIdDoesntExist() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli leave jungle?");
-        assertEquals(null, cm.getPastMeeting(2));
+        assertNull(cm.getPastMeeting(2));
     }
 
     @Test
@@ -211,7 +211,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetFutureMeetingDoesntExist() {
         cm.addFutureMeeting(cm.getContacts(2), futureDate);
-        assertEquals(null, cm.getFutureMeeting(2));
+        assertNull(cm.getFutureMeeting(2));
     }
 
     @Test
@@ -254,9 +254,9 @@ public class ContactManagerImplTest {
     @Test
     public void testGetMeetingIdDoesntExist() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
-        assertEquals(null, cm.getMeeting(3));
+        assertNull(cm.getMeeting(3));
         cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Looking for bear necessities");
-        assertEquals(null, cm.getMeeting(4));
+        assertNull(cm.getMeeting(4));
     }
 
     @Test
