@@ -404,6 +404,9 @@ public class ContactManagerImplTest {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 1);
+        assertEquals(check.get(0).getId(), 2);
+        assertEquals(check.get(0).getContacts(), cm.getContacts(1));
+        assertEquals(check.get(0).getDate(), farFutureDate);
     }
 
     @Test(expected = NullPointerException.class)
