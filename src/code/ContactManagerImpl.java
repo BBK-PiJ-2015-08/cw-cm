@@ -121,8 +121,7 @@ public class ContactManagerImpl implements ContactManager {
                     }
                     else {
                         if (m instanceof FutureMeeting) {
-                            getFutureMeeting(id);
-                            thisMeetingOrNull = getPastMeeting(id);
+                            thisMeetingOrNull = changeFutureMeetingToPast(m);
                         }
                         else {
                             thisMeetingOrNull = (PastMeeting) m;
@@ -149,10 +148,7 @@ public class ContactManagerImpl implements ContactManager {
                     }
                     else {
                         if (m.getDate().before(currentDate) || m.getDate().equals(currentDate)) {
-                            FutureMeeting temp = (FutureMeeting) getMeeting(id);
-                            PastMeeting nowPastMeeting = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), "");
-                            allMeetings.add(nowPastMeeting);
-                            allMeetings.remove(temp);
+                            changeFutureMeetingToPast(m);
                         }
                         else {
                             thisMeetingOrNull = (FutureMeeting) m;
@@ -340,11 +336,8 @@ public class ContactManagerImpl implements ContactManager {
         }
         PastMeeting pastMeetingPlusNotes;
         if (getMeeting(id) instanceof FutureMeeting) {
-            FutureMeeting temp = getFutureMeeting(id);
-            pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), text);
-            allMeetings.add(pastMeetingPlusNotes);
-            allMeetings.remove(temp);
-
+            pastMeetingPlusNotes = changeFutureMeetingToPast(getMeeting(id));
+            addMeetingNotes(id, text);
         } else{
             PastMeeting temp = getPastMeeting(id);
             pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
@@ -468,6 +461,18 @@ public class ContactManagerImpl implements ContactManager {
         return validContact;
     }
 
+    /**
+     * Checks if a Meeting created as a FutureMeeting is now in the past. If it is, converts it to a PastMeeting with no
+     * notes and returns this.
+     * Used by getPastMeeting, getFutureMeeting and addMeetingNotes
+     */
+    public PastMeeting changeFutureMeetingToPast(Meeting m) {
+        FutureMeeting temp = (FutureMeeting) getMeeting(m.getId());
+        PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
+        allMeetings.add(nowPastMeeting);
+        allMeetings.remove(temp);
+        return nowPastMeeting;
+    }
     /**
      * Save all data to disk.
      * This method must be executed when the program is closed and when/if the user requests it.
