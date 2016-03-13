@@ -281,6 +281,20 @@ public class ContactManagerImplTest {
         cm.getFutureMeeting(1);
     }
 
+    @Test
+    public void testGetFutureMeetingFutureMeetingNowInPast() {
+        Calendar nearFutureDate = Calendar.getInstance();
+        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        FutureMeeting check = cm.getFutureMeeting(1);
+        assertNull(check);
+    }
+
 
     @Test
     public void testGetMeetingNormal() {
