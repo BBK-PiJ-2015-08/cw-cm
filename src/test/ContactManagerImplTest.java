@@ -30,19 +30,6 @@ public class ContactManagerImplTest {
     private Calendar currentDate;
     private Set<Contact> group1;
     private Set<Contact> group2;
-
-    private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
-    private final Calendar futureDatePM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
-    private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
-    private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
-    private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
-    private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
-
-    private static final String shouldMowgliLeave = "Should Mowgli leave jungle?";
-    private static final String mowgliConsidered = "Mowgli considered joining the Dawn Patrol";
-    private static final String wolfName = "Akela";
-    private static final String wolfNotes = "A lone wolf";
-    private static final String mowgliReturn = "Mowgli is returning to the man-village";
     private ContactManager cm;
 
     private Contact testContact1;
@@ -50,6 +37,18 @@ public class ContactManagerImplTest {
     private Contact testContact3;
     private Contact extraContact1;
     private Contact extraContact2;
+
+    private final Calendar futureDate = new GregorianCalendar(2017, 10, 1, 10, 30, 30);
+    private final Calendar futureDatePM = new GregorianCalendar(2017, 10, 1, 20, 30, 30);
+    private final Calendar farFutureDate = new GregorianCalendar(2020, 1, 5, 10, 30, 20);
+    private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
+    private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
+    private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
+    private static final String shouldMowgliLeave = "Should Mowgli leave jungle?";
+    private static final String mowgliConsidered = "Mowgli considered joining the Dawn Patrol";
+    private static final String wolfName = "Akela";
+    private static final String wolfNotes = "A lone wolf";
+    private static final String mowgliReturn = "Mowgli is returning to the man-village";
 
     @Before
     public void setUp() {
