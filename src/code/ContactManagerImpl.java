@@ -188,6 +188,7 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
         //Two meetings are equal if and only if their IDs are equal
+        currentDate = Calendar.getInstance();
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
         }
@@ -212,7 +213,7 @@ public class ContactManagerImpl implements ContactManager {
                     containsDuplicate = true;
                 }
             }
-            if(!containsDuplicate) {
+            if(!containsDuplicate && m.getDate().after(currentDate)) {
                 sortedMeetings.add(m);
             }
         }
