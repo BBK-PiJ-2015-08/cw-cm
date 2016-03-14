@@ -198,7 +198,7 @@ public class ContactManagerImpl implements ContactManager {
                     containsDuplicate = true;
                 }
             }
-            if(!containsDuplicate && m.getDate().after(currentDate)) {
+            if(!containsDuplicate) {
                 sortedMeetings.add(m);
             }
         }
