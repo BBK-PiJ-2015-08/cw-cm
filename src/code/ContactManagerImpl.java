@@ -39,15 +39,19 @@ public class ContactManagerImpl implements ContactManager {
                 ex.printStackTrace();
             }
             try {
-                allMeetings = (List<Meeting>) fromFile.readObject();
-                allContacts = (Set<Contact>) fromFile.readObject();
-                meetingId = (int) fromFile.readObject();
-                contactId = (int) fromFile.readObject();
+                if (fromFile != null) {
+                    allMeetings = (List<Meeting>) fromFile.readObject();
+                    allContacts = (Set<Contact>) fromFile.readObject();
+                    meetingId = (int) fromFile.readObject();
+                    contactId = (int) fromFile.readObject();
+                }
             } catch (IOException | ClassNotFoundException ex2) {
                 ex2.printStackTrace();
             }
             try {
-                fromFile.close();
+                if (fromFile != null) {
+                    fromFile.close();
+                }
             } catch (IOException ex3) {
                 ex3.printStackTrace();
             }
