@@ -241,7 +241,7 @@ public class ContactManagerImplTest {
         cm.getFutureMeeting(1);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingFutureMeetingNowInPast() {
         Calendar nearFutureDate = Calendar.getInstance();
         nearFutureDate.add(Calendar.MILLISECOND, 10);
