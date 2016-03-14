@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author Jade Dickinson jdicki04
  */
 public class ContactImpl implements Contact, Serializable {
+    private static final long serialVersionUID = -8656560507523380816L;
     private int id;
     private String name;
     private String notes;

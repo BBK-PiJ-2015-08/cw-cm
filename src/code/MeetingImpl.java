@@ -11,6 +11,7 @@ import java.util.Set;
  * @author Jade Dickinson jdicki04
  */
 public abstract class MeetingImpl implements Meeting, Serializable {
+    private static final long serialVersionUID = -4145562617415606420L;
     private int id;
     private Calendar date;
     private Set<Contact> contacts;

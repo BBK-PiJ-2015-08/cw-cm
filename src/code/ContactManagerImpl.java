@@ -169,18 +169,18 @@ public class ContactManagerImpl implements ContactManager {
         if (!validContact(contact)) {
             throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
         }
-        Set<Meeting> nonChronologicalMeetings = new HashSet<>();
+        Set<Meeting> unsortedMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting) {
                 for (Contact c : m.getContacts()) {
                     if (c.getId() == contact.getId()) {
-                        nonChronologicalMeetings.add(m);
+                        unsortedMeetings.add(m);
                     }
                 }
             }
         }
         List<Meeting> sortedMeetings = new ArrayList<>();
-        for (Meeting m : nonChronologicalMeetings) {
+        for (Meeting m : unsortedMeetings) {
             boolean containsDuplicate = false;
             for (Meeting n : sortedMeetings) {
                 if (m.getId() == n.getId()) {

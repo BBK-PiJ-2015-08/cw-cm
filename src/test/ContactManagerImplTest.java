@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 /**
@@ -58,11 +59,7 @@ public class ContactManagerImplTest {
     @Before
     public void setUp() {
         if (checkExistence.exists()) {
-            try {
-                checkExistence.delete();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            checkExistence.delete();
         }
         cm = new ContactManagerImpl();
         currentDate = Calendar.getInstance();
@@ -721,7 +718,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetContactsStringNotPresent() {
         Set<Contact> resultSet =  cm.getContacts("Haathi");
-        assertTrue(resultSet.size() == 0);
+        assertSame(resultSet.size(), 0);
     }
 
     /**
