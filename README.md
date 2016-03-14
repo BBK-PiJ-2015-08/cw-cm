@@ -1,11 +1,11 @@
 ### Programming in Java - Coursework 3 - Contact Manager
 #### ContactManagerImpl
-* See below for details of methods I've created, **validID(), validContact(), changeFutureMeetingToPast(), processMeetings()** and **processMeetingsForLists()**.
+* See below for details of methods I've created, **validID, validContact, changeFutureMeetingToPast, processMeetings** and **processMeetingsForLists**.
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
-* I have opted to do so for getPastMeeting(), getFutureMeeting(), getFutureMeetingList() and getPastMeetingListFor().
-* getPastMeeting() and getFutureMeeting() use my method processMeetings() which checks the list of meetings and then uses my method changeFutureMeetingToPast() (see below) for the conversion.
-* addMeetingNotes() does the conversion, as per the spec. If necessary it uses changeFutureMeetingToPast() (see below).
-* getFutureMeetingList() and getPastMeetingListFor() will convert a FutureMeeting now in the past to a PastMeeting, using my method processMeetingsForLists().
+* I have opted to do so for getPastMeeting, getFutureMeeting, getFutureMeetingList and getPastMeetingListFor.
+* getPastMeeting and getFutureMeeting use my method processMeetings which checks the list of meetings and then uses my method changeFutureMeetingToPast (see below) for the conversion.
+* addMeetingNotes does the conversion, as per the spec. If necessary it uses changeFutureMeetingToPast (see below).
+* getFutureMeetingList and getPastMeetingListFor will convert a FutureMeeting now in the past to a PastMeeting, using my method processMeetingsForLists.
 
 #### New methods
 ##### validID(int id)
@@ -36,18 +36,18 @@
 
 ##### getPastMeeting(int id)
 * Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException if the meeting is in the future.
-* Uses processMeetings() before the bulk of the method (see above)
+* Uses processMeetings before the bulk of the method (see above)
 * If the ID matches a meeting that was a FutureMeeting before the method that's now in the past, it will have been converted to a PastMeeting with the empty string as notes, so this method can return it.
 
 ##### getFutureMeeting(int id)
-* Uses processMeetings() before the bulk of the method (see above)
+* Uses processMeetings before the bulk of the method (see above)
 * If the ID matches a meeting that was a FutureMeeting before the method but is now in the past, this will have been converted, so an IllegalArgumentException protesting that the meeting has already happened will be thrown.
 
 ##### getFutureMeetingList(Contact contact)
-* Uses processMeetingsForLists() before the bulk of the method (see above). So a FutureMeeting now in the past won't be included in the list returned.
+* Uses processMeetingsForLists before the bulk of the method (see above). So a FutureMeeting now in the past won't be included in the list returned.
 
 ##### getPastMeetingListFor(Contact contact)
-* Uses processMeetingsForLists() before the bulk of the method (see above). So a FutureMeeting now in the past will be included in the list returned, as a PastMeeting with empty notes.
+* Uses processMeetingsForLists before the bulk of the method (see above). So a FutureMeeting now in the past will be included in the list returned, as a PastMeeting with empty notes.
 * Sergio [stated meetings are considered equal](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=53251) if and only if their IDs are equal.
 
 ##### addMeetingNotes(int id, String text)
