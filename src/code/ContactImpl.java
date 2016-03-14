@@ -2,12 +2,15 @@ package code;
 
 import java.io.Serializable;
 /**
- * The implementation of this interface must have two constructors. The most general constructor must have three
- * parameters: int, String, String. The first one corresponds to the ID provided by the ContactManager, the next one
- * corresponds to the name, and the last one corresponds to the initial set of notes about the contact. Another, more
- * restricted constructor must have two parameters only: ID and name. If the ID provided is zero or negative, a
- * IllegalArgumentException must be thrown. If any of the references / pointers passed as parameters to the constructor
- * is null, a NullPointerException must be thrown.
+ * The implementation of this interface must have two constructors. The most
+ * general constructor must have three parameters: int, String, String. The
+ * first one corresponds to the ID provided by the ContactManager, the next one
+ * corresponds to the name, and the last one corresponds to the initial set of
+ * notes about the contact. Another, more restricted constructor must have two
+ * parameters only: ID and name. If the ID provided is zero or negative, a
+ * IllegalArgumentException must be thrown. If any of the references / pointers
+ * passed as parameters to the constructor is null, a NullPointerException must
+ * be thrown.
  * @author Jade Dickinson jdicki04
  */
 public class ContactImpl implements Contact, Serializable {
@@ -20,7 +23,7 @@ public class ContactImpl implements Contact, Serializable {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
         } else if (name == null || notes == null) {
-            throw new NullPointerException("Please make sure neither name or notes are null");
+            throw new NullPointerException("Please ensure name & notes aren't null");
         } else if (name.equals("")) {
             throw new IllegalArgumentException("Name must not be empty");
         } else {
@@ -34,7 +37,7 @@ public class ContactImpl implements Contact, Serializable {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
         } else if (name == null) {
-            throw new NullPointerException("Please make sure that name is not null");
+            throw new NullPointerException("Please ensure name is not null");
         } else if (name.equals("")) {
             throw new IllegalArgumentException("Name must not be empty");
         } else {

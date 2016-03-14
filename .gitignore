@@ -64,3 +64,5 @@ src/test/junit-4.10.jar
 out/production/cw-cm/code/contacts.txt
 
 contacts.txt
+
+.idea/codeStyleSettings.xml
