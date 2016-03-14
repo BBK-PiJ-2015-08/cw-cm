@@ -337,7 +337,7 @@ public class ContactManagerImpl implements ContactManager {
          */
         if (name == null || notes == null) {
             throw new NullPointerException("Ensure name and notes aren't null");
-        } else if (name.equals("") || notes.equals("")) {
+        } else if ("".equals(name) || "".equals(notes)) {
             throw new IllegalArgumentException("Ensure name & notes aren't empty");
         }
         contactId = allContacts.size() + 1;
@@ -356,7 +356,7 @@ public class ContactManagerImpl implements ContactManager {
         //Don't plan to make this lenient with upper/lowercase. If want to, could use toLowerCase()
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
-        } else if (name.equals("")) {
+        } else if ("".equals(name)) {
             return allContacts;
         }
         Set<Contact> resultSet = new HashSet<>();
