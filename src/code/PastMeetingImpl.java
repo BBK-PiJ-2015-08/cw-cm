@@ -18,7 +18,7 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
     public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String text) {
         super(id, date, contacts);
         if (text == null) {
-            throw new NullPointerException("Please provide notes that aren't null");
+            throw new NullPointerException("Ensure notes that aren't null");
         } else {
             this.text = text;
         }

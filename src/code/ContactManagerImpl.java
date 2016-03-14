@@ -175,7 +175,7 @@ public class ContactManagerImpl implements ContactManager {
             throw new NullPointerException("The contact you provided was null");
         }
         if (!validContact(contact)) {
-            throw new IllegalArgumentException("Contact provided isn't in this Contact Manager");
+            throw new IllegalArgumentException("Contact isn't in this Contact Manager");
         }
         Set<Meeting> unsortedMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
@@ -338,9 +338,9 @@ public class ContactManagerImpl implements ContactManager {
          * the ID will be the current value of contactID.
          */
         if (name == null || notes == null) {
-            throw new NullPointerException("Please make sure neither name or notes are null");
+            throw new NullPointerException("Ensure name and notes aren't null");
         } else if (name.equals("") || notes.equals("")) {
-            throw new IllegalArgumentException("Neither name nor notes can be empty");
+            throw new IllegalArgumentException("Ensure name & notes aren't empty");
         }
         contactId = allContacts.size() + 1;
         allContacts.add(new ContactImpl(contactId, name, notes));
@@ -387,7 +387,7 @@ public class ContactManagerImpl implements ContactManager {
             }
         }
         if (totalValid != ids.length) {
-            throw new IllegalArgumentException("All IDs provided must correspond to a real contact");
+            throw new IllegalArgumentException("At least 1 ID didn't match a contact");
         }
         Set<Contact> resultSet = new HashSet<>();
         for (int i : ids) {
