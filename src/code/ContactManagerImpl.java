@@ -56,7 +56,10 @@ public class ContactManagerImpl implements ContactManager {
                 ex3.printStackTrace();
             }
         } else {
-            //The below should happen both when file didn't originally exist and if file.length() = 0
+            /**
+             * The below should happen both when file didn't originally exist
+             * and if file.length() = 0
+             */
             allMeetings = new ArrayList<>();
             allContacts = new HashSet<>();
             meetingId = 0;
@@ -77,17 +80,18 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
         /**
-         * There should be an int field for meetingID. This should be the current size of the list of all meetings,
-         * plus 1. I.e. if no meetings exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
+         * There should be an int field for meetingID. This should be the
+         * current size of the list of all meetings, plus 1. I.e. if no meetings
+         * exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
          * Return a copy of the current value of meetingID.
          */
         currentDate = Calendar.getInstance();
         if (contacts == null || date == null) {
-            throw new NullPointerException("Make sure neither date not set of contacts provided are null");
+            throw new NullPointerException("Ensure date and set of contacts aren't null");
         } else if (date.before(currentDate) || date.equals(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
         } else if (!allContacts.containsAll(contacts)) {
-            throw new IllegalArgumentException("All contacts must exist already");
+            throw new IllegalArgumentException("All contacts must already exist");
         } else {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
@@ -107,8 +111,7 @@ public class ContactManagerImpl implements ContactManager {
             for (Meeting m : allMeetings) {
                 if (m.getId() == id) {
                     if (!m.getDate().before(currentDate) && !m.getDate().equals(currentDate)) {
-                        //Not IllegalArgumentException as in getFutureMeeting; Sergio stated we should match the spec and throw IllegalStateException
-                        throw new IllegalStateException("Meeting date must be in the past");
+                        throw new IllegalStateException("Meeting date must be in past");
                     }
                     if (m instanceof PastMeeting) {
                         thisMeetingOrNull = (PastMeeting) m;
@@ -162,16 +165,17 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public List<Meeting> getFutureMeetingList(Contact contact) {
         /**
-         * Two meetings are equal if and only if their IDs are equal
-         * If this finds a FutureMeeting that's now passed, it will convert it in the main list of allMeetings,
-         * and thus it will ignore it when adding FutureMeetings to the list this method returns.
+         * Two meetings are equal if and only if their IDs are equal.
+         * If this finds a FutureMeeting that's now passed, it will convert it
+         * in the main list of allMeetings, and thus it will ignore it when
+         * adding FutureMeetings to the list this method returns.
          */
         processMeetingsForLists();
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
         }
         if (!validContact(contact)) {
-            throw new IllegalArgumentException("The contact you provided does not exist in this Contact Manager");
+            throw new IllegalArgumentException("Contact provided isn't in this Contact Manager");
         }
         Set<Meeting> unsortedMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
@@ -206,7 +210,7 @@ public class ContactManagerImpl implements ContactManager {
     public List<Meeting> getMeetingListOn(Calendar date) {
         processMeetingsForLists();
         if (date == null) {
-            throw new NullPointerException("Please check that date is not null");
+            throw new NullPointerException("Please ensure date is not null");
         }
         List<Meeting> unsortedMeetings = new ArrayList<>();
         for (Meeting m : allMeetings) {
@@ -230,15 +234,18 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * @see ContactManager
+     * If this finds a FutureMeeting that's now passed, it will convert it
+     * in the main list of allMeetings, and thus it will include it when adding
+     * PastMeetings to the list this method returns.
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
         processMeetingsForLists();
         if (contact == null) {
-            throw new NullPointerException("Please make sure the contact is not null");
+            throw new NullPointerException("Please ensure contact is not null");
         }
         if (!validContact(contact)) {
-            throw new IllegalArgumentException("That contact doesn't exist in this Contact Manager");
+            throw new IllegalArgumentException("Contact isn't in this Contact Manager");
         }
         Set<PastMeeting> unsortedMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
@@ -272,20 +279,21 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
         /**
-         * Check the date IS in the past. If it isn't; throw an IllegalArgumentException (forum)
+         * Check the date IS in the past. If it isn't; throw an
+         * IllegalArgumentException (forum)
          */
         currentDate = Calendar.getInstance();
         if (contacts == null || date == null || text == null) {
-            throw new NullPointerException("Please make sure nothing entered is null");
+            throw new NullPointerException("Ensure nothing entered is null");
         }
         if (date.after(currentDate) && !date.equals(currentDate)) {
             throw new IllegalArgumentException("Date must be in the past");
         }
         if (contacts.isEmpty()) {
-            throw new IllegalArgumentException("Set of contacts must not be empty");
+            throw new IllegalArgumentException("Set of contacts mustn't be empty");
         }
         if (!allContacts.containsAll(contacts)) {
-            throw new IllegalArgumentException("All contacts have to exist already");
+            throw new IllegalArgumentException("All contacts must exist already");
         } else {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
@@ -302,10 +310,10 @@ public class ContactManagerImpl implements ContactManager {
             throw new NullPointerException("Notes to be added can't be null");
         }
         if (!validID(id)) {
-            throw new IllegalArgumentException("There is no meeting corresponding to this ID");
+            throw new IllegalArgumentException("This ID matches no meeting");
         }
         if (getMeeting(id).getDate().after(currentDate)) {
-            throw new IllegalStateException("The meeting you specified hasn't yet taken place");
+            throw new IllegalStateException("That meeting hasn't yet happened");
         }
         PastMeeting pastPlusNotes;
         if (getMeeting(id) instanceof FutureMeeting) {
@@ -326,8 +334,9 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public int addNewContact(String name, String notes) {
         /**
-         * There'll be an int field for contactID. This should be the current size of the Set of all contacts, plus 1.
-         * When creating a new contact, the ID will be the current value of contactID.
+         * There'll be an int field for contactID. This should be the current
+         * size of the Set of all contacts, plus 1. When creating a new contact,
+         * the ID will be the current value of contactID.
          */
         if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
@@ -341,17 +350,9 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Returns a Set with the contacts whose name contains that string:
-     *
-     * If the string is the empty string, this methods returns the set that contains all current contacts.
-     *
-     * "In the case that a name (or any substring) is provided "that is not present in the set of contacts held" by the
-     * ContactManager, then it returns "the contacts whose name contains that string", i.e. the empty set."
-     *
-     * @param name the string to search for
-     * @return a list with the contacts whose name contains that string. - a set of contacts: Set<Contact>
-     *
-     * @throws NullPointerException if the parameter is null
+     * @see ContactManager
+     * If the string is the empty string, this methods returns the set that
+     * contains all current contacts.
      */
     @Override
     public Set<Contact> getContacts(String name) {
@@ -376,7 +377,7 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public Set<Contact> getContacts(int... ids) {
         if (ids.length < 1) {
-            throw new IllegalArgumentException("You must provide at least one ID");
+            throw new IllegalArgumentException("Please provide at least one ID");
         }
         int totalValid = 0;
         for (Contact c : allContacts) {
@@ -387,7 +388,7 @@ public class ContactManagerImpl implements ContactManager {
             }
         }
         if (totalValid != ids.length) {
-            throw new IllegalArgumentException("All IDs you provide must correspond to a real contact");
+            throw new IllegalArgumentException("All IDs provided must correspond to a real contact");
         }
         Set<Contact> resultSet = new HashSet<>();
         for (int i : ids) {
@@ -403,8 +404,10 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Checks if a meeting ID provided exists in the set of all meetings.
      * Used by getPastMeeting, getFutureMeeting, getMeeting and addMeetingNotes
-     * @param id The meeting ID which is being checked for having a corresponding Meeting in the ContactManager
-     * @return A boolean value, true if the ID provided matches a Meeting in the ContactManager
+     * @param id The meeting ID which is being checked for having a
+     *           corresponding Meeting in the ContactManager
+     * @return A boolean value, true if the ID provided matches a Meeting in the
+     * ContactManager
      */
     public boolean validID(int id) {
         boolean validID = false;
@@ -419,8 +422,10 @@ public class ContactManagerImpl implements ContactManager {
     /**
      * Checks if a contact exists in this contact manager.
      * Used by getFutureMeetingList and getPastMeetingListFor
-     * @param contact A single contact whose existence in the ContactManager is being checked.
-     * @return A boolean value, true if the contact provided exists in the ContactManager's set of all contacts.
+     * @param contact A single contact whose existence in the ContactManager is
+     *                being checked.
+     * @return A boolean value, true if the contact provided exists in the
+     * ContactManager's set of all contacts.
      */
     public boolean validContact(Contact contact) {
         boolean validContact = false;
@@ -433,16 +438,19 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Used to convert a FutureMeeting that's now in the past to a PastMeeting with no notes, and returns this.
-     * Checking whether a FutureMeeting should be a PastMeeting is not done by this method.
+     * Used to convert a FutureMeeting that's now in the past to a PastMeeting
+     * with no notes, and returns this. Checking whether a FutureMeeting should
+     * be a PastMeeting is not done by this method.
      * Used by getPastMeeting, getFutureMeeting and addMeetingNotes
-     * @param m A meeting that exists as a FutureMeeting but should now be a past meeting
-     * @return A PastMeeting with the same ID, date and contacts as the meeting entered as well as empty string for notes.
+     * @param m A meeting that exists as a FutureMeeting but should now be a
+     *          past meeting
+     * @return A PastMeeting with the same ID, date and contacts as the meeting
+     * entered as well as empty string for notes.
      * @throws IllegalArgumentException if the meeting hasn't yet happened
      */
     public PastMeeting changeFutureMeetingToPast(Meeting m) {
         if (m.getDate().after(currentDate)) {
-            throw new IllegalArgumentException("Please ensure the meeting provided is right now or has already happened");
+            throw new IllegalArgumentException("Ensure meeting provided is now or has already happened");
         }
         FutureMeeting temp = (FutureMeeting) getMeeting(m.getId());
         PastMeeting nowPastMeeting = new PastMeetingImpl(m.getId(), temp.getDate(), temp.getContacts(), "");
@@ -452,8 +460,8 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Used to check all the existing meetings and use addMeetingNotes on any FutureMeetings that require it,
-     * due to now being in the past.
+     * Used to check all the existing meetings and use addMeetingNotes on any
+     * FutureMeetings that require it, due to now being in the past.
      * Used by getPastMeeting and getFutureMeeting.
      */
     public void processMeetings() {
@@ -466,8 +474,9 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * A method used by methods returning lists, to check all existing meetings and use addMeetingNotes on any FutureMeetings that require it,
-     * due to now being in the past.
+     * A method used by methods returning lists, to check all existing meetings
+     * and use addMeetingNotes on any FutureMeetings that require it, due to now
+     * being in the past.
      */
     public void processMeetingsForLists() {
         int limit = allMeetings.size();
@@ -480,10 +489,10 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Save all data to disk.
-     * This method must be executed when the program is closed and when/if the user requests it.
+     * @see ContactManager
+     * For testing:call flush and check stuff written on the outside is the same
+     * as written on the inside
      */
-    //testing:call flush and check stuff written on the outside is the same as written on the inside
     @Override
     public void flush() {
         ObjectOutputStream toFile = null;
