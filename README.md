@@ -35,8 +35,9 @@
 --------------
 
 ##### getPastMeeting(int id)
-* Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException.
-* If a FutureMeeting exists with the ID provided that's now in the past, this will convert it to a PastMeeting with the empty string as notes.
+* Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException if the meeting is in the future.
+* Uses processMeetings before the bulk of the method (see above)
+* If the ID matches a meeting that was a FutureMeeting before the method that's now in the past, it will have been converted to a PastMeeting with the empty string as notes, so this method can return it.
 
 ##### getFutureMeeting(int id)
 * Uses processMeetings before the bulk of the method (see above)
