@@ -197,8 +197,6 @@ public class ContactManagerImpl implements ContactManager {
 
     /**
      * @see ContactManager
-     *
-     * Two meetings are equal only if their IDs are equal
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
@@ -230,11 +228,6 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-        /**
-         * Two meetings are equal if and only if their IDs are equal.
-         * If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings, but
-         * it will add it to the list as a PastMeeting with no notes.
-         */
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
@@ -482,15 +475,19 @@ public class ContactManagerImpl implements ContactManager {
             ex.printStackTrace();
         }
         try {
-            toFile.writeObject(allMeetings);
-            toFile.writeObject(allContacts);
-            toFile.writeObject(meetingId);
-            toFile.writeObject(contactId);
+            if (toFile != null) {
+                toFile.writeObject(allMeetings);
+                toFile.writeObject(allContacts);
+                toFile.writeObject(meetingId);
+                toFile.writeObject(contactId);
+            }
         } catch (IOException ex2) {
             ex2.printStackTrace();
         }
         try {
-            toFile.close();
+            if (toFile != null) {
+                toFile.close();
+            }
         } catch (IOException ex3) {
             ex3.printStackTrace();
         }
