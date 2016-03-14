@@ -31,6 +31,7 @@
 #### processMeetingsForLists()
 * I created this method for methods returning lists to use. For these, it checks all existing meetings and use addMeetingNotes (providing empty string as notes) on any FutureMeetings that require it, due to now being in the past.
 * Used by getFutureMeetingList and getPastMeetingList.
+------
 
 #### getPastMeeting(int id)
 * Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException.
