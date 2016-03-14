@@ -232,6 +232,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<PastMeeting> getPastMeetingListFor(Contact contact) {
+        processMeetingsForLists();
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
