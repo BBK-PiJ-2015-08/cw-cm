@@ -33,20 +33,20 @@
 
 --------------
 
-#### getPastMeeting(int id)
+##### getPastMeeting(int id)
 * Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException.
 * If a FutureMeeting exists with the ID provided that's now in the past, this will convert it to a PastMeeting with the empty string as notes.
 
-#### getFutureMeeting(int id)
+##### getFutureMeeting(int id)
 * Uses processMeetings before the bulk of the method (see above)
 * If the ID matches a meeting that was a FutureMeeting before the method but is now in the past, this will have been converted, so an IllegalArgumentException protesting that the meeting has already happened will be thrown.
 
-#### getFutureMeetingList(Contact contact)
+##### getFutureMeetingList(Contact contact)
 * Uses processMeetingsForLists before the bulk of the method (see above)
 
-#### getPastMeetingListFor(Contact contact)
+##### getPastMeetingListFor(Contact contact)
 * Uses processMeetingsForLists before the bulk of the method (see above)
 * Sergio [stated meetings are considered equal](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=53251) if and only if their IDs are equal.
 
-#### addMeetingNotes(int id, String text)
+##### addMeetingNotes(int id, String text)
 * If using addMeetingNotes on a PastMeeting which already has notes, even though the specification doesn't state specifically what to do, I've opted to add the notes provided to the old notes, rather than overwriting them. Sergio [implied this should be done](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47554).
