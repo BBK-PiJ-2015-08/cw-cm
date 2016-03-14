@@ -20,10 +20,10 @@ public class PastMeetingImplTest {
     private int testMeetingId;
     private Calendar testDate;
     private Set<Contact> attended;
-    private Contact contact1;
-    private Contact contact2;
-    private String testNotes;
-    private PastMeeting testMeeting;
+    Contact contact1;
+    Contact contact2;
+    String testNotes;
+    PastMeeting testMeeting;
 
     @Before
     public void setUp() {

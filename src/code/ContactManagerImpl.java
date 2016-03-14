@@ -408,7 +408,7 @@ public class ContactManagerImpl implements ContactManager {
      * @return A boolean value, true if the ID provided matches a Meeting in the
      * ContactManager
      */
-    public boolean validID(int id) {
+    private boolean validID(int id) {
         boolean validID = false;
         for (Meeting m : allMeetings) {
             if (m.getId() == id) {
@@ -426,7 +426,7 @@ public class ContactManagerImpl implements ContactManager {
      * @return A boolean value, true if the contact provided exists in the
      * ContactManager's set of all contacts.
      */
-    public boolean validContact(Contact contact) {
+    private boolean validContact(Contact contact) {
         boolean validContact = false;
         for (Contact c : allContacts) {
             if (c.getId() == contact.getId()) {
@@ -447,7 +447,7 @@ public class ContactManagerImpl implements ContactManager {
      * entered as well as empty string for notes.
      * @throws IllegalArgumentException if the meeting hasn't yet happened
      */
-    public PastMeeting changeFutureMeetingToPast(Meeting m) {
+    private PastMeeting changeFutureMeetingToPast(Meeting m) {
         if (m.getDate().after(currentDate)) {
             throw new IllegalArgumentException("Ensure meeting provided is now or has already happened");
         }
@@ -463,7 +463,7 @@ public class ContactManagerImpl implements ContactManager {
      * FutureMeetings that require it, due to now being in the past.
      * Used by getPastMeeting and getFutureMeeting.
      */
-    public void processMeetings() {
+    private void processMeetings() {
         currentDate = Calendar.getInstance();
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
@@ -477,7 +477,7 @@ public class ContactManagerImpl implements ContactManager {
      * and use addMeetingNotes on any FutureMeetings that require it, due to now
      * being in the past.
      */
-    public void processMeetingsForLists() {
+    private void processMeetingsForLists() {
         int limit = allMeetings.size();
         for (int i = 0; i < limit; i++) {
             Meeting m = allMeetings.get(i);

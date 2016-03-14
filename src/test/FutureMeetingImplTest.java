@@ -21,14 +21,12 @@ public class FutureMeetingImplTest {
     private int testMeetingId;
     private Calendar testDate;
     private Set<Contact> invited;
-    private Contact contact1;
-    private Contact contact2;
     private FutureMeeting testMeeting;
 
     @Before
     public void setUp() {
-        contact1 = new ContactImpl(5, "Rick", "Scientist");
-        contact2 = new ContactImpl(6, "Morty", "His grandpa Rick sent him");
+        Contact contact1 = new ContactImpl(5, "Rick", "Scientist");
+        Contact contact2 = new ContactImpl(6, "Morty", "His grandpa Rick sent him");
         testDate = new GregorianCalendar(2016, 11, 25);
         testMeetingId = 42;
         invited = new HashSet<>();
