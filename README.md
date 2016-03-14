@@ -1,6 +1,5 @@
 ## Programming in Java - Coursework 3 - Contact Manager
 ### ContactManagerImpl
---------------
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
 * I have opted to do so for **getPastMeeting, getFutureMeeting, getFutureMeetingList** and **getPastMeetingListFor**.
 * getPastMeeting and getFutureMeeting use my method processMeetings which checks the list of meetings and then uses my method changeFutureMeetingToPast (see below) for the conversion.
