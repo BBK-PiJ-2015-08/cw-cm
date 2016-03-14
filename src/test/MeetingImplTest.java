@@ -1,15 +1,10 @@
 package test;
 
 import code.Meeting;
-import code.MeetingImpl;
-import code.PastMeeting;
-import code.PastMeetingImpl;
-import code.FutureMeeting;
 import code.FutureMeetingImpl;
 import code.Contact;
 import code.ContactImpl;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 
 import java.util.Calendar;
