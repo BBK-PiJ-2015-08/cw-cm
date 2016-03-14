@@ -342,8 +342,7 @@ public class ContactManagerImpl implements ContactManager {
         }
         contactId = allContacts.size() + 1;
         allContacts.add(new ContactImpl(contactId, name, notes));
-        int result = contactId;
-        return result;
+        return contactId;
     }
 
     /**
