@@ -729,14 +729,12 @@ public class ContactManagerImplTest {
     public void testGetContactsIdsSingleId() {
         Set<Contact> resultSet = cm.getContacts(1);
         assertEquals(1, resultSet.size());
-        assertEquals(cm.getContacts(1), resultSet);
     }
 
     @Test
     public void testGetContactsIdsTwoIds() {
         Set<Contact> resultSet = cm.getContacts(1, 2);
         assertEquals(2, resultSet.size());
-        assertEquals(cm.getContacts(1, 2), resultSet);
     }
 
     @Test(expected = IllegalArgumentException.class)
