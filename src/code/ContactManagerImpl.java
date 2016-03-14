@@ -204,6 +204,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public List<Meeting> getMeetingListOn(Calendar date) {
+        processMeetingsForLists();
         if (date == null) {
             throw new NullPointerException("Please check that date is not null");
         }
