@@ -48,7 +48,6 @@
 
 ##### getPastMeetingListFor(Contact contact)
 * Uses processMeetingsForLists() before the bulk of the method (see above). So a FutureMeeting now in the past will be included in the list returned, as a PastMeeting with empty notes.
-
 * Sergio [stated meetings are considered equal](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=53251) if and only if their IDs are equal.
 
 ##### addMeetingNotes(int id, String text)
