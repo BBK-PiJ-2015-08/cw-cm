@@ -474,6 +474,7 @@ public class ContactManagerImpl implements ContactManager {
      * A method used by methods returning lists, to check all existing meetings
      * and use addMeetingNotes on any FutureMeetings that require it, due to now
      * being in the past.
+     * Used by getFutureMeetingList and getPastMeetingListFor
      */
     private void processMeetingsForLists() {
         int limit = allMeetings.size();
