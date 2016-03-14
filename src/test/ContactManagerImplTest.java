@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class ContactManagerImplTest {
     private static final String FILENAME = "contacts.txt";
-    private File checkExistence = new File(FILENAME);
+    private final File checkExistence = new File(FILENAME);
     private Calendar currentDate;
     private Set<Contact> group1;
     private Set<Contact> group2;

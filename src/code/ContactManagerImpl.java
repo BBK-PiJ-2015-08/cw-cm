@@ -83,7 +83,6 @@ public class ContactManagerImpl implements ContactManager {
          * There should be an int field for meetingID. This should be the
          * current size of the list of all meetings, plus 1. I.e. if no meetings
          * exist, meetingID will be 1, 1 meeting, meetingID will be 2, etc.
-         * Return a copy of the current value of meetingID.
          */
         currentDate = Calendar.getInstance();
         if (contacts == null || date == null) {
@@ -95,8 +94,7 @@ public class ContactManagerImpl implements ContactManager {
         } else {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
-            int currentMeetingId = meetingId;
-            return currentMeetingId;
+            return meetingId;
         }
     }
 
