@@ -466,6 +466,11 @@ public class ContactManagerImpl implements ContactManager {
         return nowPastMeeting;
     }
 
+    /**
+     * Used to check all the existing meetings and use changeFutureMeetingToPast on any FutureMeetings that require it,
+     * due to now being in the past.
+     * Used by getPastMeeting and getFutureMeeting.
+     */
     public void processMeetings() {
         currentDate = Calendar.getInstance();
         for (Meeting m : allMeetings) {
