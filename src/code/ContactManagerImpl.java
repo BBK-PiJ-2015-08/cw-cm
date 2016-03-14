@@ -166,13 +166,7 @@ public class ContactManagerImpl implements ContactManager {
          * If this finds a FutureMeeting that's now passed, it will convert it in the main list of allMeetings,
          * and thus it will ignore it when adding FutureMeetings to the list this method returns.
          */
-        int limit = allMeetings.size();
-        for (int i = 0; i < limit; i++) {
-            Meeting m = allMeetings.get(i);
-            if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
-                addMeetingNotes(m.getId(), "");
-            }
-        }
+        processMeetingsForLists();
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
         }
@@ -463,6 +457,16 @@ public class ContactManagerImpl implements ContactManager {
     public void processMeetings() {
         currentDate = Calendar.getInstance();
         for (Meeting m : allMeetings) {
+            if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
+                addMeetingNotes(m.getId(), "");
+            }
+        }
+    }
+
+    public void processMeetingsForLists() {
+        int limit = allMeetings.size();
+        for (int i = 0; i < limit; i++) {
+            Meeting m = allMeetings.get(i);
             if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
                 addMeetingNotes(m.getId(), "");
             }
