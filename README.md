@@ -7,6 +7,8 @@
 * addMeetingNotes does the conversion, as per the spec. If necessary it uses changeFutureMeetingToPast (see below).
 * getFutureMeetingList and getPastMeetingListFor will convert a FutureMeeting now in the past to a PastMeeting, using my method processMeetingsForLists.
 
+--------------
+
 ### New methods
 #### validID(int id)
 * I created this method to check if a meeting ID provided exists in the set of all meetings.
