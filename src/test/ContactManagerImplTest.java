@@ -44,11 +44,11 @@ public class ContactManagerImplTest {
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
     private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
-    private static final String shouldMowgliLeave = "Should Mowgli leave jungle?";
-    private static final String mowgliConsidered = "Mowgli considered joining the Dawn Patrol";
-    private static final String wolfName = "Akela";
-    private static final String wolfNotes = "A lone wolf";
-    private static final String mowgliReturn = "Mowgli is returning to the man-village";
+    private static final String SHOULDMOWGLILEAVE = "Should Mowgli leave jungle?";
+    private static final String MOWGLICONSIDERED = "Mowgli considered joining the Dawn Patrol";
+    private static final String WOLFNAME = "Akela";
+    private static final String WOLFNOTES = "A lone wolf";
+    private static final String MOWGLIRETURN = "Mowgli is returning to the man-village";
 
     @Before
     public void setUp() {
@@ -137,9 +137,9 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, SHOULDMOWGLILEAVE);
         PastMeeting check = cm.getPastMeeting(1);
-        assertEquals(check.getNotes(), shouldMowgliLeave);
+        assertEquals(check.getNotes(), SHOULDMOWGLILEAVE);
         assertEquals(check.getContacts(), cm.getContacts(1));
         assertEquals(check.getDate(), pastDate);
         assertEquals(check.getId(), 1);
@@ -147,7 +147,7 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingIdDoesntExist() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, SHOULDMOWGLILEAVE);
         assertNull(cm.getPastMeeting(2));
     }
 
@@ -158,13 +158,13 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetPastMeetingIdZero() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, SHOULDMOWGLILEAVE);
         assertNull(cm.getPastMeeting(0));
     }
 
     @Test
     public void testGetPastMeetingIdNegative() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, shouldMowgliLeave);
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, SHOULDMOWGLILEAVE);
         assertNull(cm.getPastMeeting(-1));
     }
 
@@ -516,12 +516,12 @@ public class ContactManagerImplTest {
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
-        cm.addNewPastMeeting(null, pastDate, mowgliConsidered);
+        cm.addNewPastMeeting(null, pastDate, MOWGLICONSIDERED);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullDate() {
-        cm.addNewPastMeeting(cm.getContacts(1), null, mowgliConsidered);
+        cm.addNewPastMeeting(cm.getContacts(1), null, MOWGLICONSIDERED);
     }
 
     @Test(expected = NullPointerException.class)
@@ -532,7 +532,7 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingDateInFuture() {
-        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, mowgliConsidered);
+        cm.addNewPastMeeting(cm.getContacts(1), farFutureDate, MOWGLICONSIDERED);
     }
 
     @Test
@@ -547,22 +547,22 @@ public class ContactManagerImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingSetContactsEmpty() {
-        cm.addNewPastMeeting(group2, pastDate, mowgliConsidered);
+        cm.addNewPastMeeting(group2, pastDate, MOWGLICONSIDERED);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewPastMeetingOneContactIdNonExistent() {
-        cm.addNewPastMeeting(group1, pastDate, mowgliConsidered);
+        cm.addNewPastMeeting(group1, pastDate, MOWGLICONSIDERED);
     }
 
     @Test
     public void testAddNewPastMeetingNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, mowgliConsidered);
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, MOWGLICONSIDERED);
         PastMeeting check = cm.getPastMeeting(1);
         assertEquals(check.getId(), 1);
         assertEquals(check.getDate(), pastDate);
         assertEquals(check.getContacts(), cm.getContacts(1));
-        assertEquals(check.getNotes(), mowgliConsidered);
+        assertEquals(check.getNotes(), MOWGLICONSIDERED);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -599,8 +599,8 @@ public class ContactManagerImplTest {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        cm.addMeetingNotes(1, mowgliReturn);
-        assertEquals(cm.getPastMeeting(1).getNotes(), mowgliReturn);
+        cm.addMeetingNotes(1, MOWGLIRETURN);
+        assertEquals(cm.getPastMeeting(1).getNotes(), MOWGLIRETURN);
     }
 
     @Test
@@ -619,33 +619,33 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddNewContactNormal() {
-        int result = cm.addNewContact(wolfName, wolfNotes);
+        int result = cm.addNewContact(WOLFNAME, WOLFNOTES);
         assertEquals(result, 4);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewContactNameNull() {
-        cm.addNewContact(null, wolfNotes);
+        cm.addNewContact(null, WOLFNOTES);
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddNewContactNotesNull() {
-        cm.addNewContact(wolfName, null);
+        cm.addNewContact(WOLFNAME, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewContactNameEmptyString() {
-        cm.addNewContact("", wolfNotes);
+        cm.addNewContact("", WOLFNOTES);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewContactNotesEmptyString() {
-        cm.addNewContact(wolfName, "");
+        cm.addNewContact(WOLFNAME, "");
     }
 
     @Test
     public void testAddNewContactSecondContactAddedId() {
-        cm.addNewContact(wolfName, wolfNotes);
+        cm.addNewContact(WOLFNAME, WOLFNOTES);
         int result = cm.addNewContact("Shere Khan", "Super evil");
         assertEquals(result, 5);
     }
