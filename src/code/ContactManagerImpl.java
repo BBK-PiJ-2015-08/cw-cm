@@ -475,6 +475,15 @@ public class ContactManagerImpl implements ContactManager {
         allMeetings.remove(temp);
         return nowPastMeeting;
     }
+
+    public void processMeetings() {
+        currentDate = Calendar.getInstance();
+        for (Meeting m : allMeetings) {
+            if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
+                changeFutureMeetingToPast(m);
+            }
+        }
+    }
     /**
      * Save all data to disk.
      * This method must be executed when the program is closed and when/if the user requests it.
