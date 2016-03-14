@@ -163,10 +163,16 @@ public class ContactManagerImpl implements ContactManager {
     public List<Meeting> getFutureMeetingList(Contact contact) {
         /**
          * Two meetings are equal if and only if their IDs are equal
-         * If this finds a FutureMeeting that's now passed, it will not convert it in the main list of allMeetings,
-         * however it will ignore it when adding FutureMeetings to the list this method returns.
+         * If this finds a FutureMeeting that's now passed, it will convert it in the main list of allMeetings,
+         * and thus it will ignore it when adding FutureMeetings to the list this method returns.
          */
-        currentDate = Calendar.getInstance();
+        int limit = allMeetings.size();
+        for (int i = 0; i < limit; i++) {
+            Meeting m = allMeetings.get(i);
+            if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
+                addMeetingNotes(m.getId(), "");
+            }
+        }
         if (contact == null) {
             throw new NullPointerException("The contact you provided was null");
         }
@@ -450,7 +456,7 @@ public class ContactManagerImpl implements ContactManager {
     }
 
     /**
-     * Used to check all the existing meetings and use changeFutureMeetingToPast on any FutureMeetings that require it,
+     * Used to check all the existing meetings and use addMeetingNotes on any FutureMeetings that require it,
      * due to now being in the past.
      * Used by getPastMeeting and getFutureMeeting.
      */
