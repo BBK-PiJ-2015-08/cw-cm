@@ -3,9 +3,9 @@
 * See below for details of methods I've created, **validID(), validContact(), changeFutureMeetingToPast(), processMeetings()** and **processMeetingsForLists()**.
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
 * I have opted to do so for **getPastMeeting(), getFutureMeeting(), getFutureMeetingList** and **getPastMeetingListFor**.
-* getPastMeeting() and getFutureMeeting() use my method processMeetings which checks the list of meetings and then uses my method changeFutureMeetingToPast() (see below) for the conversion.
-* addMeetingNotes() does the conversion, as per the spec. If necessary it uses changeFutureMeetingToPast() (see below).
-* getFutureMeetingList() and getPastMeetingListFor() will convert a FutureMeeting now in the past to a PastMeeting, using my method processMeetingsForLists().
+* **getPastMeeting()** and **getFutureMeeting()** use my method processMeetings which checks the list of meetings and then uses my method **changeFutureMeetingToPast()** (see below) for the conversion.
+* **addMeetingNotes()** does the conversion, as per the spec. If necessary it uses **changeFutureMeetingToPast()** (see below).
+* **getFutureMeetingList()** and **getPastMeetingListFor()** will convert a FutureMeeting now in the past to a PastMeeting, using my method **processMeetingsForLists()**.
 
 #### New methods
 ##### validID(int id)
