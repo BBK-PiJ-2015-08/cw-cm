@@ -393,13 +393,13 @@ public class ContactManagerImplTest {
         Calendar nearFutureDate = Calendar.getInstance();
         nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
-        cm.addFutureMeeting(cm.getContacts(2), futureDate);
-        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         try {
             Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
+        cm.addFutureMeeting(cm.getContacts(2), futureDate);
+        cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 1);
         assertEquals(check.get(0).getId(), 3);
