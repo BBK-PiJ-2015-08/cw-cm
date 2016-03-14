@@ -16,7 +16,7 @@ public class ContactImpl implements Contact, Serializable {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
         } else if (name == null || notes == null) {
             throw new NullPointerException("Please ensure name & notes aren't null");
-        } else if (name.equals("")) {
+        } else if ("".equals(name)) {
             throw new IllegalArgumentException("Name must not be empty");
         } else {
             this.id = id;
@@ -30,7 +30,7 @@ public class ContactImpl implements Contact, Serializable {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
         } else if (name == null) {
             throw new NullPointerException("Please ensure name is not null");
-        } else if (name.equals("")) {
+        } else if ("".equals(name)) {
             throw new IllegalArgumentException("Name must not be empty");
         } else {
             this.id = id;
