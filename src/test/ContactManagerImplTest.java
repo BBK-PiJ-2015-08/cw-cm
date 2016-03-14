@@ -387,6 +387,7 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getDate(), nearFutureDate);
     }
 */
+/**
     @Test
     public void testGetFutureMeetingListWereThreeFutureTwoForContactOneHasNowPast() {
         Calendar nearFutureDate = Calendar.getInstance();
@@ -405,7 +406,7 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
         assertEquals(check.get(0).getDate(), nearFutureDate);
     }
-
+*/
     /**
      * Test getMeetingListOn()
      */
