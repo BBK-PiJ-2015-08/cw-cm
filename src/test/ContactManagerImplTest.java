@@ -271,13 +271,16 @@ public class ContactManagerImplTest {
      */
 
     @Test
-    public void testGetMeetingNormal() {
+    public void testGetMeetingNormalFuture() {
         cm.addFutureMeeting(cm.getContacts(1, 2), futureDate);
         Meeting checkFuture = cm.getMeeting(1);
         assertEquals(checkFuture.getContacts(), cm.getContacts(1, 2));
         assertEquals(checkFuture.getDate(), futureDate);
         assertEquals(checkFuture.getId(), 1);
+    }
 
+    @Test
+    public void testGetMeetingNormalPast() {
         cm.addNewPastMeeting(cm.getContacts(2, 3), pastDate, LAIR);
         Meeting checkPast = cm.getMeeting(2);
         assertEquals(checkPast.getContacts(), cm.getContacts(2, 3));
