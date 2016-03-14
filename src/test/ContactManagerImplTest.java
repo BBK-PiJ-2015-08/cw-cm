@@ -184,7 +184,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingMeetingNow() {
         cm.addNewPastMeeting(cm.getContacts(1), currentDate, "Leaving the jungle");
-        cm.getPastMeeting(1);
+        assertSame(cm.getPastMeeting(1), cm.getMeeting(1));
     }
 
     @Test
