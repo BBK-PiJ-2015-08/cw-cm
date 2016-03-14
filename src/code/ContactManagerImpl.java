@@ -305,17 +305,17 @@ public class ContactManagerImpl implements ContactManager {
         if (getMeeting(id).getDate().after(currentDate)) {
             throw new IllegalStateException("The meeting you specified hasn't yet taken place");
         }
-        PastMeeting pastMeetingPlusNotes;
+        PastMeeting pastPlusNotes;
         if (getMeeting(id) instanceof FutureMeeting) {
-            pastMeetingPlusNotes = changeFutureMeetingToPast(getMeeting(id));
+            pastPlusNotes = changeFutureMeetingToPast(getMeeting(id));
             addMeetingNotes(id, text);
         } else {
             PastMeeting temp = getPastMeeting(id);
-            pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
-            allMeetings.add(pastMeetingPlusNotes);
+            pastPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
+            allMeetings.add(pastPlusNotes);
             allMeetings.remove(temp);
         }
-        return pastMeetingPlusNotes;
+        return pastPlusNotes;
     }
 
     /**
