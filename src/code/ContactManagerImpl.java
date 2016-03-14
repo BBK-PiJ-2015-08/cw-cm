@@ -107,7 +107,7 @@ public class ContactManagerImpl implements ContactManager {
      */
     @Override
     public PastMeeting getPastMeeting(int id) {
-        currentDate = Calendar.getInstance();
+        processMeetings();
         PastMeeting thisMeetingOrNull = null;
         if (validID(id)) {
             for (Meeting m : allMeetings) {
@@ -116,13 +116,8 @@ public class ContactManagerImpl implements ContactManager {
                         //Not IllegalArgumentException as in getFutureMeeting; Sergio stated we should match the spec and throw IllegalStateException
                         throw new IllegalStateException("Meeting date must be in the past");
                     }
-                    else {
-                        if (m instanceof FutureMeeting) {
-                            thisMeetingOrNull = changeFutureMeetingToPast(m);
-                        }
-                        else {
-                            thisMeetingOrNull = (PastMeeting) m;
-                        }
+                    if (m instanceof PastMeeting) {
+                        thisMeetingOrNull = (PastMeeting) m;
                     }
                 }
             }
@@ -484,6 +479,7 @@ public class ContactManagerImpl implements ContactManager {
             }
         }
     }
+
     /**
      * Save all data to disk.
      * This method must be executed when the program is closed and when/if the user requests it.
