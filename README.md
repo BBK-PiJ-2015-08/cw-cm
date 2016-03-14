@@ -2,9 +2,10 @@
 General comments
 --------------
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
-* I have opted to do so for getPastMeeting and getFutureMeeting. These use my method processMeetings which checks the list of meetings and then uses my method changeFutureMeetingToPast (see below) for the conversion.
-* addMeetingNotes will do this, as per the spec. If necessary it uses changeFutureMeetingToPast
-* Neither getFutureMeetingList or getPastMeetingListFor will convert a FutureMeeting now in the past to a PastMeeting.
+* I have opted to do so for getPastMeeting, getFutureMeeting, getFutureMeetingList and getPastMeetingListFor.
+* getPastMeeting and getFutureMeeting use my method processMeetings which checks the list of meetings and then uses my method changeFutureMeetingToPast (see below) for the conversion.
+* addMeetingNotes does the conversion, as per the spec. If necessary it uses changeFutureMeetingToPast (see below).
+* getFutureMeetingList and getPastMeetingListFor will convert a FutureMeeting now in the past to a PastMeeting, using my method processMeetingsForLists.
 
 ContactManagerImpl: getPastMeeting(int id)
 --------------
@@ -45,3 +46,8 @@ ContactManagerImpl: processMeetings()
 --------------
 * I created this method for other methods to use at start to check all existing meetings and use changeFutureMeetingToPast on any FutureMeetings that require it, due to now being in the past.
 * Used by getPastMeeting and getFutureMeeting.
+
+ContactManagerImpl: processMeetingsForLists()
+--------------
+* I created this method for methods returning lists to use. For these, it checks all existing meetings and use addMeetingNotes (providing empty string as notes) on any FutureMeetings that require it, due to now being in the past.
+* Used by getFutureMeetingList and getPastMeetingList.
