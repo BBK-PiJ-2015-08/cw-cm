@@ -89,12 +89,12 @@ public class ContactManagerImpl implements ContactManager {
             throw new NullPointerException("Ensure date and set of contacts aren't null");
         } else if (date.before(currentDate) || date.equals(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
-        } else if (!allContacts.containsAll(contacts)) {
-            throw new IllegalArgumentException("All contacts must already exist");
-        } else {
+        } else if (allContacts.containsAll(contacts)) {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
             return meetingId;
+        } else {
+            throw new IllegalArgumentException("All contacts must already exist");
         }
     }
 
@@ -289,11 +289,11 @@ public class ContactManagerImpl implements ContactManager {
         if (contacts.isEmpty()) {
             throw new IllegalArgumentException("Set of contacts mustn't be empty");
         }
-        if (!allContacts.containsAll(contacts)) {
-            throw new IllegalArgumentException("All contacts must exist already");
-        } else {
+        if (allContacts.containsAll(contacts)) {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
+        } else {
+            throw new IllegalArgumentException("All contacts must exist already");
         }
     }
 
