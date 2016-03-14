@@ -356,15 +356,17 @@ public class ContactManagerImpl implements ContactManager {
         //Don't plan to make this lenient with upper/lowercase. If want to, could use toLowerCase()
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
-        } else if ("".equals(name)) {
-            return allContacts;
         }
         Set<Contact> resultSet = new HashSet<>();
+        if ("".equals(name)) {
+            resultSet = allContacts;
+        } else {
             for (Contact c : allContacts) {
                 if (c.getName().contains(name)) {
                     resultSet.add(c);
                 }
             }
+        }
         return resultSet;
     }
 
