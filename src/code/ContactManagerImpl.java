@@ -458,7 +458,7 @@ public class ContactManagerImpl implements ContactManager {
         currentDate = Calendar.getInstance();
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting && (m.getDate().before(currentDate) || m.getDate().equals(currentDate))) {
-                changeFutureMeetingToPast(m);
+                addMeetingNotes(m.getId(), "");
             }
         }
     }
