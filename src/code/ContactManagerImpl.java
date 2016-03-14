@@ -176,6 +176,7 @@ public class ContactManagerImpl implements ContactManager {
         Set<Meeting> unsortedMeetings = new HashSet<>();
         for (Meeting m : allMeetings) {
             if (m instanceof FutureMeeting) {
+                //
                 for (Contact c : m.getContacts()) {
                     if (c.getId() == contact.getId()) {
                         unsortedMeetings.add(m);
