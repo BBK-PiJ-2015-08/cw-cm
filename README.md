@@ -41,3 +41,8 @@ ContactManagerImpl: changeFutureMeetingToPast(Meeting m)
 * The change is made to the meeting in the set of all the ContactManager's meetings.
 * The method then returns the created PastMeeting, though getFutureMeeting doesn't need the output.
 * Used by getPastMeeting, getFutureMeeting and addMeetingNotes.
+
+ContactManagerImpl: processMeetings()
+--------------
+* I created this method for other methods to use at start to check all existing meetings and use changeFutureMeetingToPast on any FutureMeetings that require it, due to now being in the past.
+* Used by getPastMeeting and getFutureMeeting.
