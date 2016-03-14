@@ -35,8 +35,7 @@ public class ContactManagerImpl implements ContactManager {
                 fromFile = new ObjectInputStream(
                         new BufferedInputStream(
                                 new FileInputStream(FILENAME)));
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
             try {
@@ -44,18 +43,15 @@ public class ContactManagerImpl implements ContactManager {
                 allContacts = (Set<Contact>) fromFile.readObject();
                 meetingId = (int) fromFile.readObject();
                 contactId = (int) fromFile.readObject();
-            }
-            catch (IOException | ClassNotFoundException ex2){
+            } catch (IOException | ClassNotFoundException ex2) {
                 ex2.printStackTrace();
             }
             try {
                 fromFile.close();
-            }
-            catch (IOException ex3){
+            } catch (IOException ex3) {
                 ex3.printStackTrace();
             }
-        }
-        else {
+        } else {
             //The below should happen both when file didn't originally exist and if file.length() = 0
             allMeetings = new ArrayList<>();
             allContacts = new HashSet<>();
@@ -84,14 +80,11 @@ public class ContactManagerImpl implements ContactManager {
         currentDate = Calendar.getInstance();
         if (contacts == null || date == null) {
             throw new NullPointerException("Make sure neither date not set of contacts provided are null");
-        }
-        else if (date.before(currentDate) || date.equals(currentDate)) {
+        } else if (date.before(currentDate) || date.equals(currentDate)) {
             throw new IllegalArgumentException("Date can't be in the past");
-        }
-        else if (!allContacts.containsAll(contacts)) {
+        } else if (!allContacts.containsAll(contacts)) {
             throw new IllegalArgumentException("All contacts must exist already");
-        }
-        else {
+        } else {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new FutureMeetingImpl(meetingId, date, contacts));
             int currentMeetingId = meetingId;
@@ -134,8 +127,7 @@ public class ContactManagerImpl implements ContactManager {
                 if (m.getId() == id) {
                     if (m instanceof PastMeeting) {
                         throw new IllegalArgumentException("Meeting has already happened");
-                    }
-                    else {
+                    } else {
                         thisMeetingOrNull = (FutureMeeting) m;
                     }
                 }
@@ -159,7 +151,7 @@ public class ContactManagerImpl implements ContactManager {
         }
         return thisMeetingOrNull;
     }
-    
+
     /**
      * @see ContactManager
      */
@@ -195,7 +187,7 @@ public class ContactManagerImpl implements ContactManager {
                     containsDuplicate = true;
                 }
             }
-            if(!containsDuplicate) {
+            if (!containsDuplicate) {
                 sortedMeetings.add(m);
             }
         }
@@ -215,7 +207,7 @@ public class ContactManagerImpl implements ContactManager {
         }
         List<Meeting> unsortedMeetings = new ArrayList<>();
         for (Meeting m : allMeetings) {
-            if(m.getDate().equals(date)) {
+            if (m.getDate().equals(date)) {
                 unsortedMeetings.add(m);
             }
         }
@@ -246,7 +238,7 @@ public class ContactManagerImpl implements ContactManager {
         if (contact == null) {
             throw new NullPointerException("Please make sure the contact is not null");
         }
-        if(!validContact(contact)) {
+        if (!validContact(contact)) {
             throw new IllegalArgumentException("That contact doesn't exist in this Contact Manager");
         }
         Set<PastMeeting> unsortedMeetings = new HashSet<>();
@@ -295,8 +287,7 @@ public class ContactManagerImpl implements ContactManager {
         }
         if (!allContacts.containsAll(contacts)) {
             throw new IllegalArgumentException("All contacts have to exist already");
-        }
-        else {
+        } else {
             meetingId = allMeetings.size() + 1;
             allMeetings.add(new PastMeetingImpl(meetingId, date, contacts, text));
         }
@@ -321,7 +312,7 @@ public class ContactManagerImpl implements ContactManager {
         if (getMeeting(id) instanceof FutureMeeting) {
             pastMeetingPlusNotes = changeFutureMeetingToPast(getMeeting(id));
             addMeetingNotes(id, text);
-        } else{
+        } else {
             PastMeeting temp = getPastMeeting(id);
             pastMeetingPlusNotes = new PastMeetingImpl(id, temp.getDate(), temp.getContacts(), temp.getNotes() + text);
             allMeetings.add(pastMeetingPlusNotes);
@@ -341,8 +332,7 @@ public class ContactManagerImpl implements ContactManager {
          */
         if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
-        }
-        else if (name.equals("") || notes.equals("")) {
+        } else if (name.equals("") || notes.equals("")) {
             throw new IllegalArgumentException("Neither name nor notes can be empty");
         }
         contactId = allContacts.size() + 1;
@@ -369,8 +359,7 @@ public class ContactManagerImpl implements ContactManager {
         //Don't plan to make this lenient with upper/lowercase. If want to, could use toLowerCase()
         if (name == null) {
             throw new NullPointerException("Please make sure name is not null");
-        }
-        else if (name.equals("")) {
+        } else if (name.equals("")) {
             return allContacts;
         }
         Set<Contact> resultSet = new HashSet<>();
@@ -485,11 +474,11 @@ public class ContactManagerImpl implements ContactManager {
     @Override
     public void flush() {
         ObjectOutputStream toFile = null;
-        try {toFile = new ObjectOutputStream(
+        try {
+            toFile = new ObjectOutputStream(
                 new BufferedOutputStream(
                         new FileOutputStream(FILENAME)));
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         try {
@@ -497,14 +486,12 @@ public class ContactManagerImpl implements ContactManager {
             toFile.writeObject(allContacts);
             toFile.writeObject(meetingId);
             toFile.writeObject(contactId);
-        }
-        catch (IOException ex2 ){
+        } catch (IOException ex2) {
             ex2.printStackTrace();
         }
         try {
             toFile.close();
-        }
-        catch (IOException ex3){
+        } catch (IOException ex3) {
             ex3.printStackTrace();
         }
     }

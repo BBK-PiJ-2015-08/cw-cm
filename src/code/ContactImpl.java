@@ -18,14 +18,11 @@ public class ContactImpl implements Contact, Serializable {
     public ContactImpl(int id, String name, String notes) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
-        }
-        else if (name == null || notes == null) {
+        } else if (name == null || notes == null) {
             throw new NullPointerException("Please make sure neither name or notes are null");
-        }
-        else if (name.equals("")) {
+        } else if (name.equals("")) {
             throw new IllegalArgumentException("Name must not be empty");
-        }
-        else {
+        } else {
             this.id = id;
             this.name = name;
             this.notes = notes;
@@ -35,14 +32,11 @@ public class ContactImpl implements Contact, Serializable {
     public ContactImpl(int id, String name) {
         if (id <= 0) {
             throw new IllegalArgumentException("Contact ID must be greater than 0");
-        }
-        else if (name == null) {
+        } else if (name == null) {
             throw new NullPointerException("Please make sure that name is not null");
-        }
-        else if (name.equals("")) {
+        } else if (name.equals("")) {
             throw new IllegalArgumentException("Name must not be empty");
-        }
-        else {
+        } else {
             this.id = id;
             this.name = name;
             this.notes = "";
@@ -81,8 +75,7 @@ public class ContactImpl implements Contact, Serializable {
         if (note != null && !note.equals("")) {
             if (notes == null) {
                 this.notes = note;
-            }
-            else {
+            } else {
                 this.notes += note;
             }
         }

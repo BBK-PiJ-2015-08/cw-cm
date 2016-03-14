@@ -18,14 +18,11 @@ public abstract class MeetingImpl implements Meeting, Serializable {
     public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");
-        }
-        else if (contacts.isEmpty()) {
+        } else if (contacts.isEmpty()) {
             throw new IllegalArgumentException("Please make sure the set of contacts is not empty");
-        }
-        else if (date == null) {
+        } else if (date == null) {
             throw new NullPointerException("Please ensure date is not null");
-        }
-        else {
+        } else {
             //Check that no individual contact's name or notes are null
             for (Contact contact : contacts) {
                 if (contact.getName() == null || contact.getNotes() == null) {

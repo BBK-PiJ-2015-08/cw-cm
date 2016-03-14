@@ -44,19 +44,23 @@ public class ContactManagerImplTest {
     private final Calendar pastDate = new GregorianCalendar(2010, 5, 4, 9, 20, 1);
     private final Calendar pastDatePM = new GregorianCalendar(2010, 5, 4, 20, 30, 30);
     private final Calendar distantPastDate = new GregorianCalendar(2002, 1, 1, 13, 10, 45);
+    private static final int JUSTATICK = 10;
+    private static final int TWOTICKS = 20;
     private static final String SHOULDMOWGLILEAVE = "Should Mowgli leave jungle?";
     private static final String MOWGLICONSIDERED = "Mowgli considered joining the Dawn Patrol";
     private static final String WOLFNAME = "Akela";
     private static final String WOLFNOTES = "A lone wolf";
     private static final String MOWGLIRETURN = "Mowgli is returning to the man-village";
+    private static final String QUESTIONRETURN = "Should Mowgli return to the man-village?";
+    private static final String LAIR = "How to infiltrate monkey lair";
+    private static final String BEES = "Stealing honey from bees";
 
     @Before
     public void setUp() {
         if (checkExistence.exists()) {
             try {
                 checkExistence.delete();
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
@@ -81,9 +85,11 @@ public class ContactManagerImplTest {
         //Group 2 - actually an empty set
         group2 = new HashSet<>();
     }
-/**
- * Testing flush(): call flush and check stuff written on the outside is the same as written on the inside
-*/
+
+    /**
+     * Test addFutureMeeting()
+     * Testing flush(): call flush and check stuff written on the outside is the same as written on the inside.
+     */
     @Test
     public void testAddFutureMeetingIdReturned() {
         int thisMeetingId = cm.addFutureMeeting(cm.getContacts(1), futureDate);
@@ -94,7 +100,7 @@ public class ContactManagerImplTest {
     @Test
     public void testAddFutureMeetingSecondIdReturned() {
         cm.addFutureMeeting(cm.getContacts(1), futureDate);
-        int thisMeetingId = cm.addFutureMeeting(cm.getContacts(2,3), futureDate);
+        int thisMeetingId = cm.addFutureMeeting(cm.getContacts(2, 3), futureDate);
         assertEquals(2, thisMeetingId);
     }
 
@@ -134,6 +140,10 @@ public class ContactManagerImplTest {
     public void testAddFutureMeetingOneContactIdNonExistentInCM() {
         cm.addFutureMeeting(group1, futureDate);
     }
+
+    /**
+     * Test getPastMeeting()
+     */
 
     @Test
     public void testGetPastMeetingNormal() {
@@ -183,10 +193,10 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingFutureMeetingNowInPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -197,11 +207,15 @@ public class ContactManagerImplTest {
         assertEquals(check.getNotes(), "");
     }
 
+    /**
+     * Test getFutureMeeting()
+     */
+
     @Test
     public void testGetFutureMeetingNormal() {
-        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        cm.addFutureMeeting(cm.getContacts(1, 2), futureDate);
         FutureMeeting check = cm.getFutureMeeting(1);
-        assertEquals(check.getContacts(), cm.getContacts(1,2));
+        assertEquals(check.getContacts(), cm.getContacts(1, 2));
         assertEquals(check.getDate(), futureDate);
         assertEquals(check.getId(), 1);
     }
@@ -244,10 +258,10 @@ public class ContactManagerImplTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingFutureMeetingNowInPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -255,23 +269,26 @@ public class ContactManagerImplTest {
         assertNull(check);
     }
 
+    /**
+     * Test getMeeting()
+     */
 
     @Test
     public void testGetMeetingNormal() {
-        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        cm.addFutureMeeting(cm.getContacts(1, 2), futureDate);
         Meeting checkFuture = cm.getMeeting(1);
-        assertEquals(checkFuture.getContacts(), cm.getContacts(1,2));
+        assertEquals(checkFuture.getContacts(), cm.getContacts(1, 2));
         assertEquals(checkFuture.getDate(), futureDate);
         assertEquals(checkFuture.getId(), 1);
 
-        cm.addNewPastMeeting(cm.getContacts(2,3), pastDate, "How to infiltrate monkey lair");
+        cm.addNewPastMeeting(cm.getContacts(2, 3), pastDate, LAIR);
         Meeting checkPast = cm.getMeeting(2);
-        assertEquals(checkPast.getContacts(), cm.getContacts(2,3));
+        assertEquals(checkPast.getContacts(), cm.getContacts(2, 3));
         assertEquals(checkPast.getDate(), pastDate);
         assertEquals(checkPast.getId(), 2);
 
         PastMeeting checkPastNotes = (PastMeeting) cm.getMeeting(2);
-        assertEquals(checkPastNotes.getNotes(), "How to infiltrate monkey lair");
+        assertEquals(checkPastNotes.getNotes(), LAIR);
     }
 
     @Test
@@ -289,15 +306,19 @@ public class ContactManagerImplTest {
 
     @Test
     public void testGetMeetingIdZero() {
-        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Stealing honey from bees");
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, BEES);
         assertNull(cm.getMeeting(0));
     }
 
     @Test
     public void testGetMeetingIdNegative() {
-        cm.addNewPastMeeting(cm.getContacts(2), pastDate, "Stealing honey from bees");
+        cm.addNewPastMeeting(cm.getContacts(2), pastDate, BEES);
         assertNull(cm.getMeeting(-1));
     }
+
+    /**
+     * Test getFutureMeetingList()
+     */
 
     @Test(expected = IllegalArgumentException.class)
     public void testGetFutureMeetingListContactNonExistent() {
@@ -323,7 +344,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetFutureMeetingListTwoMeetings() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
-        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        cm.addFutureMeeting(cm.getContacts(1, 2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 2);
         assertTrue(check.contains(cm.getFutureMeeting(1)));
@@ -346,7 +367,7 @@ public class ContactManagerImplTest {
     public void testGetFutureMeetingListThreeMeetingsOneSamePropertiesExceptId() {
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
-        cm.addFutureMeeting(cm.getContacts(1,2), futureDate);
+        cm.addFutureMeeting(cm.getContacts(1, 2), futureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 3);
     }
@@ -354,10 +375,10 @@ public class ContactManagerImplTest {
     @Test
     public void testGetFutureMeetingListWereTwoFutureNowOneHasPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -372,12 +393,12 @@ public class ContactManagerImplTest {
     @Test
     public void testGetFutureMeetingListWereThreeFutureTwoForContactOneHasNowPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         cm.addFutureMeeting(cm.getContacts(2), futureDate);
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -387,6 +408,10 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
         assertEquals(check.get(0).getDate(), nearFutureDate);
     }
+
+    /**
+     * Test getMeetingListOn()
+     */
 
     @Test(expected = NullPointerException.class)
     public void testGetMeetingListOnNullDate() {
@@ -444,6 +469,10 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getDate(), cm.getPastMeeting(2).getDate());
     }
 
+    /**
+     * Test getPastMeetingListFor()
+     */
+
     @Test(expected = NullPointerException.class)
     public void testGetPastMeetingListForNullContact() {
         cm.getPastMeetingListFor(null);
@@ -469,7 +498,7 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingListForTwo() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Eating ants");
-        cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Learning about paw paws and prickly pears");
+        cm.addNewPastMeeting(cm.getContacts(1, 2), distantPastDate, "Learning about paw paws and prickly pears");
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertEquals(check.size(), 2);
         assertTrue(check.contains(cm.getPastMeeting(1)));
@@ -494,7 +523,7 @@ public class ContactManagerImplTest {
     public void testGetPastMeetingListForThreeMeetingsOneDuplicatesPropertiesButNotId() {
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
         cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Skimming stones");
-        cm.addNewPastMeeting(cm.getContacts(1,2), distantPastDate, "Trying fancy ants");
+        cm.addNewPastMeeting(cm.getContacts(1, 2), distantPastDate, "Trying fancy ants");
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertEquals(check.size(), 3);
     }
@@ -502,10 +531,10 @@ public class ContactManagerImplTest {
     @Test
     public void testGetPastMeetingListForWereTwoFutureNowOneHasPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -513,6 +542,10 @@ public class ContactManagerImplTest {
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertTrue(check.isEmpty());
     }
+
+    /**
+     * Test addNewPastMeeting()
+     */
 
     @Test(expected = NullPointerException.class)
     public void testAddNewPastMeetingNullContacts() {
@@ -565,21 +598,25 @@ public class ContactManagerImplTest {
         assertEquals(check.getNotes(), MOWGLICONSIDERED);
     }
 
+    /**
+     * Test addMeetingNotes()
+     */
+
     @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdNonExistent() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, QUESTIONRETURN);
         cm.addMeetingNotes(2, "Perhaps");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdZero() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, QUESTIONRETURN);
         assertNull(cm.addMeetingNotes(0, "Perhaps"));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddMeetingNotesMeetingIdNegative() {
-        cm.addNewPastMeeting(cm.getContacts(1), pastDate, "Should Mowgli return to the man-village?");
+        cm.addNewPastMeeting(cm.getContacts(1), pastDate, QUESTIONRETURN);
         cm.addMeetingNotes(-1, "Perhaps");
     }
 
@@ -592,10 +629,10 @@ public class ContactManagerImplTest {
     @Test
     public void testAddMeetingNotesFutureMeetingNowInPast() {
         Calendar nearFutureDate = Calendar.getInstance();
-        nearFutureDate.add(Calendar.MILLISECOND, 10);
+        nearFutureDate.add(Calendar.MILLISECOND, JUSTATICK);
         cm.addFutureMeeting(cm.getContacts(1), nearFutureDate);
         try {
-            Thread.sleep(20);
+            Thread.sleep(TWOTICKS);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -605,17 +642,21 @@ public class ContactManagerImplTest {
 
     @Test
     public void testAddMeetingNotesNormal() {
-        cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "That ");
+        cm.addNewPastMeeting(cm.getContacts(1, 3), distantPastDate, "That ");
         cm.addMeetingNotes(1, "Baloo sure sings a lot");
         assertEquals(cm.getPastMeeting(1).getNotes(), "That Baloo sure sings a lot");
     }
 
     @Test(expected = NullPointerException.class)
     public void testAddMeetingNotesAddingNullNotes() {
-        cm.addNewPastMeeting(cm.getContacts(1,3), distantPastDate, "");
+        cm.addNewPastMeeting(cm.getContacts(1, 3), distantPastDate, "");
         String nullNotes = null;
         cm.addMeetingNotes(1, nullNotes);
     }
+
+    /**
+     * Test addNewContact()
+     */
 
     @Test
     public void testAddNewContactNormal() {
@@ -650,7 +691,10 @@ public class ContactManagerImplTest {
         assertEquals(result, 5);
     }
 
- //getContacts (String name)
+    /**
+     * Test getContacts (String name)
+     */
+
     @Test(expected = NullPointerException.class)
     public void testGetContactsProvidedNull() {
         String providedNull = null;
@@ -660,18 +704,18 @@ public class ContactManagerImplTest {
     //Double check what this is meant to do since the spec/forum seem to be in contradiction
     @Test
     public void testGetContactsStringIsEmptyString() {
-         assertEquals(cm.getContacts(""), cm.getContacts(1,2,3));
+         assertEquals(cm.getContacts(""), cm.getContacts(1, 2, 3));
     }
 
 
     @Test
     public void testGetContactsStringIsPresentInOneName() {
-        assertEquals(cm.getContacts("Mowgli"),cm.getContacts(1));
+        assertEquals(cm.getContacts("Mowgli"), cm.getContacts(1));
     }
 
     @Test
     public void testGetContactsStringIsPresentInTwoNames() {
-        assertEquals(cm.getContacts("Ba"), cm.getContacts(2,3));
+        assertEquals(cm.getContacts("Ba"), cm.getContacts(2, 3));
     }
 
     @Test
@@ -680,18 +724,22 @@ public class ContactManagerImplTest {
         assertTrue(resultSet.size() == 0);
     }
 
+    /**
+     * Test getContacts(int... ids)
+     */
+
     @Test
     public void testGetContactsIdsSingleId() {
         Set<Contact> resultSet = cm.getContacts(1);
         assertEquals(1, resultSet.size());
-        assertEquals(cm.getContacts(1),resultSet);
+        assertEquals(cm.getContacts(1), resultSet);
     }
 
     @Test
     public void testGetContactsIdsTwoIds() {
-        Set<Contact> resultSet = cm.getContacts(1,2);
+        Set<Contact> resultSet = cm.getContacts(1, 2);
         assertEquals(2, resultSet.size());
-        assertEquals(cm.getContacts(1,2),resultSet);
+        assertEquals(cm.getContacts(1, 2), resultSet);
     }
 
     @Test(expected = IllegalArgumentException.class)
