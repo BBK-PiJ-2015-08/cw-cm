@@ -382,10 +382,10 @@ public class ContactManagerImplTest {
             ex.printStackTrace();
         }
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-        assertEquals(check.size(), 1);
-        assertEquals(check.get(0).getId(), 3);
+        assertEquals(check.size(), 2);
+        assertEquals(check.get(0).getId(), 1);
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
-        assertEquals(check.get(0).getDate(), farFutureDate);
+        assertEquals(check.get(0).getDate(), nearFutureDate);
     }
 
     @Test(expected = NullPointerException.class)
