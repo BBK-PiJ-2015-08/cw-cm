@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 /**
- * The class implementing this interface must be abstract. It must have only one constructor with three parameters: an
- * ID (int), a date, and a set of contacts that must be non-empty (otherwise, an IllegalArgumentException must be thrown).
- * A IllegalArgumentException must also be thrown in the case the ID provided was non-positive or zero. If any of the
- * references / pointers passed as parameters is null, a NullPointerException must be thrown.
+ * The class implementing this interface must be abstract. It must have only
+ * one constructor with three parameters: an ID (int), a date, and a set of
+ * contacts that must be non-empty (otherwise, an IllegalArgumentException must
+ * be thrown). A IllegalArgumentException must also be thrown in the case the
+ * ID provided was non-positive or zero. If any of the references / pointers
+ * passed as parameters is null, a NullPointerException must be thrown.
  * @author Jade Dickinson jdicki04
  */
 public abstract class MeetingImpl implements Meeting, Serializable {
@@ -20,7 +22,7 @@ public abstract class MeetingImpl implements Meeting, Serializable {
         if (id <= 0) {
             throw new IllegalArgumentException("Meeting ID must be greater than 0");
         } else if (contacts.isEmpty()) {
-            throw new IllegalArgumentException("Please make sure the set of contacts is not empty");
+            throw new IllegalArgumentException("Set of contacts can't be empty");
         } else if (date == null) {
             throw new NullPointerException("Please ensure date is not null");
         } else {
