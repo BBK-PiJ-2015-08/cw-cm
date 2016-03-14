@@ -1,5 +1,5 @@
 ## Programming in Java - Coursework 3 - Contact Manager
-ContactManagerImpl
+### ContactManagerImpl
 --------------
 * Both Keith and Sergio stated on forum that if a FutureMeeting that's now in the past is noticed, we don't have to consider it as/convert it to a PastMeeting.
 * I have opted to do so for **getPastMeeting, getFutureMeeting, getFutureMeetingList** and **getPastMeetingListFor**.
@@ -11,7 +11,15 @@ ContactManagerImpl
 * Sergio [stated we should match the spec](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=47881) and throw an IllegalStateException.
 * If a FutureMeeting exists with the ID provided that's now in the past, this will convert it to a PastMeeting with the empty string as notes.
 
+#### getFutureMeeting(int id)
+* Uses processMeetings before the bulk of the method (see below)
+* If the ID matches a meeting that was a FutureMeeting before the method but is now in the past, this will have been converted, so an IllegalArgumentException protesting that the meeting has already happened will be thrown.
+
+#### getFutureMeetingList(Contact contact)
+* Uses processMeetingsForLists before the bulk of the method (see below)
+
 #### getPastMeetingListFor(Contact contact)
+* Uses processMeetingsForLists before the bulk of the method (see below)
 * Sergio [stated meetings are considered equal](https://moodle.bbk.ac.uk/mod/forum/discuss.php?d=53251) if and only if their IDs are equal.
 
 #### addMeetingNotes(int id, String text)
