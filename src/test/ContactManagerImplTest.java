@@ -368,7 +368,7 @@ public class ContactManagerImplTest {
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
         assertEquals(check.size(), 3);
     }
-
+/**
     @Test
     public void testGetFutureMeetingListWereTwoFutureNowOneHasPast() {
         Calendar nearFutureDate = Calendar.getInstance();
@@ -386,7 +386,7 @@ public class ContactManagerImplTest {
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
         assertEquals(check.get(0).getDate(), nearFutureDate);
     }
-
+*/
     @Test
     public void testGetFutureMeetingListWereThreeFutureTwoForContactOneHasNowPast() {
         Calendar nearFutureDate = Calendar.getInstance();
@@ -524,7 +524,7 @@ public class ContactManagerImplTest {
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertEquals(check.size(), 3);
     }
-
+/**
     @Test
     public void testGetPastMeetingListForWereTwoFutureNowOneHasPast() {
         Calendar nearFutureDate = Calendar.getInstance();
@@ -539,7 +539,7 @@ public class ContactManagerImplTest {
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
         assertTrue(check.isEmpty());
     }
-
+*/
     /**
      * Test addNewPastMeeting()
      */
