@@ -363,10 +363,10 @@ public class ContactManagerImplTest {
         }
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<Meeting> check = cm.getFutureMeetingList(testContact1);
-        assertEquals(check.size(), 1);
-        assertEquals(check.get(0).getId(), 2);
+        assertEquals(check.size(), 2);
+        assertEquals(check.get(0).getId(), 1);
         assertEquals(check.get(0).getContacts(), cm.getContacts(1));
-        assertEquals(check.get(0).getDate(), farFutureDate);
+        assertEquals(check.get(0).getDate(), nearFutureDate);
     }
 
     @Test
@@ -511,11 +511,7 @@ public class ContactManagerImplTest {
         }
         cm.addFutureMeeting(cm.getContacts(1), farFutureDate);
         List<PastMeeting> check = cm.getPastMeetingListFor(testContact1);
-        assertEquals(check.size(), 1);
-        assertEquals(check.get(0).getId(), 1);
-        assertEquals(check.get(0).getContacts(), cm.getContacts(1));
-        assertEquals(check.get(0).getDate(), nearFutureDate);
-        assertEquals(check.get(0).getNotes(), "");
+        assertTrue(check.isEmpty());
     }
 
     @Test(expected = NullPointerException.class)
